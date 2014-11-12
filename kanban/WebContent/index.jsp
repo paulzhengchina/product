@@ -16,7 +16,7 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery.placeholder.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery.validate.js"></script>
 
-<title>小蚂蚁看板管理-敏捷项目管理工具 </title>
+<title>小蚂蚁-敏捷项目管理工具 </title>
 </head>
 
 <body class="index">
