@@ -1,0 +1,60 @@
+package com.createidea.scrumfriend.dao.impediment;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.hibernate.criterion.DetachedCriteria;
+import org.hibernate.criterion.Order;
+import org.hibernate.criterion.Restrictions;
+
+import com.createidea.scrumfriend.dao.BaseDaoImpl;
+import com.createidea.scrumfriend.to.ImpedimentTo;
+
+
+public class ImpedimentDaoImpl extends BaseDaoImpl implements ImpedimentDao {
+
+	@Override
+	public List<ImpedimentTo> getAllImpediments(String projectId) {
+		// TODO Auto-generated method stub
+		ArrayList<Integer> statusList=new ArrayList<Integer>();
+		statusList.add(0);
+		statusList.add(1);
+		statusList.add(2);
+		statusList.add(3);
+		DetachedCriteria detachedCriteria = DetachedCriteria.forClass(ImpedimentTo.class);
+		detachedCriteria.add(Restrictions.eq("project.id", projectId));
+		detachedCriteria.add(Restrictions.in("status", statusList));
+		detachedCriteria.addOrder(Order.asc("status"));
+		detachedCriteria.addOrder(Order.asc("severity"));		
+		return this.getHibernateTemplate().findByCriteria(detachedCriteria);
+	}
+
+	@Override
+	public ImpedimentTo saveImpediment(ImpedimentTo impediment) {
+		// TODO Auto-generated method stub
+		if(impediment.getId()==null||impediment.getId()=="")
+		{
+			String impedimentId=(String)this.getHibernateTemplate().save(impediment);
+			return getImpediment(impedimentId);
+		}
+		else{
+			this.getHibernateTemplate().saveOrUpdate(impediment);
+	        return impediment;
+		}
+	}
+
+	@Override
+	public ImpedimentTo getImpediment(String id) {
+		// TODO Auto-generated method stubc
+		DetachedCriteria detachedCriteria = DetachedCriteria.forClass(ImpedimentTo.class);
+		detachedCriteria.add(Restrictions.eq("id", id));
+		List<ImpedimentTo> impediments=this.getHibernateTemplate().findByCriteria(detachedCriteria);
+		if(impediments!=null&&impediments.size()>0)
+			return impediments.get(0);
+		else
+			return null;
+			
+	}
+
+	
+}
