@@ -233,5 +233,19 @@ public class StatisticsServiceImpl implements StatisticsService {
 		this.storyDao = storyDao;
 	}
 
+	@Override
+	public Map<String, Integer> getStatisticsForStoryPriorities(String projectId) {
+		// TODO Auto-generated method stub
+		Map map = new HashMap<String,Integer>();
+		map.put("tst", storyDao.calculateStoriesTotalPointByPriority(0,projectId));
+		return map;
+	}
+
+	@Override
+	public Map<String, Integer> getStatisticsForStoryStatuses(String projectId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 	
 }

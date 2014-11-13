@@ -108,7 +108,7 @@ $(function() {
 	 });
    
 	 $("#register").click(function(){
-			DIALOG = $(".register_dialog");
+			var DIALOG = $(".register_dialog");
 			DIALOG.dialog({
 				autoOpen : false,
 				resizable: false,

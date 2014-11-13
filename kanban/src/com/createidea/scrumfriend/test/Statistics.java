@@ -1,6 +1,7 @@
 package com.createidea.scrumfriend.test;
 
 import java.sql.Date;
+import java.util.Map;
 
 import junit.framework.TestCase;
 
@@ -39,7 +40,7 @@ public class Statistics extends TestCase {
 		statisticsService=(StatisticsService)factory.getBean("statisticsService");
 		storyService=(StoryService)factory.getBean("storyService");
 		userDao=(UserDao)factory.getBean("userDao");
-		sprint=sprintService.getSprintsForProject(PROJECTID).get(0);
+	//	sprint=sprintService.getSprintsForProject(PROJECTID).get(0);
 	}
 	
 //	@Test
@@ -47,10 +48,18 @@ public class Statistics extends TestCase {
 //		statisticsService.updateStatisticsForSprint(sprint);		
 //	}
 	
+//	@Test
+//	public void testGetSprints(){
+//		statisticsService.updateStatisticsForAllProjects();
+//		System.out.println("ba........................................");
+//	}
+	
 	@Test
-	public void testGetSprints(){
-		statisticsService.updateStatisticsForAllProjects();
-		System.out.println("ba........................................");
+	public void testCalculateStoryPoints()
+	{
+		Map map=statisticsService.getStatisticsForStoryPriorities(PROJECTID);
+		Object object=map.get("tst");
+		System.out.println("ba........................................"+object.toString());
 	}
 //	public float calculateCommittedStoryPoint(){
 //		return statisticsService.calculateCommittedStoryPoint(sprint);

@@ -30,5 +30,9 @@ public interface StatisticsService {
 	public void updateStatisticsForAllProjects();
 
 	public Map getDataForTeamVelocity(String projectId);
+	
+	public Map<String,Integer> getStatisticsForStoryPriorities(String projectId);
+	
+	public Map<String,Integer> getStatisticsForStoryStatuses(String projectId);
 
 }

@@ -3,10 +3,12 @@ package com.createidea.scrumfriend.dao.story;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
 
 import org.hibernate.Hibernate;
 import org.hibernate.HibernateException;
+import org.hibernate.Query;
 import org.hibernate.SQLQuery;
 import org.hibernate.Session;
 import org.hibernate.criterion.DetachedCriteria;
@@ -198,6 +200,13 @@ public class StoryDaoImpl extends BaseDaoImpl implements  StoryDao {
 		detachedCriteria.add(Restrictions.in("status", new Integer[]{0,1} ));
 		detachedCriteria.addOrder(Order.desc("priority"));
 		return this.getHibernateTemplate().findByCriteria(detachedCriteria);
+	}
+
+	@Override
+	public float calculateStoriesTotalPointByPriority(int priority,String projectId) {
+		// TODO Auto-generated method st
+		String sqlString="select sum(point) as point from story where status=1 and project_id='"+projectId+"'";
+		return calculateStoryPoint(sqlString);
 	}
 
 	
