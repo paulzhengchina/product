@@ -14,7 +14,7 @@ public class StoryTo {
 	private SprintTo sprint;
 	private ProjectTo project;
 	private Set<TaskTo> tasks = new HashSet<TaskTo>();
-	private int priorityNum;//the relative number of priority,and the stories will be ordered by it.
+	private int priorityNum;//the relative number of priority,and the stories will be ordered by it
 	
 	public String getId() {
 		return id;
