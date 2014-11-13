@@ -20,7 +20,6 @@ import com.createidea.scrumfriend.to.ProjectTo;
 import com.createidea.scrumfriend.to.SprintTo;
 import com.createidea.scrumfriend.to.StoryTo;
 import com.sun.mail.imap.protocol.Status;
-import com.sun.xml.internal.bind.v2.runtime.unmarshaller.XsiNilLoader.Array;
 
 public class StoryDaoImpl extends BaseDaoImpl implements  StoryDao {
 
