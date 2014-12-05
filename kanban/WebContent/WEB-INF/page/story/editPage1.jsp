@@ -16,8 +16,6 @@
 <script type="text/javascript">
 	$(document).ready(
 			function() {
-				
-				$( ".editStoryInfo" ).tabs();
 				$("textarea").htmlarea(
 						{
 							toolbar : [ [ "orderedList" ],
@@ -73,15 +71,7 @@
 	<s:hidden name="story.project.id" value="%{story.project.id}"/>
 	<s:hidden name="story.id" value="%{story.id}"/>	
 	<p class="title">编辑需求</p>
-	<div class="editStoryInfo" style="height:400px;">
-	    <ul>
-	       <li><a href="#basicInfo">基础信息</a></li>
-	       <li><a href="#description">描述</a></li>
-	       <li><a href="#sprints">执行阶段</a></li>
-	    </ul>
-	    
-	    <div id="basicInfo">
-	          <table>
+				<table>
 					<tr>
 					   <td class="row_name">
                                                                                      名称
@@ -108,14 +98,6 @@
 						</td>
 					</tr>
 					<tr>
-					    <td class="row_name">
-                                                                                   优先级
-					    </td>
-						<td>
-						  <s:textfield name="story.priorityNum" placeholder="0"></s:textfield>
-						</td>
-				    </tr>
-					<tr>
 					   <td class="row_name">
                                                                                    必要性
 					   </td>
@@ -134,6 +116,51 @@
 					</td>
 				</tr>
 				<tr>
+					    <td class="row_name">
+                                                                                   优先级
+					    </td>
+						<td>
+						  <s:textfield name="story.priorityNum" placeholder="0"></s:textfield>
+						</td>
+				</tr>
+				<tr>
+					<td class="row_name">验收条件</td>
+					<td><s:textarea name="story.dod" rows="12" cols="59"
+							placeholder="验收条件"></s:textarea></td>
+				</tr>
+				<tr>
+					<td class="row_name">阶段</td>
+					<td><select name="story.sprint.id" style="width: 300px;">
+					        <s:if test="%{story.sprint!=null}">
+								<option class="default" value="<s:property value='story.sprint.id'/>">
+									<s:property value='story.sprint.name' /> :
+									<s:date name="story.sprint.startTime" format="yyyy-MM-dd" /> - 
+									<s:date name="story.sprint.endTime" format="yyyy-MM-dd" />
+								</option>
+							</s:if>
+							<option class="top"></option>
+							<s:iterator value="sprints" var="sprint">
+							    
+								<option class="top" value="<s:property value='id'/>">
+									<s:property value='name' />
+									:
+									<s:date name="startTime" format="yyyy-MM-dd" /> - 
+									<s:date name="endTime" format="yyyy-MM-dd" />
+								</option>
+								<s:if test="%{#sprint.subSprints!=null}">
+									<s:iterator value="%{#sprint.subSprints}">
+										<option class="second" value="<s:property value='id'/>">
+											&nbsp;&nbsp;<s:property value='name' />
+											:
+											<s:date name="startTime" format="yyyy-MM-dd" /> - 
+											<s:date name="endTime" format="yyyy-MM-dd" />
+										</option>
+									</s:iterator>
+								</s:if>
+							</s:iterator>
+					</select></td>
+				</tr>
+				<tr>
 					<td class="row_name">状态</td>
 					<td><select name="story.status" id="status">
 							<script>
@@ -146,66 +173,12 @@
 							<option value="2">移除</option>
 					</select></td>
 				</tr>
-				
-			</table>
-	    </div>
-	    
-	    <div id="description">
-	        <table>
-		        <tr>
-						<td class="row_name">验收条件</td>
-						<td><s:textarea name="story.dod" rows="12" cols="59" placeholder="验收条件"></s:textarea></td>
+				<tr>
+					<td></td>
+					<td><button class="submit">提交</button></td>
 				</tr>
-			 </table>
-	    </div>
-	    
-	    <div id="sprints">
-					<table>
-						<tr>
-							<td class="row_name">阶段</td>
-							<td><select name="story.sprint.id" style="width: 300px;">
-									<s:if test="%{story.sprint!=null}">
-										<option class="default"
-											value="<s:property value='story.sprint.id'/>">
-											<s:property value='story.sprint.name' />
-											:
-											<s:date name="story.sprint.startTime" format="yyyy-MM-dd" />
-											-
-											<s:date name="story.sprint.endTime" format="yyyy-MM-dd" />
-										</option>
-									</s:if>
-									<option class="top"></option>
-									<s:iterator value="sprints" var="sprint">
+</table>
 
-										<option class="top" value="<s:property value='id'/>">
-											<s:property value='name' />
-											:
-											<s:date name="startTime" format="yyyy-MM-dd" />
-											-
-											<s:date name="endTime" format="yyyy-MM-dd" />
-										</option>
-										<s:if test="%{#sprint.subSprints!=null}">
-											<s:iterator value="%{#sprint.subSprints}">
-												<option class="second" value="<s:property value='id'/>">
-													&nbsp;&nbsp;
-													<s:property value='name' />
-													:
-													<s:date name="startTime" format="yyyy-MM-dd" />
-													-
-													<s:date name="endTime" format="yyyy-MM-dd" />
-												</option>
-											</s:iterator>
-										</s:if>
-									</s:iterator>
-							</select></td>
-						</tr>
-					</table>
-				</div>
-	</div>
-	<div style="margin-top:10px;">
-	    <button class="submit">提交</button>
-	</div>
-	
 </s:form>
 </div>
 </body>

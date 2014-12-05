@@ -15,6 +15,7 @@ import org.hibernate.criterion.DetachedCriteria;
 import org.hibernate.criterion.MatchMode;
 import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
+import org.springframework.dao.DataAccessException;
 import org.springframework.orm.hibernate3.HibernateCallback;
 
 import com.createidea.scrumfriend.dao.BaseDaoImpl;
@@ -65,7 +66,13 @@ public class StoryDaoImpl extends BaseDaoImpl implements  StoryDao {
 		detachedCriteria.addOrder(Order.asc("priorityNum"));
 		detachedCriteria.addOrder(Order.asc("priority"));
 		detachedCriteria.addOrder(Order.desc("businessValue"));
-		return this.getHibernateTemplate().findByCriteria(detachedCriteria);
+		try {
+			return this.getHibernateTemplate().findByCriteria(detachedCriteria);
+		} catch (DataAccessException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
 	}
 
 	@Override
