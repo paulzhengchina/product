@@ -51,4 +51,8 @@
 	      <property name="impedimentService" ref="impedimentService" />
 	      <property name="projectService" ref="projectService" />
 	</bean>
+	
+	<bean id="adminAction" class="com.createidea.scrumfriend.struts.action.AdminAction" scope="prototype" parent="baseAction">
+          <property name="userService" ref="userService" />
+	</bean>
 </beans>

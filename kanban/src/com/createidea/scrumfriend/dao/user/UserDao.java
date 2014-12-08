@@ -22,5 +22,7 @@ public interface UserDao {
 	public void setDefaultProject(String userId, String projectId);
 
 	public UserTo getUserByEmail(String userEmail);
+	
+	public List<UserTo> getAllUsers();
 
 }

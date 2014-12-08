@@ -1,5 +1,9 @@
 package com.createidea.scrumfriend.utils.email;
 
+import java.util.List;
+
+import com.createidea.scrumfriend.to.UserTo;
+
 
 
 public class SendMailService {
@@ -21,7 +25,15 @@ public class SendMailService {
     	    mailInfo.setContent(content);   
     	       //这个类主要来发送邮件  
     	    SimpleMailSender sms = new SimpleMailSender();
-    	    //sms.sendTextMail(mailInfo);//发送文体格式   
-    	    sms.sendHtmlMail(mailInfo);//发送html格式  
+    	    sms.sendTextMail(mailInfo);//发送文体格式   
+    	   // sms.sendHtmlMail(mailInfo);//发送html格式  
+    }
+    
+    public void sendWithHtmlContent(String receiverAddress,String htmlPath)
+    {
+    	prepareSender();
+    	mailInfo.setToAddress(receiverAddress);    
+    	SimpleMailSender sms = new SimpleMailSender();
+    	sms.sendHtmlMail(mailInfo,htmlPath);
     }
 }

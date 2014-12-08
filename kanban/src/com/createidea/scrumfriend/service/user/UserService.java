@@ -1,5 +1,7 @@
 package com.createidea.scrumfriend.service.user;
 
+import java.util.List;
+
 import com.createidea.scrumfriend.to.UserTo;
 
 public interface UserService {
@@ -19,5 +21,7 @@ public interface UserService {
 	public void updateUser(UserTo user);
 
 	public String findPassword(String email);
+	
+	public List<UserTo> getAllUsers();
 
 }

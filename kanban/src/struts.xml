@@ -20,7 +20,8 @@
   <include file="struts/struts-task.xml" />
   <include file="struts/struts-blog.xml" />
   <include file="struts/struts-common.xml" />
-  <include file="struts/struts-impediment.xml" />  
+  <include file="struts/struts-impediment.xml" />
+  <include file="struts/struts-admin.xml" />  
 	<package name="default" namespace="/" extends="struts-default">
        
        

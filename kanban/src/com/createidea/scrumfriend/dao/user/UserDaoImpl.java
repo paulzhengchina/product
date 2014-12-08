@@ -76,7 +76,6 @@ public class UserDaoImpl extends BaseDaoImpl implements UserDao {
 		UserTo userTo = (UserTo) this.getHibernateTemplate().get(UserTo.class, userId);
 		ProjectTo project = new ProjectTo();
 		project.setId(projectId);
-		System.out.println(projectId+"..........."+userId);
 		userTo.setDefaultProject(project);
 		saveOrUpdateUser(userTo);
 	}
@@ -91,6 +90,13 @@ public class UserDaoImpl extends BaseDaoImpl implements UserDao {
 		    return userList.get(0);
 		else
 			return null;
+	}
+
+	@Override
+	public List<UserTo> getAllUsers() {
+		// TODO Auto-generated method stub
+		DetachedCriteria detachedCriteria = DetachedCriteria.forClass(UserTo.class);
+		return this.getHibernateTemplate().findByCriteria(detachedCriteria);
 	}
 
 }

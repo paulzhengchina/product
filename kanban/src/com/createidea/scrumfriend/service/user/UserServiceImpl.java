@@ -1,5 +1,6 @@
 package com.createidea.scrumfriend.service.user;
 
+import java.util.List;
 import java.util.Random;
 
 import com.createidea.scrumfriend.dao.user.UserDao;
@@ -104,6 +105,12 @@ public class UserServiceImpl implements UserService {
 		    return "FAIL";
 		}
 		
+	}
+
+	@Override
+	public List<UserTo> getAllUsers() {
+		// TODO Auto-generated method stub
+		return userDao.getAllUsers();
 	}
     
     
