@@ -78,7 +78,7 @@ $(document).ready(function() {
 	                                                                                   优先级
 						</td>
 						<td>
-						  <s:textfield name="story.priorityNum" placeholder="优先级" value="0"></s:textfield>
+						  <s:textfield name="story.priorityNum" placeholder="优先级：数字越小代表优先级越高" value="0"></s:textfield>
 						</td>
 					</tr>
 					<tr>
