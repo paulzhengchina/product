@@ -1,8 +1,16 @@
 package com.createidea.scrumfriend.utils.email;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.FileReader;
+import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.util.Date;
 import java.util.Properties;
 
+import javax.activation.DataHandler;
+import javax.activation.FileDataSource;
 import javax.mail.Address;
 import javax.mail.BodyPart;
 import javax.mail.Message;
@@ -54,9 +62,9 @@ public class SimpleMailSender {
 	      mailMessage.setText(mailContent);   
 	      // 发送邮件   
 	      Transport transport = sendMailSession.getTransport();// 发送用户名、密码连接到指定的 smtp 服务器  
-	      transport.connect("smtp.163.com", "zheng.renhua@163.com", "zrhnihao123");
+	      transport.connect("smtp.exmail.qq.com", "noreply@antkanban.com", "password2");
 	      transport.sendMessage(mailMessage, mailMessage.getRecipients(Message.RecipientType.TO));
-	      transport.close();  
+	      transport.close();    
 	      return true;   
 	      } catch (MessagingException ex) {   
 	          ex.printStackTrace();   
@@ -74,7 +82,7 @@ public class SimpleMailSender {
 	    	{    return null;   } 
 	    }
        
-	    public static boolean sendHtmlMail(MailSenderInfo mailInfo){   
+	    public  boolean sendHtmlMail(MailSenderInfo mailInfo,String rootpath){   
 	      // 判断是否需要身份认证   
 	      MyAuthenticator authenticator = null;  
 	      Properties pro = mailInfo.getProperties();  
@@ -103,16 +111,10 @@ public class SimpleMailSender {
 	     
 	      // 设置邮件消息发送的时间   
 	      mailMessage.setSentDate(new Date());   
-	      // MiniMultipart类是一个容器类，包含MimeBodyPart类型的对象   
-	      Multipart mainPart = new MimeMultipart(); 
-	      
-	      // 创建一个包含HTML内容的MimeBodyPart   
-	      BodyPart html = new MimeBodyPart();   
-	      // 设置HTML内容   
-	      html.setContent(mailInfo.getContent(), "text/html; charset=utf-8");   
-	      mainPart.addBodyPart(html);   
+	   
 	      // 将MiniMultipart对象设置为邮件内容   
-	      mailMessage.setContent(mainPart);   
+	      mailMessage.setContent(prepareMailContent(rootpath));
+	      mailMessage.saveChanges();
 	      // 发送邮件   
 	      Transport transport = sendMailSession.getTransport();// 发送用户名、密码连接到指定的 smtp 服务器  
 	      transport.connect("smtp.exmail.qq.com", "noreply@antkanban.com", "password2");
@@ -123,5 +125,132 @@ public class SimpleMailSender {
 	          ex.printStackTrace();   
 	      }   
 	      return false;   
-	    }   
+	    }  
+	    
+	public MimeMultipart prepareMailContent(String rootpath){
+		MimeMultipart allPart = new MimeMultipart("related");
+		try {
+			allPart.addBodyPart(prepareLogo(rootpath));
+			allPart.addBodyPart(prepareTextContent(rootpath+"/WEB-INF/classes/com/createidea/scrumfriend/utils/email/content/template/update.html"));
+		} catch (MessagingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return allPart;
+	}
+	
+	public MimeBodyPart prepareImgs(String imgPath,String imgId)
+	{
+		MimeBodyPart jpgBody = new MimeBodyPart();
+		FileDataSource fds = new FileDataSource(imgPath);
+		try {
+			jpgBody.setDataHandler(new DataHandler(fds));
+			jpgBody.setContentID(imgId);
+		} catch (MessagingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}		
+		return jpgBody;
+	}
+	
+	public MimeBodyPart prepareLogo(String rootpath)
+	{
+		return prepareImgs(rootpath+"/WEB-INF/classes/com/createidea/scrumfriend/utils/email/content/template/logo_index.jpg","logo_jpg");
+	}
+	
+	public MimeBodyPart prepareTextContent(String path)
+	{
+		MimeBodyPart textBody = new MimeBodyPart();
+		
+		try {
+			BufferedReader br = new BufferedReader(new FileReader(path)); 
+			StringBuffer buffer = new StringBuffer();
+			String data = br.readLine();//一次读入一行，直到读入null为文件结束  
+			while( data!=null){  
+			      System.out.println(data);  
+			      data = br.readLine(); //接着读下一行  
+			      buffer.append(data);
+			} 			
+			textBody.setContent(buffer.toString(), "text/html;charset=gbk");
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (MessagingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return textBody;
+	}
+	
+	public MimeBodyPart createAttachment(String fileName) throws Exception {
+		MimeBodyPart attachmentPart = new MimeBodyPart();
+		FileDataSource fds = new FileDataSource(fileName);
+		attachmentPart.setDataHandler(new DataHandler(fds));
+		attachmentPart.setFileName(fds.getName());
+		return attachmentPart;
+	}
+
+	/**
+	 * 根据传入的邮件正文body和文件路径创建图文并茂的正文部分
+	 */
+	public MimeBodyPart createContent(String body, String fileName)
+			throws Exception {
+		// 用于保存最终正文部分
+		MimeBodyPart contentBody = new MimeBodyPart();
+		// 用于组合文本和图片，"related"型的MimeMultipart对象
+		MimeMultipart contentMulti = new MimeMultipart("related");
+
+		// 正文的文本部分
+		MimeBodyPart textBody = new MimeBodyPart();
+		textBody.setContent(body, "text/html;charset=gbk");
+		contentMulti.addBodyPart(textBody);
+
+		// 正文的图片部分
+		MimeBodyPart jpgBody = new MimeBodyPart();
+		FileDataSource fds = new FileDataSource(fileName);
+		jpgBody.setDataHandler(new DataHandler(fds));
+		jpgBody.setContentID("logo_jpg");
+		contentMulti.addBodyPart(jpgBody);
+
+		// 将上面"related"型的 MimeMultipart 对象作为邮件的正文
+		contentBody.setContent(contentMulti);
+		return contentBody;
+	}
+
+	/**
+	 * 根据传入的 Seesion 对象创建混合型的 MIME消息
+	 */
+//	public MimeMessage createMessage(Session session) throws Exception {
+//		String from = "test_hao@163.com";
+//		String to = "test_hao@sina.cn";
+//		String subject = "创建内含附件、图文并茂的邮件！";
+//		String body = "<h4>内含附件、图文并茂的邮件测试！！！</h4> </br>"
+//				+ "<a href = http://haolloyin.blog.51cto.com/> 蚂蚁</a></br>"
+//				+ "<img src = \"cid:logo_jpg\"></a>";
+//
+//		MimeMessage msg = new MimeMessage(session);
+//		msg.setFrom(new InternetAddress(from));
+//		msg.setRecipient(Message.RecipientType.TO, new InternetAddress(to));
+//		msg.setSubject(subject);
+//
+//		// 创建邮件的各个 MimeBodyPart 部分
+//		MimeBodyPart attachment01 = createAttachment("F:\\java\\Snake.java");
+//		MimeBodyPart attachment02 = createAttachment("F:\\java\\meng.mp3");
+//		MimeBodyPart content = createContent(body, "F:\\java\\logo.jpg");
+//
+//		// 将邮件中各个部分组合到一个"mixed"型的 MimeMultipart 对象
+//		MimeMultipart allPart = new MimeMultipart("mixed");
+//		allPart.addBodyPart(attachment01);
+//		allPart.addBodyPart(attachment02);
+//		allPart.addBodyPart(content);
+//
+//		// 将上面混合型的 MimeMultipart 对象作为邮件内容并保存
+//		msg.setContent(allPart);
+//		msg.saveChanges();
+//		return msg;
+//	}
+
 }
