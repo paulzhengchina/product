@@ -10,6 +10,7 @@
 	<link rel="stylesheet" type="text/css" href="${ pageContext.request.contextPath }/css/common.css">
 	<link rel="stylesheet" href="${ pageContext.request.contextPath }/css/jquery-ui.css" />
 	<script type="text/javascript" src="${ pageContext.request.contextPath }/js/jquery-1.6.2.js"></script>
+	<script type="text/javascript" src="${pageContext.request.contextPath}/js/common.js"></script>
 	<script type="text/javascript" src="${ pageContext.request.contextPath }/js/jquery-ui-1.8.18.custom.min.js"></script>	 
 	<script type="text/javascript" src="${ pageContext.request.contextPath }/js/jquery.livequery.min.js"></script>
 	<script type="text/javascript" src="${ pageContext.request.contextPath }/js/scrum-shrink.js"></script>
@@ -180,7 +181,8 @@
 	<script type="text/javascript" >
 	   // open a dialog to create current sprint
 		$(function() {
-		    
+			
+			initialCurrentMenuItem("menu_item_kanban");
 			// Initiate draggable for public and groups
 			  var $gallery = $( ".group_box" );
 			  $(".task", $gallery).live("mouseenter", function(){

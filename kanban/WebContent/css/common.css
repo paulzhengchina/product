@@ -33,18 +33,17 @@ html,body {
 }
 
 .left_menu ul{
-	margin-top:10px;
 	margin-left:2px;
 	border-top:1px solid #E5E5E5;
 	border-left:1px solid #E5E5E5;
 }
 
 .left_menu ul li{
-	border-bottom:1px solid #E5E5E5;
+	
 }
 
 .left_menu ul li.selected{
-	background:gray;
+	border-left:3px solid #F76809;
 }
 
 .menutooltip{   
@@ -1615,7 +1614,7 @@ li#treeDemo_1 #treeDemo_1_span{
 	padding:3px;
 }
 
-#treeDemo li,ul{
+#treeDemo li{
 	margin-top:15px;
 	font-size:14px;
 	font-family:Microsoft YaHei;

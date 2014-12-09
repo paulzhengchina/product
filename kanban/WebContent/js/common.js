@@ -12,7 +12,7 @@ function formateBRForTextArea()
 
 function customizeDialog(){
 	$(".ui-dialog-titlebar button").remove();
-	$(".ui-dialog-titlebar").html("<img src='${pageContext.request.contextPath}/images/icon/dialog_close.png'/>");
+	$(".ui-dialog-titlebar").html("<img src='../images/icon/dialog_close.png'/>");
 	$(".ui-dialog-titlebar img").css("position","absolute");
 	$(".ui-dialog-titlebar img").css("right","2px");
 	$(".ui-dialog-titlebar img").css("height","17px");
@@ -21,4 +21,9 @@ function customizeDialog(){
 	$(".ui-dialog-titlebar img").live('click',function(){
 		DIALOG.dialog('close');
     });
+}
+
+function initialCurrentMenuItem(id)
+{
+	$("#"+id).addClass("selected");
 }

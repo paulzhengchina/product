@@ -10,6 +10,7 @@
 <link rel="stylesheet" href="${ pageContext.request.contextPath }/css/jquery-ui.css" />
 <link rel="stylesheet" href="${ pageContext.request.contextPath }/css/multi-select/jquery.multiselect.css" />
 <script type="text/javascript" src="${ pageContext.request.contextPath }/js/jquery-1.6.2.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/common.js"></script>
 <script type="text/javascript" src="${ pageContext.request.contextPath }/js/jquery-ui.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/freewall.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/scrum-shrink.js"></script>
@@ -94,6 +95,9 @@
 </body>
 <script>
 	$(document).ready(function() {
+		
+		initialCurrentMenuItem("menu_item_story");
+		
 		var allStoryCards=$(".story_card");
 		removeDeletedStoryCards();
 		var wall = new freewall("#storieslist");
@@ -222,17 +226,7 @@
 		$(".status1").each(function(){$(this).remove()});
 	}
 	
-	function customizeDialog(){
-		$(".ui-dialog-titlebar button").remove();
-		$(".ui-dialog-titlebar").html("<img src='${pageContext.request.contextPath}/images/icon/dialog_close.png'/>");
-		$(".ui-dialog-titlebar img").css("position","absolute");
-		$(".ui-dialog-titlebar img").css("right","2px");
-		$(".ui-dialog-titlebar img").css("height","17px");
-		$(".ui-dialog-titlebar img").css("width","17px");
-		$(".ui-dialog-titlebar img").css("cursor","pointer");
-		$(".ui-dialog-titlebar img").live('click',function(){
-			DIALOG.dialog('close');
-		});
-	}
+	
+	
 </script>
 </html>

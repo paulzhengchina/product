@@ -19,44 +19,48 @@
 			</a>
 		</s:else>
 	</li>
-	
-	<li>
+</ul>
+
+<ul>
+	<li id="menu_item_kanban">
 	    <a href='<s:url value="/sprint/loadKanban.action"><s:param name="projectId" value="%{projectId}"/></s:url>'>
 		   <img src="${ pageContext.request.contextPath }/images/icon/kanban.png" title="看板" /> 
 		</a>
 	</li>
 	
-	<li>
+	<li id="menu_item_story">
 	    <a href='<s:url value="/story/viewStoriesOfProject.action"><s:param name="projectId" value="%{projectId}"/></s:url>'>
-		   <img src="${ pageContext.request.contextPath }/images/icon/story_current.png" title="需求库" />
+		   <img src="${ pageContext.request.contextPath }/images/icon/story.png" title="需求库" />
 		</a>
 	</li>
 	
-	<li>
+	<li id="menu_item_plan">
 	    <a href='<s:url value="/sprint/listSprints.action"><s:param name="projectId" value="%{projectId}"/></s:url>'>
 		  <img src="${ pageContext.request.contextPath }/images/icon/plan.png" title="计划" />
 		</a>
 	</li>
 	
-	<li>
+	<li id="menu_item_impediment">
 	    <a href='<s:url value="/impediment/showimpediments.action"><s:param name="projectId" value="%{projectId}"/></s:url>'>
 	       <img src="${ pageContext.request.contextPath }/images/icon/impediment.jpg" title="障碍" />
 	    </a>
 	</li>
+</ul>
 
-	<li>
+<ul>
+	<li id="menu_item_projects">
 	    <a href="${ pageContext.request.contextPath }/project/listProject.action">
 	       <img src="${ pageContext.request.contextPath }/images/icon/project.png" title='项目库' />
 	    </a>
 	</li>
 
-	<li>
+	<li id="menu_item_setting">
 	    <a href='<s:url value="/user/setting.action"></s:url>'>
 	       <img src="${ pageContext.request.contextPath }/images/icon/setting.jpg" title="个人设置" />
 	    </a>
 	</li>
 	
-	<li>
+	<li id="menu_item_quit">
 	    <a href="${ pageContext.request.contextPath }/user/logout.action">
 	       <img src="${ pageContext.request.contextPath }/images/icon/back.png" title="退出" />
 	    </a>

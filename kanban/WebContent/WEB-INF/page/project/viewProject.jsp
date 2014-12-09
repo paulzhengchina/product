@@ -28,9 +28,35 @@
 <script type="text/javascript"
 	src="${pageContext.request.contextPath}/js/rgraph/RGraph.common.key.js"></script>
 
-
+<style>
+  
+  .ui-tooltip {
+    padding: 8px;
+    color: white;
+    border-radius: 10px;
+    font: 14px;
+    text-transform: uppercase;
+    box-shadow: 0 0 7px black;
+    background: black;
+  }
+  </style>
 <script>
 	$(document).ready(function() {
+		
+		$(".left_menu").tooltip({
+		      position: {
+		          my: "right center",
+		          at: "left center",
+		          using: function( position, feedback ) {
+		            $( this ).css( position );
+		            $( "<div>" )
+		              .addClass( "arrow" )
+		              .addClass( feedback.vertical )
+		              .addClass( feedback.horizontal )
+		              .appendTo( this );
+		          }
+		        }
+		      });
 		
 		createProjectBurnDown();
 		createTeamVelocity();
