@@ -30,7 +30,7 @@
 	
 	<li id="menu_item_story">
 	    <a href='<s:url value="/story/viewStoriesOfProject.action"><s:param name="projectId" value="%{projectId}"/></s:url>'>
-		   <img src="${ pageContext.request.contextPath }/images/icon/story.png" title="需求库" />
+		   <img src="${ pageContext.request.contextPath }/images/icon/story.png" title="需求" />
 		</a>
 	</li>
 	
