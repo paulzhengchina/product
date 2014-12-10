@@ -20,6 +20,7 @@ public class AdminAction extends BaseAction {
 		List<UserTo> allRegistedUsers= userService.getAllUsers();
 		sendEmailService.sendWithHtmlContent("paulzheng@antkanban.com", getApplicationRootPath());
 
+		
 //		for(UserTo user : allRegistedUsers)
 //		{
 //			sendEmailService.sender(user.getEmail(), "test", "Test");
