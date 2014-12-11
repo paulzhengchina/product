@@ -27,6 +27,7 @@
 							]
 						});
 				$("iframe").height("190px");
+				$("iframe").width("380px");
 				
 				$(".submit").click(function(){
 					 $("form").validate({
@@ -73,10 +74,10 @@
 	<s:hidden name="story.project.id" value="%{story.project.id}"/>
 	<s:hidden name="story.id" value="%{story.id}"/>	
 	<p class="title">编辑需求</p>
-	<div class="editStoryInfo" style="height:400px;">
+	<div class="editStoryInfo" style="height:300px;">
 	    <ul>
-	       <li><a href="#basicInfo">基础信息</a></li>
-	       <li><a href="#description">描述</a></li>
+	       <li><a href="#basicInfo">基本信息</a></li>
+	       <li><a href="#description">验收条件</a></li>
 	       <li><a href="#sprints">执行阶段</a></li>
 	    </ul>
 	    
@@ -86,41 +87,31 @@
 					   <td class="row_name">
                                                                                      名称
 					   </td>
-						<td>
-						 <s:textfield name="story.name" size="62" placeholder="输入需求名称"></s:textfield>
+						<td colspan="3">
+						 <s:textfield name="story.name" size="53" placeholder="输入需求名称"></s:textfield>
 						</td>
 					</tr>
 					<tr>
 					    <td class="row_name">
-                                                                                   商业价值
+                                                                                    价值
 					    </td>
 						<td>
-						  <s:textfield name="story.businessValue" placeholder="0"></s:textfield>
+						  <s:textfield name="story.businessValue" placeholder="0" cssClass="number"></s:textfield>
 						</td>
-					</tr>
-					
-					<tr>
-					    <td class="row_name">
+						<td class="row_name">
                                                                                    工作量
 					    </td>
 						<td>
-						  <s:textfield name="story.point" placeholder="0"></s:textfield>
+						  <s:textfield name="story.point" placeholder="0" cssClass="number"></s:textfield>
 						</td>
 					</tr>
-					<tr>
-					    <td class="row_name">
-                                                                                   优先级
-					    </td>
-						<td>
-						  <s:textfield name="story.priorityNum" placeholder="0"></s:textfield>
-						</td>
-				    </tr>
+
 					<tr>
 					   <td class="row_name">
                                                                                    必要性
 					   </td>
 						<td>
-						  <select name="story.priority"  id="priority">
+						  <select name="story.priority"  id="priority" class="short">
 						     <script>
 						        var priority='<s:property value="story.priority"/>' ;
 						        var selected=parseInt(priority);
@@ -132,10 +123,17 @@
 							<option value="3" class="wont">不会有（但想）</option>
 						</select>
 					</td>
+					
+					<td class="row_name">
+                                                                                   优先级
+					</td>
+					<td>
+						<s:textfield name="story.priorityNum" placeholder="0" cssClass="number"></s:textfield>
+					</td>
 				</tr>
 				<tr>
 					<td class="row_name">状态</td>
-					<td><select name="story.status" id="status">
+					<td><select name="story.status" id="status" class="short">
 							<script>
 								var status='<s:property value="story.status"/>' ;
 								var selected=parseInt(status);
@@ -202,11 +200,16 @@
 					</table>
 				</div>
 	</div>
-	<div style="margin-top:10px;">
-	    <button class="submit">提交</button>
-	</div>
-	
-</s:form>
+			<table>
+				<tr>
+					<td class="row_name"></td>
+					<td>
+						<button class="submit">提交</button>
+					</td>
+				</tr>
+			</table>
+
+		</s:form>
 </div>
 </body>
 </html>

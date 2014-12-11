@@ -121,7 +121,10 @@ form input{
 	font-size:12px;
 	height:30px;
 	color:#333333;
-	width:327px;
+}
+
+form input.number{
+	width:146px;
 }
 
 form select{
@@ -131,6 +134,11 @@ form select{
 	height:30px;
 	color:#333333;
 }
+
+form select.short{
+	width:151px;
+}
+
 
 form select:focus{
 	border: 1px solid green;
@@ -221,7 +229,9 @@ form label.error{
 }
 
 table td.row_name{
-	width:80px;
+	padding-right: 20px;
+    text-align: right;
+    width: 60px;
 }
 
 ol{
@@ -865,7 +875,10 @@ ol li{
 	position:absolute;
 }
 
+.editStoryInfo #description,#sprints,#basicInfo{
+	border-top:1px solid #B3B3B3;
 }
+
 .group li {
     float: left;
     margin: 5px;
@@ -1518,6 +1531,7 @@ ol li{
 .dialog .title{
 	color:#00775a;
 	font-size:26px;
+	margin-bottom:25px;
 }
 
 

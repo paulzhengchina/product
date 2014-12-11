@@ -123,8 +123,8 @@
 				autoOpen : false,
 				title : "添加需求",
 				modal : true,
-				width : 600,
-				height : 600,
+				width : 560,
+				height : 580,
 				close : function() {
 					wall.fitWidth();
 				}
@@ -145,8 +145,8 @@
 				autoOpen : false,
 				title : "编辑需求",
 				modal : true,
-				width : 600,
-				height : 670,
+				width :560,
+				height : 580,
 				close : function() {
 					
 				}

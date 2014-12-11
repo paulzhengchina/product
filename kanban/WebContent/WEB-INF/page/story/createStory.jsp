@@ -22,6 +22,7 @@ $(document).ready(function() {
 	       ]
 	   });
  $("iframe").height("190px");
+ $("iframe").width("394px");
 });
 </script>
 
@@ -40,24 +41,22 @@ $(document).ready(function() {
 					    <td class="row_name">
                                                                                      名称
 					    </td>
-						<td>
-						  <s:textfield name="story.name" placeholder="输入需求名称" size="62"></s:textfield>
+						<td colspan="3">
+						  <s:textfield name="story.name" placeholder="输入需求名称" size="54"></s:textfield>
 						</td>
 					</tr>
 					<tr>
 					    <td class="row_name">
-                                                                                   商业价值
+                                                                                   价值
 					    </td>
 						<td>
-						  <s:textfield name="story.businessValue" placeholder="商业价值" value="0"></s:textfield>
+						  <s:textfield name="story.businessValue" placeholder="商业价值" value="0" cssClass="number"></s:textfield>
 						</td>
-					</tr>
-					<tr>
-					    <td class="row_name">
+						<td class="row_name">
                                                                                    工作量
 					    </td>
 						<td>
-						  <s:textfield name="story.point" placeholder="工作量" value="0"></s:textfield>
+						  <s:textfield name="story.point" placeholder="工作量" value="0" cssClass="number"></s:textfield>
 						</td>
 					</tr>
 					<tr>
@@ -65,27 +64,25 @@ $(document).ready(function() {
 	                                                                                  必要性
 						</td>
 						<td>
-						  <select name="story.priority" style="width:300px;">
+						  <select name="story.priority" class="short">
 						     <option value="0" class="must">必须有</option>
 						     <option value="1" class="should">应该有</option>
 						     <option value="2" class="could">可以有</option>
 						     <option value="3" class="wont">不会有（但想）</option>
 						  </select>
 						</td>
-					</tr>
-					<tr>
 						<td class="row_name">
 	                                                                                   优先级
 						</td>
 						<td>
-						  <s:textfield name="story.priorityNum" placeholder="优先级：数字越小代表优先级越高" value="0"></s:textfield>
+						  <s:textfield name="story.priorityNum" placeholder="优先级：数字越小代表优先级越高" value="0" cssClass="number"></s:textfield>
 						</td>
 					</tr>
 					<tr>
 					    <td class="row_name">
                                                                                     验收条件
 					    </td>
-						<td>
+						<td colspan="3">
 						  <s:textarea name="story.dod" rows="12" cols="59" placeholder="验收条件"></s:textarea>
 						</td>
 					</tr>
