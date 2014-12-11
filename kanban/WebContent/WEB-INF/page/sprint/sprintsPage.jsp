@@ -26,7 +26,7 @@
 	<div class="content">
 		<div class="header">
 			<p class="project_name">
-				<s:property value="%{currentProject.name}" />
+				<s:property value="%{project.name}" />
 			</p>
 			<p class="page_info">计划</p>
 		</div>

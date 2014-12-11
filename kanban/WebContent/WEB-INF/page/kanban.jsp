@@ -20,7 +20,7 @@
 <body onload="oninit()">
     <div class="content">
     <div class="header">
-       <p class="project_name"><s:property value="currentProject.name"/>>><s:property value="sprint.name"/></p>
+       <p class="project_name"><s:property value="project.name"/>>><s:property value="sprint.name"/></p>
        <p class="page_info">看板</p>          
     </div>
     <s:hidden name="sprintId" value="%{sprintId}"></s:hidden>

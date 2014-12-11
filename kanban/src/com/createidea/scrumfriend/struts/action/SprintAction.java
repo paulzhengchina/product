@@ -39,7 +39,7 @@ public class SprintAction extends BaseAction {
 	private TaskService taskService;
 	private TaskTo task;
 	private List<TreeNodeTo> sprintNodes;
-	private ProjectTo currentProject;
+	private ProjectTo project;
 	private ProjectService projectService;
 	private TreeNodeTo sprintNode;
 	
@@ -67,7 +67,7 @@ public class SprintAction extends BaseAction {
 	}
 	public String listSprints(){
 		sprints=sprintService.getSprintsForProject(projectId);
-		currentProject=projectService.getProjectById(projectId);
+		project=projectService.getProjectById(projectId);
 		return SUCCESS;
 	}
 	
@@ -78,20 +78,20 @@ public class SprintAction extends BaseAction {
 			sprint=sprintService.getCurrentSprint(projectId);
 			if(sprint!=null){
 				sprintId=sprint.getId();
-				currentProject=sprint.getProject();
+				project=sprint.getProject();
 				storysByStatus1= storyService.getStoriesForKanban(sprintId);
 			}
 			else{
-				currentProject=projectService.getProjectById(projectId);
+				project=projectService.getProjectById(projectId);
 			}
 			
 		}
 		else {
 			sprint=sprintService.getSprintById(sprintId);
 			storysByStatus1= storyService.getStoriesForKanban(sprintId);
-			currentProject=sprint.getProject();		
+			project=sprint.getProject();		
 		}
-		projectId=currentProject.getId();
+		projectId=project.getId();
 		return SUCCESS;
 	}
 	
@@ -249,11 +249,11 @@ public class SprintAction extends BaseAction {
 	public void setSprintNodes(List<TreeNodeTo> sprintNodes) {
 		this.sprintNodes = sprintNodes;
 	}
-	public ProjectTo getCurrentProject() {
-		return currentProject;
+	public ProjectTo getProject() {
+		return project;
 	}
-	public void setCurrentProject(ProjectTo currentProject) {
-		this.currentProject = currentProject;
+	public void setCurrentProject(ProjectTo project) {
+		this.project = project;
 	}
 	public ProjectService getProjectService() {
 		return projectService;
