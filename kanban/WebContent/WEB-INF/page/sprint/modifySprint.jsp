@@ -87,31 +87,30 @@
 				<table>
 				<tr>
 				    <td class="row_name">
-				                  名称
+				                  名称:
 				    </td>
-					<td>
-					 <s:textfield name="sprint.name" size="53"></s:textfield>
+					<td colspan="3">
+					 <s:textfield name="sprint.name" size="53" cssClass="name"></s:textfield>
 					</td>
 				</tr>
 				<tr>
 					 <td class="row_name">
-					  开始时间
+					        开始时间:
 					 </td>
 					 <td>
-						<s:textfield name="sprint.startTime" id="sttm"></s:textfield>
+						<s:textfield name="sprint.startTime" id="sttm" cssClass="date"></s:textfield>
 					 </td>
-				</tr>
-					<td class="row_name">
-						结束时间
+					 <td class="row_name">
+					          结束时间:
 					</td>
 					<td>
-					    <s:textfield name="sprint.endTime" id="endtm"></s:textfield>
+					    <s:textfield name="sprint.endTime" id="endtm" cssClass="date"></s:textfield>
 				    </td>
 				</tr>
 				<tr>
 				    <td class="row_name">
 				    </td>
-					<td><button id="sbm_button" class="submit">确定</button></td>
+					<td><button id="sbm_button" class="submit">提交</button></td>
 				</tr>
 			</table>
 		</fieldset>

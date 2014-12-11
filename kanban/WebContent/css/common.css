@@ -123,8 +123,12 @@ form input{
 	color:#333333;
 }
 
-form input.number{
+form input.number,.date{
 	width:146px;
+}
+
+form input.name{
+	width:390px;
 }
 
 form select{
@@ -216,7 +220,7 @@ form textarea{
 	font-size:12px;
 	height:90px;
 	color:#333333;
-	width:325px;
+	width:386px;
 }
 
 form textarea:focus{

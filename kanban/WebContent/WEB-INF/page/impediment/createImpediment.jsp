@@ -24,15 +24,15 @@
 				<table id="impediment_tb" >
 					<tr>
 					    <td class="row_name">
-                                                                                     标题
+                                                                                     标题:
 					    </td>
 						<td>
-						  <s:textfield name="impediment.name" placeholder="输入标题，20字以内" size="62"></s:textfield>
+						  <s:textfield name="impediment.name" placeholder="输入标题，20字以内" size="62" cssClass="name"></s:textfield>
 						</td>
 					</tr>
 					<tr>
 					    <td class="row_name">
-                                                                                    描述
+                                                                                    描述:
 					    </td>
 						<td>
 						  <s:textarea name="impediment.description" rows="12" cols="59" placeholder="请在60字以为描述清楚"></s:textarea>
@@ -40,10 +40,10 @@
 					</tr>					
 					<tr>
 						<td class="row_name">
-	                                                                          严重性
+	                                                                          严重性:
 						</td>
 						<td>
-						  <select name="impediment.severity" style="width:300px;">
+						  <select name="impediment.severity" class="short">
 						     <option value="0" class="must">紧急</option>
 						     <option value="1" class="should">高</option>
 						     <option value="2" class="could">一般</option>

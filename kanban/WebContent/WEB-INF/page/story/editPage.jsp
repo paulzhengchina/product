@@ -85,7 +85,7 @@
 	          <table>
 					<tr>
 					   <td class="row_name">
-                                                                                     名称
+                                                                                     名称:
 					   </td>
 						<td colspan="3">
 						 <s:textfield name="story.name" size="53" placeholder="输入需求名称"></s:textfield>
@@ -93,13 +93,13 @@
 					</tr>
 					<tr>
 					    <td class="row_name">
-                                                                                    价值
+                                                                                    价值:
 					    </td>
 						<td>
 						  <s:textfield name="story.businessValue" placeholder="0" cssClass="number"></s:textfield>
 						</td>
 						<td class="row_name">
-                                                                                   工作量
+                                                                                   工作量:
 					    </td>
 						<td>
 						  <s:textfield name="story.point" placeholder="0" cssClass="number"></s:textfield>
@@ -108,7 +108,7 @@
 
 					<tr>
 					   <td class="row_name">
-                                                                                   必要性
+                                                                                   必要性:
 					   </td>
 						<td>
 						  <select name="story.priority"  id="priority" class="short">
@@ -125,14 +125,14 @@
 					</td>
 					
 					<td class="row_name">
-                                                                                   优先级
+                                                                                   优先级:
 					</td>
 					<td>
 						<s:textfield name="story.priorityNum" placeholder="0" cssClass="number"></s:textfield>
 					</td>
 				</tr>
 				<tr>
-					<td class="row_name">状态</td>
+					<td class="row_name">状态:</td>
 					<td><select name="story.status" id="status" class="short">
 							<script>
 								var status='<s:property value="story.status"/>' ;
@@ -151,7 +151,7 @@
 	    <div id="description">
 	        <table>
 		        <tr>
-						<td class="row_name">验收条件</td>
+						<td class="row_name">验收条件:</td>
 						<td><s:textarea name="story.dod" rows="12" cols="59" placeholder="验收条件"></s:textarea></td>
 				</tr>
 			 </table>
@@ -160,7 +160,7 @@
 	    <div id="sprints">
 					<table>
 						<tr>
-							<td class="row_name">阶段</td>
+							<td class="row_name">阶段:</td>
 							<td><select name="story.sprint.id" style="width: 300px;">
 									<s:if test="%{story.sprint!=null}">
 										<option class="default"

@@ -2,6 +2,42 @@
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <%@ taglib prefix="s" uri="/struts-tags"%>
+<head>
+<style>
+  
+  .ui-tooltip {
+    padding: 8px;
+    color: white;
+    border-radius: 10px;
+    font: 14px;
+    text-transform: uppercase;
+    box-shadow: 0 0 7px black;
+    background: black;
+  }
+  </style>
+<script>
+	$(document).ready(function() {
+		
+		$(".left_menu").tooltip({
+		      position: {
+		          my: "right center",
+		          at: "left center",
+		          using: function( position, feedback ) {
+		            $( this ).css( position );
+		            $( "<div>" )
+		              .addClass( "arrow" )
+		              .addClass( feedback.vertical )
+		              .addClass( feedback.horizontal )
+		              .appendTo( this );
+		          }
+		        }
+		      });		
+	});
+	
+	
+</script>
+
+</head>
 <html>
 <div class="logo">
 	<img src="${ pageContext.request.contextPath }/images/icon/ant.jpg"

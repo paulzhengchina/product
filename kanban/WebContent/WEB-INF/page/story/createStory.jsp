@@ -39,7 +39,7 @@ $(document).ready(function() {
 				<table id="project_tb" >
 					<tr>
 					    <td class="row_name">
-                                                                                     名称
+                                                                                     名称:
 					    </td>
 						<td colspan="3">
 						  <s:textfield name="story.name" placeholder="输入需求名称" size="54"></s:textfield>
@@ -47,13 +47,13 @@ $(document).ready(function() {
 					</tr>
 					<tr>
 					    <td class="row_name">
-                                                                                   价值
+                                                                                   价值:
 					    </td>
 						<td>
 						  <s:textfield name="story.businessValue" placeholder="商业价值" value="0" cssClass="number"></s:textfield>
 						</td>
 						<td class="row_name">
-                                                                                   工作量
+                                                                                   工作量:
 					    </td>
 						<td>
 						  <s:textfield name="story.point" placeholder="工作量" value="0" cssClass="number"></s:textfield>
@@ -61,7 +61,7 @@ $(document).ready(function() {
 					</tr>
 					<tr>
 						<td class="row_name">
-	                                                                                  必要性
+	                                                                                  必要性:
 						</td>
 						<td>
 						  <select name="story.priority" class="short">
@@ -72,7 +72,7 @@ $(document).ready(function() {
 						  </select>
 						</td>
 						<td class="row_name">
-	                                                                                   优先级
+	                                                                                   优先级:
 						</td>
 						<td>
 						  <s:textfield name="story.priorityNum" placeholder="优先级：数字越小代表优先级越高" value="0" cssClass="number"></s:textfield>
@@ -80,7 +80,7 @@ $(document).ready(function() {
 					</tr>
 					<tr>
 					    <td class="row_name">
-                                                                                    验收条件
+                                                                                    验收条件:
 					    </td>
 						<td colspan="3">
 						  <s:textarea name="story.dod" rows="12" cols="59" placeholder="验收条件"></s:textarea>

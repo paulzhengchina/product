@@ -89,22 +89,18 @@
 		<table id="project_tb">
 			<tr>
 				<td class="row_name">名称:</td>
-				<td><s:textfield name="project.name" size="53" placeholder="输入项目名称"></s:textfield></td>
+				<td colspan="3"><s:textfield name="project.name" size="54" placeholder="输入项目名称"></s:textfield></td>
 			</tr>
 			<tr>
 				<td class="row_name">开始时间:</td>
-				<td><s:textfield name="project.start_time" id="sttm" placeholder="yyyy-mm-dd"></s:textfield>
+				<td><s:textfield name="project.start_time" id="sttm" placeholder="yyyy-mm-dd" cssClass="date"></s:textfield>
 				</td>
-			</tr>
-			<tr>
-
 				<td class="row_name">结束时间:</td>
-				<td><s:textfield name="project.end_time" id="endtm" placeholder="yyyy-mm-dd"></s:textfield>
-				</td>
+				<td><s:textfield name="project.end_time" id="endtm" placeholder="yyyy-mm-dd" cssClass="date"></s:textfield>
 			</tr>
 			<tr>
 				<td class="row_name">愿景:</td>
-				<td><s:textarea name="project.description" rows="4" cols="50" placeholder="介绍项目愿景"></s:textarea>
+				<td  colspan="3"><s:textarea name="project.description" rows="4" cols="53" placeholder="介绍项目愿景" style="width:390px"></s:textarea>
 				</td>
 			</tr>
 

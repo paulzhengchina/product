@@ -27,15 +27,15 @@
 				<table id="impediment_tb" >
 					<tr>
 					    <td class="row_name">
-                                                                                     标题
+                                                                                     标题:
 					    </td>
 						<td>
-						  <s:textfield name="impediment.name" placeholder="输入标题，20字以内" size="62"></s:textfield>
+						  <s:textfield name="impediment.name" placeholder="输入标题，20字以内" size="62" cssClass="name"></s:textfield>
 						</td>
 					</tr>
 					<tr>
 					    <td class="row_name">
-                                                                                    描述
+                                                                                    描述:
 					    </td>
 						<td>
 						  <s:textarea name="impediment.description" rows="12" cols="59" placeholder="请在60字以为描述清楚"></s:textarea>
@@ -43,10 +43,10 @@
 					</tr>					
 					<tr>
 						<td class="row_name">
-	                                                                          严重性
+	                                                                          严重性:
 						</td>
 						<td>
-						  <select id="severity" name="impediment.severity" style="width:300px;">
+						  <select id="severity" name="impediment.severity" class="short">
 						     <script>
 						        var severity='<s:property value="impediment.severity"/>' ;
 						        var selected=parseInt(severity);

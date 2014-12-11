@@ -89,9 +89,23 @@
 		<table id="project_tb">
 			<tr>
 				<td class="row_name">名称:</td>
-				<td><s:textfield name="project.name" size="53" placeholder="输入项目名称"></s:textfield></td>
+				<td colspan="3"><s:textfield name="project.name" size="53" placeholder="输入项目名称" cssClass="name"></s:textfield></td>
+			</tr>
+			
+			<tr>
+				<td class="row_name">开始时间:</td>
+				<td><s:textfield name="project.start_time" id="sttm" placeholder="yyyy-mm-dd" cssClass="date"></s:textfield>
+				</td>
+				<td class="row_name">结束时间:</td>
+				<td><s:textfield name="project.end_time" id="endtm" placeholder="yyyy-mm-dd" cssClass="date"></s:textfield>
+				</td>
 			</tr>
 			<tr>
+				<td class="row_name">愿景:</td>
+				<td colspan="3"><s:textarea name="project.description" rows="4" cols="50"></s:textarea>
+				</td>
+			</tr>
+			<tr style="margin-top:10px">
 				<td class="row_name">图标:</td>
 				<td><s:if test="%{project.logo==null}">
 						<img src='${ pageContext.request.contextPath }/images/project_default_logo.png' id="projectLogo">
@@ -104,22 +118,6 @@
 					<a href="#" id="changeLogo"><span style="color:blue;">更改...</span></a>
 					<input type="file" name="image" id="fileupload_input" style="display:none;"/>						
 					</td>
-			</tr>
-			<tr>
-				<td class="row_name">开始时间:</td>
-				<td><s:textfield name="project.start_time" id="sttm" placeholder="yyyy-mm-dd"></s:textfield>
-				</td>
-			</tr>
-			<tr>
-
-				<td class="row_name">结束时间:</td>
-				<td><s:textfield name="project.end_time" id="endtm" placeholder="yyyy-mm-dd"></s:textfield>
-				</td>
-			</tr>
-			<tr>
-				<td class="row_name">愿景:</td>
-				<td><s:textarea name="project.description" rows="4" cols="50"></s:textarea>
-				</td>
 			</tr>
 			<tr>
 			    <td></td>

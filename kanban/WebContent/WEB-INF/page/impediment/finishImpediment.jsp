@@ -24,7 +24,7 @@
 				<table id="impediment_tb" >
 					<tr>
 					    <td class="row_name">
-                                                                                    结果
+                                                                                    结果:
 					    </td>
 						<td>
 						  <s:textarea name="impediment.result" rows="12" cols="70" placeholder="60字内描述改进结果"></s:textarea>

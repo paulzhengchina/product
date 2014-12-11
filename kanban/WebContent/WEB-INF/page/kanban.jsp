@@ -11,7 +11,7 @@
 	<link rel="stylesheet" href="${ pageContext.request.contextPath }/css/jquery-ui.css" />
 	<script type="text/javascript" src="${ pageContext.request.contextPath }/js/jquery-1.6.2.js"></script>
 	<script type="text/javascript" src="${pageContext.request.contextPath}/js/common.js"></script>
-	<script type="text/javascript" src="${ pageContext.request.contextPath }/js/jquery-ui-1.8.18.custom.min.js"></script>	 
+	<script type="text/javascript" src="${ pageContext.request.contextPath }/js/jquery-ui.min.js"></script>	 
 	<script type="text/javascript" src="${ pageContext.request.contextPath }/js/jquery.livequery.min.js"></script>
 	<script type="text/javascript" src="${ pageContext.request.contextPath }/js/scrum-shrink.js"></script>
 	<script type="text/javascript" src="${ pageContext.request.contextPath }/js/jquery.form.js"></script>

@@ -21,7 +21,7 @@
 				<table id="impediment_tb" >
 					<tr>
 					    <td class="row_name">
-                                                                                    原因分析
+                                                                                    原因分析:
 					    </td>
 						<td>
 						  <s:textarea name="impediment.reason" rows="12" cols="70" placeholder="60字内分析根本原因"></s:textarea>
@@ -29,7 +29,7 @@
 					</tr>	
 					<tr>
 					    <td class="row_name">
-                                                                                    改进方案
+                                                                                    改进方案:
 					    </td>
 						<td>
 						  <s:textarea name="impediment.solution" rows="12" cols="70" placeholder="60字内定义改进方案"></s:textarea>
@@ -38,7 +38,7 @@
 					
 					<tr>
 					    <td class="row_name">
-                                                                                    负责人
+                                                                                    负责人:
 					    </td>
 						<td>
 						  <s:select name="impediment.fixedBy.id" list="impediment.project.users" listKey="id" listValue="name"></s:select>
