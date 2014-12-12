@@ -157,7 +157,7 @@
 </script>
 </head>
 <body>
-	<div class="content">
+	<div class="content content_with_wide_navigation">
 	    <div class="header">
 			<p class="project_name">
 			&nbsp;
@@ -206,23 +206,35 @@
 		<div class="project_dialog dialog"></div>
 		<div class="project_delete_dialog" style="display:none"><p class="title">确定删除该项目吗？</p></div>
         </div>
-        <div class="left_menu">
-           <div class="logo">
-              <img src="${ pageContext.request.contextPath }/images/icon/ant.jpg" title='首页'/>
-           </div>
-           <ul>
-              <li>
-               <a href="${ pageContext.request.contextPath }/project/listProject.action"><img src="${ pageContext.request.contextPath }/images/icon/projects_current.png" title='项目库'/></a>
-              </li> 
-              <li>
-               <a href='<s:url value="/user/setting.action"></s:url>'><img src="${ pageContext.request.contextPath }/images/icon/setting.jpg" title="个人设置"/></a>
-              </li>
-              <li>
-               <a href="${ pageContext.request.contextPath }/user/logout.action"><img src="${ pageContext.request.contextPath }/images/icon/back.png" title="退出"/></a>
-              </li>
-           </ul>
-        </div>
-        <div class="clear"></div>
+        <div class="left_menu_wide">
+			<ul>
+			    <li style="height:1px;width:37px;border-bottom:1px solid #E5E5E5;"/>
+					
+				<li id="menu_item_projects" class="selected">
+				    <a href="${ pageContext.request.contextPath }/project/listProject.action">
+				       <img src="${ pageContext.request.contextPath }/images/icon/project_selected.png"/>
+				       <p class="item_name">项目</p>
+				    </a>
+				</li>
+			
+				<li id="menu_item_setting">
+				    <a href='<s:url value="/user/setting.action"></s:url>'>
+				       <img src="${ pageContext.request.contextPath }/images/icon/setting.png"/>
+				       <p class="item_name">设置</p>
+				    </a>
+				</li>
+				
+				<li id="menu_item_quit">
+				    <a href="${ pageContext.request.contextPath }/user/logout.action">
+				       <img src="${ pageContext.request.contextPath }/images/icon/quit.png"/>
+				       <p class="item_name">退出</p>
+				    </a>
+				</li>
+				
+				<li style="height:1px;width:37px;border-bottom:1px solid #E5E5E5;"/>
+			</ul>
+	</div>
+    <div class="clear"></div>
 </body>
 		
 </html>

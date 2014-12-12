@@ -9,13 +9,27 @@
 <link rel="stylesheet" type="text/css" href="${ pageContext.request.contextPath }/css/common.css">
 <link rel="stylesheet" href="${ pageContext.request.contextPath }/css/jquery-ui.css" />
 <script type="text/javascript" src="${ pageContext.request.contextPath }/js/jquery-1.6.2.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/common.js"></script>
 <script type="text/javascript" src="${ pageContext.request.contextPath }/js/jquery-ui.min.js"></script>
 <script type="text/javascript" src="${ pageContext.request.contextPath }/js/jquery.fileupload.js"></script>
 <script type="text/javascript" src="${ pageContext.request.contextPath }/js/jquery.iframe-transport.js"></script>
 
-
+<style>
+  
+  .ui-tooltip {
+    padding: 8px;
+    color: white;
+    border-radius: 10px;
+    font: 14px;
+    text-transform: uppercase;
+    box-shadow: 0 0 7px black;
+    background: black;
+  }
+</style>
 <script>
 	$(document).ready(function() {
+		
+		showTooltip();
 		
 		$(".update_photo").live('click',function(){
 			$("#fileupload_input").click();
@@ -119,21 +133,28 @@
 
     <div id="myDialog"></div>	
 </div>
-<div class="left_menu">
-          <div class="logo">
-              <img src="${ pageContext.request.contextPath }/images/icon/ant.jpg" title='首页'/>
-          </div>
-          <ul>
-              <li>
-               <a href="${ pageContext.request.contextPath }/project/listProject.action"><img src="${ pageContext.request.contextPath }/images/icon/project.png" title='项目库'/></a>
-              </li>
-              <li>
-               <a href='<s:url value="/user/setting.action"></s:url>'><img src="${ pageContext.request.contextPath }/images/icon/setting_current.png" title="个人设置"/></a>
-              </li>
-              <li>
-               <a href="${ pageContext.request.contextPath }/user/logout.action"><img src="${ pageContext.request.contextPath }/images/icon/back.png" title="退出"/></a>
-              </li>
-           </ul>
+ <div class="left_menu">
+			<ul>
+					
+				<li id="menu_item_projects">
+				    <a href="${ pageContext.request.contextPath }/project/listProject.action">
+				       <img src="${ pageContext.request.contextPath }/images/icon/project.png" title="项目"/>
+				    </a>
+				</li>
+			
+				<li id="menu_item_setting" class="selected">
+				    <a href='<s:url value="/user/setting.action"></s:url>'>
+				       <img src="${ pageContext.request.contextPath }/images/icon/setting_selected.png" title="设置"/>
+				    </a>
+				</li>
+				
+				<li id="menu_item_quit">
+				    <a href="${ pageContext.request.contextPath }/user/logout.action">
+				       <img src="${ pageContext.request.contextPath }/images/icon/quit.png" title="退出"/>
+				    </a>
+				</li>
+				
+			</ul>
 </div>
 </body>
 </html>

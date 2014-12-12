@@ -43,7 +43,7 @@
 <script>
 	$(document).ready(function() {
 		
-		$(".left_menu").tooltip({
+		$(".left_menu_wide").tooltip({
 		      position: {
 		          my: "right center",
 		          at: "left center",
@@ -192,7 +192,7 @@
 </head>
 <body>
 	<s:hidden name="projectId" value="%{project.id}"></s:hidden>
-	<div class="content">
+	<div class="content content_with_wide_navigation">
 		<div class="header">
 			<p class="project_name">
 				<s:property value="%{project.name}" />
@@ -285,49 +285,74 @@
 		</div>
 		
 	</div>
-	<div class="left_menu">
-		<div class="logo">
-			<img src="${ pageContext.request.contextPath }/images/icon/ant.jpg"
-				title='首页' />
-		</div>
-		<ul> 
-		     
-		      <li>
-		       <s:if test="%{project.logo==null}">
-                 <a href='<s:url value="/project/viewProject.action"><s:param name="projectId" value="%{projectId}"/></s:url>'><img src='${ pageContext.request.contextPath }/images/icon/project_default.png'  title='<s:property  value="%{project.name}"/>'></a>
-               </s:if>
-               <s:else>
-               <a href='<s:url value="/project/viewProject.action"><s:param name="projectId" value="%{projectId}"/></s:url>'><img src='${ pageContext.request.contextPath }/<s:property  value="%{project.logo.path}"/>' style="width:40px;margin:5px 0px;" title='<s:property  value="%{project.name}"/>'/></a>
-               </s:else>
-              </li>
-		    <li><a
-				href='<s:url value="/sprint/loadKanban.action"><s:param name="projectId" value="%{projectId}"/></s:url>'><img
-					src="${ pageContext.request.contextPath }/images/icon/kanban.png"
-					title="看板" /></a></li>
-			<li><a
-				href='<s:url value="/story/viewStoriesOfProject.action"><s:param name="projectId" value="%{projectId}"/></s:url>'><img
-					src="${ pageContext.request.contextPath }/images/icon/story.png"
-					title="需求库" /></a></li>
-			<li><a
-				href='<s:url value="/sprint/listSprints.action"><s:param name="projectId" value="%{projectId}"/></s:url>'><img
-					src="${ pageContext.request.contextPath }/images/icon/plan.png"
-					title="计划" /></a></li>
-			<li><a
-				href='<s:url value="/impediment/showimpediments.action"><s:param name="projectId" value="%{projectId}"/></s:url>'><img
-					src="${ pageContext.request.contextPath }/images/icon/impediment.jpg"
-					title="障碍" /></a></li>
-			<li><a
-				href="${ pageContext.request.contextPath }/project/listProject.action"><img
-					src="${ pageContext.request.contextPath }/images/icon/project.png"
-					title='项目库' /></a></li>
-			<li>
-               <a href='<s:url value="/user/setting.action"></s:url>'><img src="${ pageContext.request.contextPath }/images/icon/setting.jpg" title="个人设置"/></a>
-             </li>
+	<div class="left_menu_wide">
+		<ul  id="project_logo">
+		<li><s:if test="%{project.logo==null}">
+				<a href='<s:url value="/project/viewProject.action"><s:param name="projectId" value="%{projectId}"/></s:url>'>
+				   <img src='${ pageContext.request.contextPath }/images/icon/project_default.png' title='<s:property  value="%{project.name}"/>'>
+				</a>
+			</s:if>
+			<s:else>
+				<a href='<s:url value="/project/viewProject.action"><s:param name="projectId" value="%{projectId}"/></s:url>'>
+				   <img src='${ pageContext.request.contextPath }/<s:property  value="%{project.logo.path}"/>' style="width: 40px; margin: 5px 0px;" title='<s:property  value="%{project.name}"/>' />
+				</a>
+			</s:else>
+		</li>
+		</ul>
+		<ul>
+		    <li style="height:1px;width:37px;border-bottom:1px solid #E5E5E5;"/>
+			<li id="menu_item_kanban">
+			    <a href='<s:url value="/sprint/loadKanban.action"><s:param name="projectId" value="%{projectId}"/></s:url>'>
+				   <img src="${ pageContext.request.contextPath }/images/icon/kanban.png"/>
+				   <p class="item_name">看板</p>
+				</a>
+			</li>
 			
-			<li><a
-				href="${ pageContext.request.contextPath }/user/logout.action"><img
-					src="${ pageContext.request.contextPath }/images/icon/back.png"
-					title="退出" /></a></li>
+			<li id="menu_item_story">
+			    <a href='<s:url value="/story/viewStoriesOfProject.action"><s:param name="projectId" value="%{projectId}"/></s:url>'>
+				   <img src="${ pageContext.request.contextPath }/images/icon/story.png"/>
+				   <p class="item_name">需求</p>
+				</a>
+			</li>
+			
+			<li id="menu_item_plan">
+			    <a href='<s:url value="/sprint/listSprints.action"><s:param name="projectId" value="%{projectId}"/></s:url>'>
+				  <img src="${ pageContext.request.contextPath }/images/icon/plan.png"/>
+				  <p class="item_name">计划</p>
+				</a>
+			</li>
+			
+			<li id="menu_item_impediment">
+			    <a href='<s:url value="/impediment/showimpediments.action"><s:param name="projectId" value="%{projectId}"/></s:url>'>
+			       <img src="${ pageContext.request.contextPath }/images/icon/impediment.png"/>
+			       <p class="item_name">障碍</p>
+			    </a>
+			</li>
+			
+			<li id="separate" style="height:1px;width:30px;border-bottom:1px solid #B3B3B3;margin-left:3px"/>
+			
+			<li id="menu_item_projects">
+			    <a href="${ pageContext.request.contextPath }/project/listProject.action">
+			       <img src="${ pageContext.request.contextPath }/images/icon/project.png"/>
+			       <p class="item_name">项目</p>
+			    </a>
+			</li>
+		
+			<li id="menu_item_setting">
+			    <a href='<s:url value="/user/setting.action"></s:url>'>
+			       <img src="${ pageContext.request.contextPath }/images/icon/setting.png"/>
+			       <p class="item_name">设置</p>
+			    </a>
+			</li>
+			
+			<li id="menu_item_quit">
+			    <a href="${ pageContext.request.contextPath }/user/logout.action">
+			       <img src="${ pageContext.request.contextPath }/images/icon/quit.png"/>
+			       <p class="item_name">退出</p>
+			    </a>
+			</li>
+			
+			<li style="height:1px;width:37px;border-bottom:1px solid #E5E5E5;"/>
 		</ul>
 	</div>
 </body>

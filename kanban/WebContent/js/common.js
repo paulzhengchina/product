@@ -26,4 +26,34 @@ function customizeDialog(){
 function initialCurrentMenuItem(id)
 {
 	$("#"+id).addClass("selected");
+	if("menu_item_kanban" == id)
+		$("#menu_item_kanban").find("img").attr("src","../images/icon/kanban_selected.png");
+	if("menu_item_story" == id)
+		$("#menu_item_story").find("img").attr("src","../images/icon/story_selected.png");
+	if("menu_item_plan" == id)
+		$("#menu_item_plan").find("img").attr("src","../images/icon/plan_selected.png");
+	if("menu_item_impediment" == id)
+		$("#menu_item_impediment").find("img").attr("src","../images/icon/impediment_selected.png");
+	if("menu_item_project" == id)
+		$("#menu_item_project").find("img").attr("src","../images/icon/project_selected.png");
+	if("menu_item_setting" == id)
+		$("#menu_item_setting").find("img").attr("src","../images/icon/setting_selected.png");
+}
+
+
+function showTooltip(){
+	$(".left_menu").tooltip({
+	    position: {
+	        my: "right center",
+	        at: "left center",
+	        using: function( position, feedback ) {
+	          $( this ).css( position );
+	          $( "<div>" )
+	            .addClass( "arrow" )
+	            .addClass( feedback.vertical )
+	            .addClass( feedback.horizontal )
+	            .appendTo( this );
+	        }
+	      }
+	    });
 }

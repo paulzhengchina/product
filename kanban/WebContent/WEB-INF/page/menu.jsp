@@ -39,11 +39,7 @@
 
 </head>
 <html>
-<div class="logo">
-	<img src="${ pageContext.request.contextPath }/images/icon/ant.jpg"
-		title='首页' />
-</div>
-<ul>
+<ul  id="project_logo">
 	<li><s:if test="%{project.logo==null}">
 			<a href='<s:url value="/project/viewProject.action"><s:param name="projectId" value="%{projectId}"/></s:url>'>
 			   <img src='${ pageContext.request.contextPath }/images/icon/project_default.png' title='<s:property  value="%{project.name}"/>'>
@@ -56,7 +52,6 @@
 		</s:else>
 	</li>
 </ul>
-
 <ul>
 	<li id="menu_item_kanban">
 	    <a href='<s:url value="/sprint/loadKanban.action"><s:param name="projectId" value="%{projectId}"/></s:url>'>
@@ -78,12 +73,12 @@
 	
 	<li id="menu_item_impediment">
 	    <a href='<s:url value="/impediment/showimpediments.action"><s:param name="projectId" value="%{projectId}"/></s:url>'>
-	       <img src="${ pageContext.request.contextPath }/images/icon/impediment.jpg" title="障碍" />
+	       <img src="${ pageContext.request.contextPath }/images/icon/impediment.png" title="障碍" />
 	    </a>
 	</li>
-</ul>
-
-<ul>
+	
+	<li id="separate" style="height:1px;width:30px;border-bottom:1px solid #B3B3B3;margin-left:5px"/>
+	
 	<li id="menu_item_projects">
 	    <a href="${ pageContext.request.contextPath }/project/listProject.action">
 	       <img src="${ pageContext.request.contextPath }/images/icon/project.png" title='项目库' />
@@ -92,13 +87,13 @@
 
 	<li id="menu_item_setting">
 	    <a href='<s:url value="/user/setting.action"></s:url>'>
-	       <img src="${ pageContext.request.contextPath }/images/icon/setting.jpg" title="个人设置" />
+	       <img src="${ pageContext.request.contextPath }/images/icon/setting.png" title="个人设置" />
 	    </a>
 	</li>
 	
 	<li id="menu_item_quit">
 	    <a href="${ pageContext.request.contextPath }/user/logout.action">
-	       <img src="${ pageContext.request.contextPath }/images/icon/back.png" title="退出" />
+	       <img src="${ pageContext.request.contextPath }/images/icon/quit.png" title="退出" />
 	    </a>
 	</li>
 </ul>
