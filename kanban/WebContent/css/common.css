@@ -1433,6 +1433,7 @@ ol li{
 	font-size:16px;
 	font-family:Microsoft YaHei;
 	position:relative;
+	background:#fafaff;
 }
 
 .impediment_item .serverity_time{
@@ -1465,7 +1466,7 @@ ol li{
 }
 
 .impediment_item .column{	
-	color:#BFBFBF;
+	color:#999999;
 	margin-bottom:5px;
 	text-overflow:ellipsis;
 	overflow: hidden;
@@ -1543,6 +1544,7 @@ ol li{
 	padding:30px;
 	height:400px;
 	margin-top:30px;
+	background:#f6f6f6;
 }
 
 .impediment_detail .left-part{
@@ -1562,7 +1564,7 @@ ol li{
 
 
 .impediment_detail .column{
-	color:#BFBFBF;
+	color:#999999;
 	margin-bottom:5px;
 	font-size:16px;
 	font-family:Microsoft YaHei;
