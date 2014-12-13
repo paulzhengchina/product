@@ -29,28 +29,100 @@ html,body {
 	float:left;	
 	position:fixed;
 	left:95.5%;
-	top:25%
+	top:25%;
+	width:40px;
+	override:hidden;
 }
 
 .left_menu ul{
-	margin-left:2px;
-	border-top:1px solid #E5E5E5;
-	border-left:1px solid #E5E5E5;
+	
+	border:1px solid #E5E5E5;
+	text-align:center;
+	padding-top:12px;
+	background:#fafafa;
 }
 
+
+.left_menu ul#project_logo
+{
+	height:50px;
+	border:none;
+}
 .left_menu ul li{
-	
+	margin-bottom:12px;
+	height:26px;
 }
 
 .left_menu ul li.selected{
-	border-left:3px solid #F76809;
+	border-left:1px solid #F76809;
 }
+
+.left_menu_wide{
+	float:left;	
+	position:fixed;
+	left:94.6%;
+	top:25%;
+	width:74px;
+	override:hidden;
+}
+
+.left_menu_wide ul{
+	border-left:1px solid #E5E5E5;
+}
+
+.left_menu_wide ul li{
+	height:36px;
+	position:relative;
+}
+
+.left_menu_wide ul li.selected{
+	border-left:1px solid #F76809;
+}
+
+.left_menu_wide ul li img{
+	margin-top:5px;
+	float:left;
+	margin-left:2px;
+	margin-right:2px;
+}
+
+.left_menu_wide ul li p{
+	line-height:36px;
+	text-align:center;
+	height:36px;
+	float:left;
+	color:#999999;
+	font-size:12px;
+	border-left:1px solid #E5E5E5;
+	padding-left:8px;
+}
+
+.left_menu_wide ul li.selected img{
+	margin-right:1px;
+}
+
+.left_menu_wide ul#project_logo
+{
+	height:50px;
+	border:none;
+}
+
 
 .menutooltip{   
 	background:black;
 	color:white;
 
 }
+
+.ui-tooltip {
+    padding: 8px;
+    color: white;
+    border-radius: 10px;
+    font: 14px;
+    text-transform: uppercase;
+    box-shadow: 0 0 7px black;
+    background: black;
+  }
 
 .header{
 	background:url(../images/head_bg.png) repeat-x;
@@ -85,10 +157,16 @@ html,body {
 	height:auto;
 	padding-left:20px;
 	padding-right:20px;
-    width:93%;
+    width:92%;
     float:left;
     text-align: center
 }
+
+.content_with_wide_navigation
+{
+	width:92%;
+}
+
 
 .info{
 	color:gray;
@@ -513,7 +591,7 @@ ol li{
 .project_overview .project_burndown{
     height:418px;
 	float:left;
-	width:45%;
+	width:44%;
 }
 
 .project_overview .project_burndown h1{
@@ -576,7 +654,7 @@ ol li{
 .member_overview .velocity{
     float:left;
     height:418px;
-    width:45%;
+    width:44%;
 }
 
 .member_overview .velocity h1{
@@ -1355,6 +1433,7 @@ ol li{
 	font-size:16px;
 	font-family:Microsoft YaHei;
 	position:relative;
+	background:#fafaff;
 }
 
 .impediment_item .serverity_time{
@@ -1387,7 +1466,7 @@ ol li{
 }
 
 .impediment_item .column{	
-	color:#BFBFBF;
+	color:#999999;
 	margin-bottom:5px;
 	text-overflow:ellipsis;
 	overflow: hidden;
@@ -1465,6 +1544,7 @@ ol li{
 	padding:30px;
 	height:400px;
 	margin-top:30px;
+	background:#f6f6f6;
 }
 
 .impediment_detail .left-part{
@@ -1484,7 +1564,7 @@ ol li{
 
 
 .impediment_detail .column{
-	color:#BFBFBF;
+	color:#999999;
 	margin-bottom:5px;
 	font-size:16px;
 	font-family:Microsoft YaHei;
