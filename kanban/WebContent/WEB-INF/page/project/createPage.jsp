@@ -89,7 +89,7 @@
 		<table id="project_tb">
 			<tr>
 				<td class="row_name">名称:</td>
-				<td colspan="3"><s:textfield name="project.name" size="54" placeholder="输入项目名称"></s:textfield></td>
+				<td colspan="3"><s:textfield name="project.name" size="54" placeholder="输入项目名称" cssClass="name"></s:textfield></td>
 			</tr>
 			<tr>
 				<td class="row_name">开始时间:</td>
