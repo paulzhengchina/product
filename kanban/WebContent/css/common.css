@@ -918,12 +918,15 @@ ol li{
 	font-weight:400;
 }
 
-.story_card .acceptance_criteria{
-	width:90%;
+
+
+.story_card .accepetance_criteria{
+	width:90px;
 	padding-left:3px;
 	padding-right:3px;
 	font-family:Microsoft YaHei,SimSun;
 	height:50%;
+	height:80px;
 	overflow-y:scroll;
 }
 
