@@ -14,7 +14,7 @@
 		</property>
 		<property name="url">
 			<value>
-				jdbc:mysql://localhost:3306/scrumfriend?zeroDateTimeBehavior=convertToNull&amp;useUnicode=true&amp;characterEncoding=utf8
+				jdbc:mysql://localhost:3306/antkanban?zeroDateTimeBehavior=convertToNull&amp;useUnicode=true&amp;characterEncoding=utf8
 			</value>
 		</property>
 		<property name="username">

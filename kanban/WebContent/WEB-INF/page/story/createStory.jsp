@@ -42,7 +42,7 @@ $(document).ready(function() {
                                                                                      名称:
 					    </td>
 						<td colspan="3">
-						  <s:textfield name="story.name" placeholder="输入需求名称" size="54"></s:textfield>
+						  <s:textfield name="story.name" placeholder="输入需求名称" size="54" cssClass="name"></s:textfield>
 						</td>
 					</tr>
 					<tr>

@@ -88,7 +88,7 @@
                                                                                      名称:
 					   </td>
 						<td colspan="3">
-						 <s:textfield name="story.name" size="53" placeholder="输入需求名称"></s:textfield>
+						 <s:textfield name="story.name" size="53" placeholder="输入需求名称" cssClass="name"></s:textfield>
 						</td>
 					</tr>
 					<tr>
