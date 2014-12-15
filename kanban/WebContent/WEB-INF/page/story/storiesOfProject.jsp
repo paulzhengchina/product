@@ -8,12 +8,9 @@
 <LINK rel="Shortcut Icon" href="${pageContext.request.contextPath}/images/icon/shortcut.png" />
 <link rel="stylesheet" type="text/css" href="${ pageContext.request.contextPath }/css/common.css">
 <link rel="stylesheet" href="${ pageContext.request.contextPath }/css/jquery-ui.css" />
-<link rel="stylesheet" href="${ pageContext.request.contextPath }/css/jquery.jscrollpane.css" />
 <link rel="stylesheet" href="${ pageContext.request.contextPath }/css/multi-select/jquery.multiselect.css" />
 <script type="text/javascript" src="${ pageContext.request.contextPath }/js/jquery-1.6.2.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/common.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/js/jscrollpane/jquery.jscrollpane.min.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/js/jscrollpane/jquery.mousewheel.js"></script>
 <script type="text/javascript" src="${ pageContext.request.contextPath }/js/jquery-ui.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/freewall.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/scrum-shrink.js"></script>
@@ -78,7 +75,7 @@
 				 </script>
 				  <h2><s:property value="%{#story.name}"/></h2>
 				  <p class="value" title="商业价值"><s:property value="%{#story.businessValue}"/></p>
-				  <s:property value="%{#story.dod}" escapeHtml="false"/>
+				  <p class="accepetance_criteria"><s:property value="%{#story.dod}" escape="false"/></p>
 				  <p class="point" title="工作量"><s:property value="%{#story.point}"/></p>
 				  <p class="priorityNum" title="优先级"><s:property value="%{#story.priorityNum}"/></p>
 				  <div class="operations">
@@ -101,9 +98,7 @@
 		
 		initialCurrentMenuItem("menu_item_story");
 		
-		showToolTipForContent();
-		
-		
+		$(".value").next('p').wrap("<div class='acceptance_criteria'></div>");
 		$(".value").next().jScrollPane();
 		
 		var allStoryCards=$(".story_card");
