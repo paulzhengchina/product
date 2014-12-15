@@ -57,6 +57,13 @@
 		          }
 		        }
 		      });
+		$(".left_menu_wide li").mouseover(function(){
+			  $(this).css("border-left","solid 1px #f76809");
+		});
+		
+		$(".left_menu_wide li").mouseleave(function(){
+			  $(this).css("border-left","none");
+		});
 		
 		createProjectBurnDown();
 		createTeamVelocity();

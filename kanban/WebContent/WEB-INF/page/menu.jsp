@@ -6,12 +6,12 @@
 <style>
   
   .ui-tooltip {
-    padding: 8px;
+    padding: 4px;
     color: white;
     border-radius: 10px;
     font: 14px;
     text-transform: uppercase;
-    box-shadow: 0 0 7px black;
+    box-shadow: 0 0 4px black;
     background: black;
   }
   </style>
@@ -21,7 +21,7 @@
 		$(".left_menu").tooltip({
 		      position: {
 		          my: "right center",
-		          at: "left center",
+		          at: "left-10 center",
 		          using: function( position, feedback ) {
 		            $( this ).css( position );
 		            $( "<div>" )
@@ -31,7 +31,16 @@
 		              .appendTo( this );
 		          }
 		        }
-		      });		
+		      });
+		
+		$(".left_menu li").mouseover(function(){
+			  $(this).css("border-left","solid 1px #f76809");
+		});
+		
+		$(".left_menu li").mouseleave(function(){
+			  $(this).css("border-left","none");
+			  $(".left_menu .selected").css("border-left","solid 1px #f76809");
+		});
 	});
 	
 	
