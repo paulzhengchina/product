@@ -115,13 +115,13 @@ html,body {
 }
 
 .ui-tooltip {
-    padding: 8px;
+    padding: 4px;
     color: white;
     border-radius: 10px;
     font: 14px;
     text-transform: uppercase;
-    box-shadow: 0 0 7px black;
-    background: black;
+    box-shadow: 0 0 4px black;
+    background: yellow;
   }
 
 .header{
@@ -320,6 +320,9 @@ ol{
 	padding-left:6px;
 	text-align:left;
 	list-style-position:inside;
+	height:65%;
+	overflow-y:scroll;
+	width:90%;
 }
 
 ol li{
@@ -896,13 +899,12 @@ ol li{
 }
 
 .story_card h1{
-	margin:0px 20px 10px;
+	margin-bottom:4px;
 	vertical-align:baseline;
 	font-size:14px;
 	color:#222222;
 	font-family:Microsoft YaHei,SimSun;
 	font-weight:500;
-	width:85%;
 	line-height:20px;
 	padding-top:5px;
 	
@@ -917,10 +919,12 @@ ol li{
 }
 
 .story_card .accepetance_criteria{
-	width:95%;
+	width:90px;
 	padding-left:3px;
 	padding-right:3px;
 	font-family:Microsoft YaHei,SimSun;
+	height:80px;
+	overflow-y:scroll;
 }
 
 .story_card .point{

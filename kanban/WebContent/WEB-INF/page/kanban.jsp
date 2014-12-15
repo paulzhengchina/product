@@ -183,6 +183,7 @@
 		$(function() {
 			
 			initialCurrentMenuItem("menu_item_kanban");
+			showToolTipForContent();
 			// Initiate draggable for public and groups
 			  var $gallery = $( ".group_box" );
 			  $(".task", $gallery).live("mouseenter", function(){
@@ -307,7 +308,7 @@
 					                    title: "创建任务",
 						                modal: true,
 						                width :500,
-						                height:250,
+						                height:300,
 		                                close: function() {}
 		                                });
 			    DIALOG.dialog("open");
@@ -345,7 +346,7 @@
             });
             
 			$(".effort").live('click',function(){ 
-				var textfield='<input type="text" size="4" onblur="updateEffort(this)"/>';
+				var textfield='<input type="text" size="2" onblur="updateEffort(this)"/>';
 				$(this).html(textfield);
 				$(this).children('input').focus();
 			});

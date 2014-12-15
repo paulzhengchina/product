@@ -56,4 +56,24 @@ function showTooltip(){
 	        }
 	      }
 	    });
+	
+	
+}
+
+function showToolTipForContent()
+{
+	$(".content").tooltip({
+	    position: {
+	        my: "left center",
+	        at: "right+6 center",
+	        using: function( position, feedback ) {
+	          $( this ).css( position );
+	          $( "<div>" )
+	            .addClass( "arrow" )
+	            .addClass( feedback.vertical )
+	            .addClass( feedback.horizontal )
+	            .appendTo( this );
+	        }
+	      }
+	    });
 }
