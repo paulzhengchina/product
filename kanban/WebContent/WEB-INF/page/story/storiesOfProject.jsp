@@ -103,8 +103,7 @@
 		
 		showToolTipForContent();
 		
-		$(".value").next('p').wrap("<div class='acceptance_criteria'></div>");
-		
+		$(".value").next('p').wrap("<div class='acceptance_criteria'></div>");		
 		$(".value").next().jScrollPane();
 		
 		var allStoryCards=$(".story_card");
