@@ -101,6 +101,8 @@
 		
 		initialCurrentMenuItem("menu_item_story");	
 			
+
+
 		$(".value").next('p').wrap("<div class='acceptance_criteria'></div>");
 		$(".value").next().jScrollPane();
 		
