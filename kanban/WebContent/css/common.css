@@ -322,7 +322,7 @@ ol{
 	list-style-position:inside;
 	height:65%;
 	overflow-y:scroll;
-	width:90%;
+	width:84%;
 }
 
 ol li{
@@ -873,6 +873,7 @@ ol li{
 	cursor:pointer;
 	text-overflow:ellipsis;
 	overflow-y:hidden;
+	overflow-x:hidden;
 }
 
 .story_card .operations{
@@ -886,7 +887,7 @@ ol li{
 	visibility: visible;
 }
 .story_card h2{
-	margin:20px 20px 10px;
+	margin:20px 4px 4px;
 	vertical-align:baseline;
 	font-size:14px;
 	color:#222222;
@@ -919,14 +920,12 @@ ol li{
 }
 
 
-
-.story_card .accepetance_criteria{
-	width:90px;
+.story_card .acceptance_criteria{
+	width:84%;
 	padding-left:3px;
 	padding-right:3px;
 	font-family:Microsoft YaHei,SimSun;
 	height:50%;
-	height:80px;
 	overflow-y:scroll;
 }
 
