@@ -118,7 +118,7 @@
 			gutterX: 16,
 			delay: 30,
 			onResize: function() {
-				wall.refresh($(window).width() -100, $(window).height() - 30);
+				wall.refresh($("#storieslist").width(), $(window).height());
 			}
 		});
 		wall.fitWidth();

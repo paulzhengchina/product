@@ -9,8 +9,11 @@
 	<LINK rel="Shortcut Icon" href="${pageContext.request.contextPath}/images/icon/shortcut.png" />
 	<link rel="stylesheet" type="text/css" href="${ pageContext.request.contextPath }/css/common.css">
 	<link rel="stylesheet" href="${ pageContext.request.contextPath }/css/jquery-ui.css" />
+	<link rel="stylesheet" href="${ pageContext.request.contextPath }/css/jquery.jscrollpane.css" />
 	<script type="text/javascript" src="${ pageContext.request.contextPath }/js/jquery-1.6.2.js"></script>
 	<script type="text/javascript" src="${pageContext.request.contextPath}/js/common.js"></script>
+	<script type="text/javascript" src="${pageContext.request.contextPath}/js/jscrollpane/jquery.jscrollpane.min.js"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/js/jscrollpane/jquery.mousewheel.js"></script>
 	<script type="text/javascript" src="${ pageContext.request.contextPath }/js/jquery-ui.min.js"></script>	 
 	<script type="text/javascript" src="${ pageContext.request.contextPath }/js/jquery.livequery.min.js"></script>
 	<script type="text/javascript" src="${ pageContext.request.contextPath }/js/scrum-shrink.js"></script>
@@ -46,7 +49,7 @@
 								    
 								      <h1><s:property value="%{#story1.name}" /></h1>
 								          
-								      <p class="accepetance_criteria"><s:property value="%{#story1.dod}" escape="false"/></p>
+								      <s:property value="%{#story1.dod}" escape="false"/>
 								      <s:if test="%{#story1.status==0}">
 									      <div class="create_task_icon">
 										      <a href="#" title="创建任务"><img alt="" src="${ pageContext.request.contextPath }/images/icon/plus.png" /></a>
@@ -184,6 +187,9 @@
 			
 			initialCurrentMenuItem("menu_item_kanban");
 			showToolTipForContent();
+			$(".story_card h1").next('p').wrap("<div class='acceptance_criteria'></div>");
+			$(".story_card h1").next().jScrollPane();
+			
 			// Initiate draggable for public and groups
 			  var $gallery = $( ".group_box" );
 			  $(".task", $gallery).live("mouseenter", function(){
