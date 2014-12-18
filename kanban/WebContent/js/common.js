@@ -65,7 +65,7 @@ function showToolTipForContent()
 	$(".content").tooltip({
 	    position: {
 	        my: "left center",
-	        at: "right+6 center",
+	        at: "right center",
 	        using: function( position, feedback ) {
 	          $( this ).css( position );
 	          $( "<div>" )

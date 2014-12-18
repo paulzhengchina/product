@@ -34,12 +34,11 @@
 		      });
 		
 		$(".left_menu li").mouseover(function(){
-			  $(this).css("border-left","solid 1px #f76809");
+			 
 		});
 		
 		$(".left_menu li").mouseleave(function(){
-			  $(this).css("border-left","none");
-			  $(".left_menu .selected").css("border-left","solid 1px #f76809");
+			  
 		});
 	});
 	

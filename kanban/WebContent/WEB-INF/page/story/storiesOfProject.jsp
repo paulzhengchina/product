@@ -69,21 +69,24 @@
 			  </div>
 			  <s:iterator value="%{stories}" var="story">
 			    <script>
-			     var cardSize = calculateStoryCardSize('<s:property value="%{#story.point}"/>');
+			  //   var cardSize = calculateStoryCardSize('<s:property value="%{#story.point}"/>');
 			     var priority='<s:property value="%{#story.priority}"/>';
 			     var status='<s:property value="%{#story.status}"/>';
-			     var className='story_card size'+cardSize+' priority'+priority+' status'+status;
+			     var className='story_card priority'+priority+' status'+status;
 			     var rel='<s:property value="%{#story.id}"/>';
 			     document.write("<div class='"+className+"'rel='"+rel+ "'>");
+			     document.write("<div class=necessary"+priority+ ">"+"</div>");
 				 </script>
 				  <h2><s:property value="%{#story.name}"/></h2>
-				  <p class="value" title="商业价值"><s:property value="%{#story.businessValue}"/></p>
 				  <s:property value="%{#story.dod}" escapeHtml="false"/>
-				  <p class="point" title="工作量"><s:property value="%{#story.point}"/></p>
-				  <p class="priorityNum" title="优先级"><s:property value="%{#story.priorityNum}"/></p>
+				  
+				  <p class="value">价值   <s:property value="%{#story.businessValue}"/></p>
+				  <p class="point">工作量    <s:property value="%{#story.point}"/></p>
+				  <p class="priorityNum">优先级    <s:property value="%{#story.priorityNum}"/></p>
+				
 				  <div class="operations">
-				     <a href="#" title="编辑"><img width="20" height="20"src="${ pageContext.request.contextPath }/images/icon/project_edit.png" id="<s:property value='%{#story.id}'/>" class="editStory"/></a>
-					 <a href="#" title="删除"><img width="20" height="20" src="${ pageContext.request.contextPath }/images/icon/project_delete.png" id="<s:property value='%{#story.id}'/>" class="deleteStory"></img></a>
+				     <a href="#" title="编辑"><img width="40" height="40"src="${ pageContext.request.contextPath }/images/icon/project_edit.png" id="<s:property value='%{#story.id}'/>" class="editStory"/></a>
+					 <a href="#" title="删除"><img width="40" height="40" src="${ pageContext.request.contextPath }/images/icon/project_delete.png" id="<s:property value='%{#story.id}'/>" class="deleteStory"></img></a>
 				  </div>
 				</div>
 			 </s:iterator>		
@@ -103,25 +106,11 @@
 		
 		showToolTipForContent();
 		
-		$(".value").next('p').wrap("<div class='acceptance_criteria'></div>");
-		$(".value").next().jScrollPane();
+		$(".story_card h2").next('p').wrap("<div class='acceptance_criteria'></div>");
+		$(".story_card h2").next().jScrollPane();
 		
 		var allStoryCards=$(".story_card");
 		removeDeletedStoryCards();
-		var wall = new freewall("#storieslist");
-		wall.reset({
-			//selector: '.addStory .brick',
-			animate: false,
-			cellW: 200,
-			cellH: 50,
-			gutterY: 16,
-			gutterX: 16,
-			delay: 30,
-			onResize: function() {
-				wall.refresh($("#storieslist").width(), $(window).height());
-			}
-		});
-		wall.fitWidth();
 		// caculator width and height for IE7;
 		//wall.fitZone($(window).width() - 30 , $(window).height() - 30);
 		
@@ -214,7 +203,6 @@
 					    $('input[name=filter[]]:not(:checked)').each(function() {
 					    	$("."+$(this).val()).remove();
 					    });
-					    wall.refresh($(window).width() -100, $(window).height() - 30);
 					   }   
 			   },
 			  beforeclose: function(){
@@ -222,7 +210,6 @@
 				  if(allStoryCards){
 					  allStoryCards.each(function() {
 					  $("#storieslist").append($(this));
-					  wall.refresh($(window).width() -100, $(window).height() - 30);
 					    });
 				  }
 			}
