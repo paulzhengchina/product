@@ -153,6 +153,12 @@ html,body {
 .header .filter{
 	margin-top:22px;
 }
+
+.header .create_item{
+	position:absolute;
+	left:80%;
+	top:40px;
+}
 .content{
 	height:auto;
 	padding-left:20px;
@@ -317,9 +323,7 @@ table td.row_name{
 }
 
 ol{
-	padding-left:6px;
-	padding-right:6px;
-	text-align:left;
+
 	list-style-position:inside;
 	overflow:hidden;
 	
@@ -697,7 +701,7 @@ ol li{
 	float: left;
     position: relative;
     text-align: left;
-    width: 12%;
+    width: 15%;
     z-index: 0;
     border-right: 1px solid #E5E5E5;
     height:inherit;
@@ -709,7 +713,7 @@ ol li{
 	float: left;
     position: relative;
     text-align: left;
-    width: 29%;
+    width: 28%;
     z-index: 0;
     border-right: 1px solid #E5E5E5;
     height:inherit;
@@ -720,7 +724,7 @@ ol li{
 	float: left;
     position: relative;
     text-align: left;
-    width: 29%;
+    width: 28%;
     z-index: 0;
     border-right: 1px solid #E5E5E5;
     height:inherit;
@@ -731,7 +735,7 @@ ol li{
 	float: left;
     position: relative;
     text-align: left;
-    width: 29%;
+    width: 28%;
     z-index: 0;
     border-right: 1px solid #E5E5E5;
     height:inherit;
@@ -766,10 +770,10 @@ ol li{
     z-index:1000;
     float:left;
     margin-left:3px;
-    background-color:#DBFFCE;
+    background-color:#4EC6E4;
     margin-top:3px;
     cursor:pointer;
-    
+    color:#ffffff;
 }
 .task:hover {
 	-moz-box-shadow:0 0 8px rgba(0, 0, 0, 0.3);
@@ -790,19 +794,20 @@ ol li{
 
 .task .title textarea{
 	 disabled:"disabled";
-	 background-color:#DBFFCE;
+	 background-color:#4EC6E4;
 	 border:0;
 	 resize: none;
 	 width:98%;
-	 font-size:12px;
+	 font-size:13px;
 	 font-family:Microsoft YaHei,SimSun;
-	 height:52px;
+	 height:56px;
+	 color:#ffffff;
+	 letter-spacing:1px;
 }
 
 .task .performer {
 	vertical-align:baseline;
 	font-size:12px;
-	color:blue;
 	font-family:Microsoft YaHei,SimSun;
 	width:60%;
 	position:absolute;
@@ -815,7 +820,6 @@ ol li{
 .task .effort {
 	vertical-align:baseline;
 	font-size:14px;
-	color:blue;
 	font-family:AvantGarde,SimSun;
 	width:25%;
 	position:absolute;
@@ -830,7 +834,7 @@ ol li{
     float: left;
     position: relative;
     text-align: left;
-    width: 29%;
+    width: 28%;
     z-index: 0;
     border-right: 1px solid #E5E5E5;
     height: 100%;
@@ -841,7 +845,7 @@ ol li{
     float: left;
     position: relative;
     text-align: left;
-    width: 29%;
+    width: 28%;
     z-index: 0;
     border-right: 1px solid #E5E5E5;
     height: 100%;
@@ -851,7 +855,7 @@ ol li{
 }
 
 .story_group{
-	width:12%;
+	width:15%;
 	padding-right:4px;
 	
 }
@@ -868,8 +872,6 @@ ol li{
 .story_card{
 	width:290px;
 	height:500px;
-	background-color: #FFD7D7;
-	text-align:center;	
 	position:relative;
 	cursor:pointer;
 	text-overflow:ellipsis;
@@ -878,10 +880,12 @@ ol li{
 	float:left;
 	margin-right:20px;
 	margin-top:20px;
-	padding:0 30px;
+	padding-left:30px;
+	padding-right:30px;
 	color:#ffffff;
 	font-size:16px;
 	line-height:30px;
+	text-align:left;
 }
 
 .story_card .operations{
@@ -897,11 +901,12 @@ ol li{
 .story_card h2{
 	margin:66px 4px 4px;
 	vertical-align:baseline;
-	font-size:20px;
+	font-size:20;
 	font-family:Microsoft YaHei,SimSun;
 	line-height:30px;
 	padding-top:5px;
 	text-align:left;
+	font-weight:300;
 	
 }
 
@@ -920,7 +925,6 @@ ol li{
 .story_card ol{
 	font-size:16px;
 	line-height:30px;
-	height:310px;
 }
 
 
@@ -935,9 +939,8 @@ ol li{
 
 .story_card .value{
 	position:absolute;
-	top:455px;
+	top:460px;
 	left:126px;
-	font-family:AvantGarde;
 	width:96.7px;
 	text-align:center;
 	border-left:1px solid #ffffff;
@@ -949,9 +952,8 @@ ol li{
 
 .story_card .point{
 	position:absolute;
-	top:455px;
+	top:460px;
 	left:30px;
-	font-family:AvantGarde;
 	width:96.7px;text-align:center;
 	height:16px;
 	line-height:16px;
@@ -959,9 +961,8 @@ ol li{
 
 .story_card .priorityNum{
 	position:absolute;
-	top:455px;
+	top:460px;
 	left:223px;
-	font-family:AvantGarde;
 	width:96.7px;
 	text-align:center;
 	height:16px;
@@ -1009,13 +1010,47 @@ ol li{
 	background:url(../images/icon/necessary3.png) no-repeat ;
 }
 
-.story_card .create_task_icon{
+.story_card .property_name{
+	font-size:12px;
+}
+
+.story_card .property_value{
+	font-size:16px;
+}
+
+.story_card_kanban
+{
+	height:240px;
+	text-align:left;	
+	position:relative;
+	cursor:pointer;
+	text-overflow:ellipsis;
+	overflow-y:hidden;
+	overflow-x:hidden;
+	float:left;
+	color:#ffffff;
+	font-size:14px;
+	width:100%;
+	padding:2px;
+}
+
+.story_card_kanban .acceptance_criteria{
+	width:96%;
+	height:170px;
+}
+
+.story_card_kanban h1{
+	font-size:15px;
+	text-align:center;
+	height:38px;
+}
+.story_card_kanban .create_task_icon{
 	right:2px;
 	bottom:2px;
 	position:absolute;
 }
 
-.story_card .done_story{
+.story_card_kanban .done_story{
 	left:2px;
 	bottom:2px;
 	position:absolute;
@@ -1302,19 +1337,19 @@ ol li{
 	margin:1.5px;
 }
 
-.project_stories .priority0{
+.priority0{
 	background:#9677B3;
 }
 
-.project_stories .priority1{
+.priority1{
 	background:#CA5C5D;
 }
 
-.project_stories .priority2{
+.priority2{
 	background:#6990C9;
 }
 
-.project_stories .priority3{
+.priority3{
 	background:#63B8A1;
 }
 

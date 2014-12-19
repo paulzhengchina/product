@@ -45,6 +45,7 @@
     <div class="header">
        <p class="project_name"><s:property value="%{project.name}"/></p>
        <p class="page_info">需求列表</p>
+       <p class="create_item">创建需求</p>
        <select name="filter" multiple="multiple" style="width:300px">
 		<optgroup label="优先级">
 			<option value="priority0" selected="selected">必须有</option>
@@ -78,11 +79,16 @@
 			     document.write("<div class=necessary"+priority+ ">"+"</div>");
 				 </script>
 				  <h2><s:property value="%{#story.name}"/></h2>
-				  <s:property value="%{#story.dod}" escapeHtml="false"/>
-				  
-				  <p class="value">价值   <s:property value="%{#story.businessValue}"/></p>
-				  <p class="point">工作量    <s:property value="%{#story.point}"/></p>
-				  <p class="priorityNum">优先级    <s:property value="%{#story.priorityNum}"/></p>
+				 
+				    <div class="acceptance_criteria">
+				      <div>
+				      <s:property value="%{#story.dod}" escape="false"/>
+				      </div>
+				    </div>
+				  			  
+				  <p class="value"><span class="property_name">价值</span>   <span class="property_value"><s:property value="%{#story.businessValue}"/></span></p>
+				  <p class="point"><span class="property_name">工作量 </span>  <span class="property_value"><s:property value="%{#story.point}"/></span></p>
+				  <p class="priorityNum"><span class="property_name">优先级</span>   <span class="property_value"> <s:property value="%{#story.priorityNum}"/></span></p>
 				
 				  <div class="operations">
 				     <a href="#" title="编辑"><img width="40" height="40"src="${ pageContext.request.contextPath }/images/icon/project_edit.png" id="<s:property value='%{#story.id}'/>" class="editStory"/></a>
@@ -105,11 +111,10 @@
 		initialCurrentMenuItem("menu_item_story");
 		
 		showToolTipForContent();
-		
-		$(".story_card h2").next('p').wrap("<div class='acceptance_criteria'></div>");
-		$(".story_card h2").next().jScrollPane();
-		
 		var allStoryCards=$(".story_card");
+		
+		$(".story_card .acceptance_criteria").jScrollPane();
+			
 		removeDeletedStoryCards();
 		// caculator width and height for IE7;
 		//wall.fitZone($(window).width() - 30 , $(window).height() - 30);
@@ -209,9 +214,11 @@
 				  $(".story_card").each(function(){$(this).remove()});
 				  if(allStoryCards){
 					  allStoryCards.each(function() {
-					  $("#storieslist").append($(this));
+						removeScrollPane($(this).find(".acceptance_criteria"));
+					    $("#storieslist").append($(this));
 					    });
 				  }
+				  $(".story_card .acceptance_criteria").jScrollPane();
 			}
 		});
 		
@@ -221,7 +228,14 @@
 		$(".status1").each(function(){$(this).remove()});
 	}
 	
-	
+	function removeScrollPane(container)
+	{
+		var jspPane=container.find(".jspPane");
+		if(jspPane)
+			{
+			container.html(jspPane.html());
+			}
+	}
 	
 </script>
 </html>

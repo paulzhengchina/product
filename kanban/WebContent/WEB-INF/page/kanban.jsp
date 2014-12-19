@@ -45,11 +45,14 @@
 					<s:iterator value="storysByStatus1" var="story1">
 						<div class="story_detail" rel="<s:property value='%{#story1.id}' />">
 							<div class="story_group_box story_group ui-droppable">
-								<div class="story_card" id="<s:property value='%{#story1.id}' />">
+								<div class="story_card_kanban priority<s:property value='%{#story1.priority}' />" id="<s:property value='%{#story1.id}' />">
 								    
 								      <h1><s:property value="%{#story1.name}" /></h1>
-								          
-								      <s:property value="%{#story1.dod}" escape="false"/>
+								      <div class="acceptance_criteria">  
+								          <div>
+								              <s:property value="%{#story1.dod}" escape="false"/>
+								          </div>	     
+								      </div>
 								      <s:if test="%{#story1.status==0}">
 									      <div class="create_task_icon">
 										      <a href="#" title="创建任务"><img alt="" src="${ pageContext.request.contextPath }/images/icon/plus.png" /></a>
@@ -187,8 +190,8 @@
 			
 			initialCurrentMenuItem("menu_item_kanban");
 			showToolTipForContent();
-			$(".story_card h1").next('p').wrap("<div class='acceptance_criteria'></div>");
-			$(".story_card h1").next().jScrollPane();
+
+			$(".story_card_kanban .acceptance_criteria").jScrollPane();
 			
 			// Initiate draggable for public and groups
 			  var $gallery = $( ".group_box" );
@@ -307,7 +310,7 @@
 			
 			
 			$(".create_task_icon").click(function(){
-				var storyId=$(this).parents(".story_card").attr("id");
+				var storyId=$(this).parents(".story_card_kanban").attr("id");
 				DIALOG = $(".task_dialog");
 				DIALOG.load("${pageContext.request.contextPath}/task/addTask.action?storyId="+storyId);
 				DIALOG.dialog({autoOpen: false, 
@@ -363,7 +366,7 @@
 			
 			$(".title textarea").live('click',function(){ 
 				$(this).removeAttr("disabled");
-				$(this).css("background-color","white");
+				//$(this).css("background-color","white");
 			});
 			
 			$(".title textarea").live('blur',function(){ 
@@ -482,7 +485,6 @@
 				  "success":function(data,status){
 					  if(data){	
 	                     $(obj).attr("value",updateTitle);	
-	                     $(obj).css("background-color","#DBFFCE");
 					  }
 				},
 				"error":function(xhr,s1,s2){
