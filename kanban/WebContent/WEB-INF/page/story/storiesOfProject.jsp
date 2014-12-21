@@ -65,9 +65,7 @@
 	<div class="project_stories" id='project_stories' style="position: relative;">
 			<s:hidden name="projectId" value="%{projectId}" />
 			<div id="storieslist">
-			  <div class="addStory">
-			    
-			  </div>
+			 
 			  <s:iterator value="%{stories}" var="story">
 			    <script>
 			  //   var cardSize = calculateStoryCardSize('<s:property value="%{#story.point}"/>');

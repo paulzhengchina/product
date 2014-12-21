@@ -28,7 +28,7 @@ html,body {
 	
 	float:left;	
 	position:fixed;
-	left:95.5%;
+	right:10px;
 	top:25%;
 	width:40px;
 	override:hidden;
@@ -161,9 +161,9 @@ html,body {
 }
 .content{
 	height:auto;
-	padding-left:20px;
-	padding-right:20px;
-    width:92%;
+	padding-left:10px;
+	padding-right:10px;
+    width:94%;
     float:left;
     text-align: center
 }
@@ -870,18 +870,18 @@ ol li{
 	width:160px;
 }
 .story_card{
-	width:290px;
-	height:500px;
+	width:260px;
+	height:400px;
 	position:relative;
 	cursor:pointer;
 	text-overflow:ellipsis;
 	overflow-y:hidden;
 	overflow-x:hidden;
 	float:left;
-	margin-right:20px;
+	margin-right:14px;
 	margin-top:20px;
-	padding-left:30px;
-	padding-right:30px;
+	padding-left:10px;
+	padding-right:10px;
 	color:#ffffff;
 	font-size:16px;
 	line-height:30px;
@@ -899,14 +899,14 @@ ol li{
 	visibility: visible;
 }
 .story_card h2{
-	margin:66px 4px 4px;
+	margin:56px 4px 4px;
 	vertical-align:baseline;
-	font-size:20;
+	font-size:16px;
 	font-family:Microsoft YaHei,SimSun;
-	line-height:30px;
+	line-height:26px;
 	padding-top:5px;
 	text-align:left;
-	font-weight:300;
+	font-size:18px;
 	
 }
 
@@ -923,8 +923,10 @@ ol li{
 }
 
 .story_card ol{
-	font-size:16px;
-	line-height:30px;
+	font-size:14px;
+	line-height:26px;
+	letter-spacing:1px;
+	
 }
 
 
@@ -939,7 +941,7 @@ ol li{
 
 .story_card .value{
 	position:absolute;
-	top:460px;
+	top: 370px;
 	left:126px;
 	width:96.7px;
 	text-align:center;
@@ -952,7 +954,7 @@ ol li{
 
 .story_card .point{
 	position:absolute;
-	top:460px;
+	top: 370px;
 	left:30px;
 	width:96.7px;text-align:center;
 	height:16px;
@@ -961,7 +963,7 @@ ol li{
 
 .story_card .priorityNum{
 	position:absolute;
-	top:460px;
+	top: 370px;
 	left:223px;
 	width:96.7px;
 	text-align:center;
@@ -976,8 +978,8 @@ ol li{
 
 .story_card .necessary0{
 	position:absolute;
-	top:24px;
-	left:30px;
+	top:20px;
+	left:14px;
 	height:32px;
 	width:150px;
 	background:url(../images/icon/necessary0.png) no-repeat ;
@@ -985,8 +987,8 @@ ol li{
 
 .story_card .necessary1{
 	position:absolute;
-	top:24px;
-	left:30px;
+	top:20px;
+	left:14px;
 	height:32px;
 	width:150px;
 	background:url(../images/icon/necessary1.png) no-repeat ;
@@ -994,8 +996,8 @@ ol li{
 
 .story_card .necessary2{
 	position:absolute;
-	top:24px;
-	left:30px;
+	top:20px;
+	left:14px;
 	height:32px;
 	width:150px;
 	background:url(../images/icon/necessary2.png) no-repeat ;
@@ -1003,8 +1005,8 @@ ol li{
 
 .story_card .necessary3{
 	position:absolute;
-	top:24px;
-	left:30px;
+	top:20px;
+	left:14px;
 	height:32px;
 	width:150px;
 	background:url(../images/icon/necessary3.png) no-repeat ;
