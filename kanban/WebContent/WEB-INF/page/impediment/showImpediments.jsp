@@ -23,9 +23,7 @@
 			<s:property value="project.name"/>
 			</p>
 			<p class="page_info">障碍列表</p>
-		</div>
-		<div class="create_impediment">
-			
+			<p class="create_item">+创建障碍</p>
 		</div>
 		<s:iterator value="impediments">
 			<div class="impediment_item">
@@ -140,7 +138,7 @@
 				$(this).attr('title',severities[3]);
 		});
 		
-		$(".create_impediment").click(function(){
+		$(".create_item").click(function(){
 			var projectId=$("#projectId").val();
 			DIALOG = $(".impediment_dialog");
 			DIALOG.dialog({autoOpen: false, 

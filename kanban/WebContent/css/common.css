@@ -125,7 +125,7 @@ html,body {
   }
 
 .header{
-	background:url(../images/head_bg.png) repeat-x;
+	background:url(../images/head_bg.png) no-repeat;
 	height:73px;
 	margin:0 auto;
 	overflow:false;
@@ -156,9 +156,20 @@ html,body {
 
 .header .create_item{
 	position:absolute;
-	left:80%;
-	top:40px;
+	left:89%;
+	top:28px;
+	height:30px;
+	line-height:30px;
+	width:60px;
+	background:#00775a;
+	color:#ffffff;
+	-moz-border-radius: 5px;      
+    -webkit-border-radius: 5px;   
+    border-radius:5px; 
+    cursor:pointer;
+    padding:0 2px;
 }
+
 .content{
 	height:auto;
 	padding-left:10px;
@@ -252,19 +263,19 @@ form select option.header{
 }
 
 form select option.must{
-	background:#E8B5E9;
+	background:#9677b3;
 }
 
 form select option.should{
-	background:#FFCCBF;
+	background:#ca5c5d;
 }
 
 form select option.could{
-	background:#EDF482;
+	background:#6990c9;
 }
 
 form select option.wont{
-	background:#BAF1B8;
+	background:#63b8a1;
 }
 
 form input:focus{
@@ -936,14 +947,14 @@ ol li{
 	padding-right:3px;
 	font-family:Microsoft YaHei,SimSun;
 	overflow-y:scroll;
-	height:310px;
+	height:240px;
 }
 
 .story_card .value{
 	position:absolute;
 	top: 370px;
-	left:126px;
-	width:96.7px;
+	left:90px;
+	width:80px;
 	text-align:center;
 	border-left:1px solid #ffffff;
 	border-right:1px solid #ffffff;
@@ -955,8 +966,9 @@ ol li{
 .story_card .point{
 	position:absolute;
 	top: 370px;
-	left:30px;
-	width:96.7px;text-align:center;
+	left:10px;
+	width:80px;
+	text-align:center;
 	height:16px;
 	line-height:16px;
 }
@@ -964,8 +976,8 @@ ol li{
 .story_card .priorityNum{
 	position:absolute;
 	top: 370px;
-	left:223px;
-	width:96.7px;
+	left:170px;
+	width:80px;
 	text-align:center;
 	height:16px;
 	line-height:16px;
@@ -1181,6 +1193,7 @@ ol li{
 	float:left;
 	border:1px solid #e5e5e5;
 	padding:10px 10px 0;
+	border-radius: 3px;
 }
 
 .defaultprojectoverview{
@@ -1216,7 +1229,6 @@ ol li{
 	margin-bottom:5px;
 	padding-top:5px;
 	height:90px;
-	width:180px;
 	overflow:hidden;
 }
 
@@ -1506,12 +1518,14 @@ ol li{
 	float:left;
 	margin-right:30px;
 	margin-bottom:20px;
+	margin-top:20px;
 	padding:12px 25px;
 	text-align:left;
 	font-size:16px;
 	font-family:Microsoft YaHei;
 	position:relative;
 	background:#fafaff;
+	border-radius:3px;
 }
 
 .impediment_item .serverity_time{

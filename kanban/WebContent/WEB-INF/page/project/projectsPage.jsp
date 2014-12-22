@@ -16,7 +16,7 @@
 	$(document).ready(function() {
 		
 		
-		$("#loadcreateproject").click(function(){
+		$(".create_item").click(function(){
 			DIALOG = $(".project_dialog");
 			DIALOG.dialog({autoOpen: false, 
 				                    title: "创建项目",
@@ -138,6 +138,30 @@
 					   }		
 					);
 			 
+			 $(".left_menu_wide li").mouseover(function(){
+				if($(this).attr("class")!="selected" && !(typeof $(this).attr("id") === 'undefined'))
+					{
+					var imgPath=$(this).find("img").attr("src");
+					if(imgPath.indexOf("_")<0)
+						{
+						  var splitedPath=imgPath.split(".");
+						  imgPath=splitedPath[0]+"_selected.png";
+						  $(this).find("img").attr("src",imgPath);
+						}
+					}					
+				});
+				
+				$(".left_menu_wide li").mouseleave(function(){
+					if($(this).attr("class")!="selected" && !(typeof $(this).attr("id") === 'undefined'))
+					{
+					  var imgPath=$(this).find("img").attr("src");
+					  var splitedPath=imgPath.split("_");
+					  imgPath=splitedPath[0]+".png";
+					  $(this).find("img").attr("src",imgPath);
+					}  
+					
+				});
+				
 			// prepareTooltip();
 			 	
 	});
@@ -162,11 +186,8 @@
 			<p class="project_name">
 			&nbsp;
 			</p>
-			<p class="page_info">项目列表</p>
-			<p class="create_item">创建项目</p>
-		</div>
-		<div class="addProject" >
-			<div class="createitem" id="loadcreateproject"></div>
+			<p class="page_info">所有项目</p>
+			<p class="create_item">+创建项目</p>
 		</div>
 		<s:iterator value="projects">
 			<div class="project_card" id="projectoverview<s:property value='id'/>" >

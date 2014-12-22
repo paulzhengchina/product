@@ -45,7 +45,7 @@
     <div class="header">
        <p class="project_name"><s:property value="%{project.name}"/></p>
        <p class="page_info">需求列表</p>
-       <p class="create_item">创建需求</p>
+       <p class="create_item">+创建需求</p>
        <select name="filter" multiple="multiple" style="width:300px">
 		<optgroup label="优先级">
 			<option value="priority0" selected="selected">必须有</option>
@@ -117,7 +117,7 @@
 		// caculator width and height for IE7;
 		//wall.fitZone($(window).width() - 30 , $(window).height() - 30);
 		
-		$(".addStory").click(function(){
+		$(".create_item").click(function(){
 			DIALOG = $(".story_dialog");
 			DIALOG.dialog({
 				autoOpen : false,
@@ -126,7 +126,7 @@
 				width : 560,
 				height : 580,
 				close : function() {
-					wall.fitWidth();
+					
 				}
 			});
 			DIALOG.dialog('open');
@@ -220,7 +220,8 @@
 			}
 		});
 		
-		});
+		
+});
 	function removeDeletedStoryCards(){
 		$(".status2").each(function(){$(this).remove()});
 		$(".status1").each(function(){$(this).remove()});

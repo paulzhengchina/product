@@ -54,7 +54,29 @@
 	            //返回的数据在result.result中，假设我们服务器返回了一个json对象  
 	            $(".user_photo").attr("src","${ pageContext.request.contextPath }/"+result.result.photoFileName);
 	        }  
-	    })  
+	    }) 
+	    
+	    $(".left_menu li").mouseover(function(){
+			if($(this).attr("class")!="selected" && $(this).parent().attr("id")!="project_logo"){				
+				 var imgPath=$(this).find("img").attr("src");
+				 if(imgPath.indexOf("_")<0)
+					 {
+					    var splitedPath=imgPath.split(".");
+					    imgPath=splitedPath[0]+"_selected.png";
+						 $(this).find("img").attr("src",imgPath);
+						 }
+			}
+		});
+		
+		$(".left_menu li").mouseleave(function(){
+			if($(this).attr("class")!="selected" && $(this).parent().attr("id")!="project_logo"){
+				 var imgPath=$(this).find("img").attr("src");
+				 var splitedPath=imgPath.split("_");
+				 imgPath=splitedPath[0]+".png";
+				 $(this).find("img").attr("src",imgPath);
+			}
+		});
+		
 	});
 	
 	function updateUserName(obj){
