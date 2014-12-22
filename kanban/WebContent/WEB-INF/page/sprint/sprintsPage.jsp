@@ -66,7 +66,7 @@
 				}
 			},
 			callback: {
-				onRightClick: OnRightClick
+				onClick: OnRightClick
 			}
 		};
 
