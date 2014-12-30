@@ -57,16 +57,16 @@
 									      <div class="create_task_icon">
 										      <a href="#" title="创建任务"><img alt="" src="${ pageContext.request.contextPath }/images/icon/plus.png" /></a>
 										  </div>
-										  <div class="done_story" rel="0">
-										      <a href="#" title="完成"><img alt="" src="${ pageContext.request.contextPath }/images/icon/story_complet.png"/></a>
+										  <div class="done_story" rel="0" title="完成">
+										      <a href="#" ><img alt="" src="${ pageContext.request.contextPath }/images/icon/story_complet.png"/></a>
 										  </div>
 									  </s:if>
 									  <s:if test="%{#story1.status==1}">
-									      <div class="done_story" rel="1">
-										      <a href="#" title="完成"><img alt="" src="${ pageContext.request.contextPath }/images/icon/flag_mark_green.png" /></a>
+									      <div class="done_story" rel="1"  title="继续">
+										      <a href="#"><img alt="" src="${ pageContext.request.contextPath }/images/icon/flag_mark_green.png" /></a>
 										  </div>
-										  <div class="create_task_icon" rel="0" style="display:none">
-										      <a href="#" title="完成"><img alt="" src="${ pageContext.request.contextPath }/images/icon/plus.png"/></a>
+										  <div class="create_task_icon" rel="0" style="display:none"  title="完成">
+										      <a href="#"><img alt="" src="${ pageContext.request.contextPath }/images/icon/plus.png"/></a>
 										  </div>
 									  </s:if>
 								</div>
@@ -340,7 +340,7 @@
 					success:function(response){
 						if(status==1){
 							thisObj.attr("rel","1");
-							thisObj.find("img").attr("src","${ pageContext.request.contextPath }/images/icon/flag_mark_green.png");		            	
+							thisObj.find("img").attr("src","${ pageContext.request.contextPath }/images/icon/flag_mark_green.png");	
 							thisObj.parents("div").children(".create_task_icon").hide();
 						}
 						else{

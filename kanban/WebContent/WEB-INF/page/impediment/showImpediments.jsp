@@ -264,7 +264,7 @@
 			   
 		});
 		
-		
+		showToolTipForContent();
 		
 	});
 	

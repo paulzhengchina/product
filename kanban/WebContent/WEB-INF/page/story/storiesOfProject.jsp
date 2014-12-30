@@ -220,7 +220,18 @@
 			}
 		});
 		
-		
+		$("#menu_item_help").click(function(){
+			DIALOG = $(".story_dialog");
+			DIALOG.dialog({autoOpen: false, 
+					                    title: "设置项目成员",
+						                modal: true,
+						                width :500,
+						                height:600,
+		                                close: function() {}
+		                                });
+			DIALOG.load("${pageContext.request.contextPath}/helppages/story.html").dialog('open');
+			customizeDialog();
+		});
 });
 	function removeDeletedStoryCards(){
 		$(".status2").each(function(){$(this).remove()});

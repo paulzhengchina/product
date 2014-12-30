@@ -68,11 +68,7 @@ function showToolTipForContent()
 	        at: "right center",
 	        using: function( position, feedback ) {
 	          $( this ).css( position );
-	          $( "<div>" )
-	            .addClass( "arrow" )
-	            .addClass( feedback.vertical )
-	            .addClass( feedback.horizontal )
-	            .appendTo( this );
+	          $( this ).css("background","black").css("color","white").css("border-radius","10px").css("box-shadow", "0 0 4px black");	         
 	        }
 	      }
 	    });

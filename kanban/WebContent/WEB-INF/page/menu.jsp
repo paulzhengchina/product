@@ -106,10 +106,16 @@
 	       <img src="${ pageContext.request.contextPath }/images/icon/project.png" title='项目库' />
 	    </a>
 	</li>
-
+	
 	<li id="menu_item_setting">
 	    <a href='<s:url value="/user/setting.action"></s:url>'>
 	       <img src="${ pageContext.request.contextPath }/images/icon/setting.png" title="个人设置" />
+	    </a>
+	</li>
+	
+	<li id="menu_item_help">
+	    <a href="#">
+	       <img src="${ pageContext.request.contextPath }/images/icon/project.png" title='帮助' />
 	    </a>
 	</li>
 	

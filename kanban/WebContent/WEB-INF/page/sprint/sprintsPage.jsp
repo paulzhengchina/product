@@ -31,7 +31,7 @@
 			<p class="page_info">计划</p>
 		</div>
 		<div class="page_help">
-		    帮助：右击鼠标进行创建、编辑、查看、删除阶段。注意：请不要创建时间重复的阶段。
+		    帮助：点击阶段进行创建、编辑、查看、删除阶段。注意：请不要创建时间重复的阶段。
 		</div>
 		<div class="sprints_overview">
 		   <ul id="treeDemo" class="ztree"></ul>

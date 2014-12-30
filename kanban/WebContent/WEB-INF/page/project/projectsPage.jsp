@@ -4,6 +4,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+
 <title>项目库</title>
 <LINK rel="Bookmark" href="${pageContext.request.contextPath}/images/icon/ant.jpg" />
 <LINK rel="Shortcut Icon" href="${pageContext.request.contextPath}/images/icon/shortcut.png" />
@@ -11,10 +12,12 @@
 <link rel="stylesheet" href="${ pageContext.request.contextPath }/css/jquery-ui.css" />
 <script type="text/javascript" src="${ pageContext.request.contextPath }/js/jquery-1.6.2.js"></script>
 <script type="text/javascript" src="${ pageContext.request.contextPath }/js/jquery-ui.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/common.js"></script>
 	
 <script type="text/javascript" >
 	$(document).ready(function() {
 		
+	
 		
 		$(".create_item").click(function(){
 			DIALOG = $(".project_dialog");
@@ -162,7 +165,21 @@
 					
 				});
 				
-			// prepareTooltip();
+								
+				$("#menu_item_help").click(function(){
+					DIALOG = $(".project_dialog");
+					DIALOG.dialog({autoOpen: false, 
+							                    title: "设置项目成员",
+								                modal: true,
+								                width :500,
+								                height:600,
+				                                close: function() {}
+				                                });
+					DIALOG.load("${pageContext.request.contextPath}/helppages/project.html").dialog('open');
+					customizeDialog();
+				});
+				
+				showToolTipForContent();
 			 	
 	});
 	
@@ -208,14 +225,14 @@
 							        <a href="#" title="删除"><img width="42" height="42" src="${ pageContext.request.contextPath }/images/icon/project_delete.png" id="<s:property value='id'/>" class="deleteProject"></img></a>
 						      </div>
 						      <div class="project_name">
-							       <a href='${ pageContext.request.contextPath }/project/viewProject.action?projectId=<s:property value="id"/>' title='<s:property value="name" />'>
+							       <a href='${ pageContext.request.contextPath }/project/viewProject.action?projectId=<s:property value="id"/>' >
 									   <h4> <s:property value="name" /></h4>
 									</a>
 						      </div>
 						</div>								
 					</div>
 					
-					<div id="projectDescription" class="projectDescription" title='<s:property  value="description"/>'>
+					<div id="projectDescription" class="projectDescription" >
 					    <p><s:property  value="description"/></p>
 					</div>
 					<div id="projectTime" class="projectTime">
@@ -243,6 +260,13 @@
 				    <a href='<s:url value="/user/setting.action"></s:url>'>
 				       <img src="${ pageContext.request.contextPath }/images/icon/setting.png"/>
 				       <p class="item_name">设置</p>
+				    </a>
+				</li>
+				
+				<li id="menu_item_help">
+				    <a href="#">
+				       <img src="${ pageContext.request.contextPath }/images/icon/help.png" style="width:31px"/>
+				       <p class="item_name">帮助</p>
 				    </a>
 				</li>
 				
