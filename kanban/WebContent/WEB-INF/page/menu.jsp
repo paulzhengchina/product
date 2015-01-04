@@ -115,7 +115,7 @@
 	
 	<li id="menu_item_help">
 	    <a href="#">
-	       <img src="${ pageContext.request.contextPath }/images/icon/project.png" title='帮助' />
+	       <img src="${ pageContext.request.contextPath }/images/icon/help.png" title='帮助' />
 	    </a>
 	</li>
 	

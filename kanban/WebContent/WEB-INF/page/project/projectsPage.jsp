@@ -220,9 +220,9 @@
 						 </div>
 						 <div class="top_part_right">
 							 <div class="project_action_btns">
-							        <a href="#" title="编辑"><img width="42" height="42"src="${ pageContext.request.contextPath }/images/icon/project_edit.png" id="<s:property value='id'/>" class="editProject"/></a>
-							        <a href="#" title="设置为默认项目"><img width="20" height="20" src="${ pageContext.request.contextPath }/images/icon/project_set_default.png" id="<s:property value='id'/>" class="setDefaultProject"></img></a>
-							        <a href="#" title="删除"><img width="42" height="42" src="${ pageContext.request.contextPath }/images/icon/project_delete.png" id="<s:property value='id'/>" class="deleteProject"></img></a>
+							        <a href="#" title="设置为默认项目"><img  src="${ pageContext.request.contextPath }/images/icon/set_default.png" id="<s:property value='id'/>" class="setDefaultProject"></img></a>
+							        <a href="#" title="编辑"><img src="${ pageContext.request.contextPath }/images/icon/edit.png" id="<s:property value='id'/>" class="editProject"/></a>
+							        <a href="#" title="删除"><img  src="${ pageContext.request.contextPath }/images/icon/delete.png" id="<s:property value='id'/>" class="deleteProject"></img></a>
 						      </div>
 						      <div class="project_name">
 							       <a href='${ pageContext.request.contextPath }/project/viewProject.action?projectId=<s:property value="id"/>' >

@@ -45,9 +45,9 @@
 				  </div>
 				  <button class="implement_btn analyse" id='<s:property value="id"/>'>分析方案</button>
 				  <div class="operations">
-				   <a href="#" title="查看" class="viewImpediment" id='<s:property value="id"/>'><img width="20" height="20"src="${ pageContext.request.contextPath }/images/icon/project_check.png" id="<s:property value='id'/>"/></a>
-			       <a href="#" title="编辑"><img width="20" height="20"src="${ pageContext.request.contextPath }/images/icon/project_edit.png" id="<s:property value='id'/>" class="editImpediment"/></a>
-				   <a href="#" title="删除"><img width="20" height="20" src="${ pageContext.request.contextPath }/images/icon/project_delete.png" id="<s:property value='id'/>" class="deleteImpediment"></img></a>
+				   <a href="#" title="查看" class="viewImpediment" id='<s:property value="id"/>'><img src="${ pageContext.request.contextPath }/images/icon/view.png" id="<s:property value='id'/>"/></a>
+			       <a href="#" title="编辑"><img src="${ pageContext.request.contextPath }/images/icon/edit.png" id="<s:property value='id'/>" class="editImpediment"/></a>
+				   <a href="#" title="删除"><img src="${ pageContext.request.contextPath }/images/icon/delete.png" id="<s:property value='id'/>" class="deleteImpediment"></img></a>
 			      </div>
 			  </s:if>
 			  <s:if test="status==1">
@@ -74,8 +74,8 @@
 				  </div>
 				  <button class="implement_btn complete" id='<s:property value="id"/>'>完成</button>
 				  <div class="operations">
-				   <a href="#" title="查看" class="viewImpediment" id='<s:property value="id"/>'><img width="20" height="20"src="${ pageContext.request.contextPath }/images/icon/project_check.png" id="<s:property value='id'/>"/></a>
-			       <a href="#" title="编辑"><img width="20" height="20"src="${ pageContext.request.contextPath }/images/icon/project_edit.png" id="<s:property value='id'/>" class="editImpediment"/></a>
+				   <a href="#" title="查看" class="viewImpediment" id='<s:property value="id"/>'><img src="${ pageContext.request.contextPath }/images/icon/view.png" id="<s:property value='id'/>"/></a>
+			       <a href="#" title="编辑"><img src="${ pageContext.request.contextPath }/images/icon/edit.png" id="<s:property value='id'/>" class="editImpediment"/></a>
 			  </div>
 			  </s:if>
 			  <s:if test="status==2||status==3">
@@ -105,8 +105,8 @@
 				  </div>
 				  <button class="implement_btn view" id='<s:property value="id"/>'>查看</button>
 				  <div class="operations">
-				   <a href="#" title="查看" class="viewImpediment" id='<s:property value="id"/>'><img width="20" height="20"src="${ pageContext.request.contextPath }/images/icon/project_check.png" id="<s:property value='id'/>"/></a>
-			       <a href="#" title="编辑"><img width="20" height="20"src="${ pageContext.request.contextPath }/images/icon/project_edit.png" id="<s:property value='id'/>" class="editImpediment"/></a>       
+				   <a href="#" title="查看" class="viewImpediment" id='<s:property value="id"/>'><img src="${ pageContext.request.contextPath }/images/icon/view.png" id="<s:property value='id'/>"/></a>
+			       <a href="#" title="编辑"><img src="${ pageContext.request.contextPath }/images/icon/edit.png" id="<s:property value='id'/>" class="editImpediment"/></a>       
 			      </div>
 			  </s:if>
 			  
