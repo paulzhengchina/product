@@ -265,7 +265,7 @@
 				
 				<li id="menu_item_help">
 				    <a href="#">
-				       <img src="${ pageContext.request.contextPath }/images/icon/help.png" style="width:31px"/>
+				       <img src="${ pageContext.request.contextPath }/images/icon/help.png"/>
 				       <p class="item_name">帮助</p>
 				    </a>
 				</li>

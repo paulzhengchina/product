@@ -111,7 +111,18 @@
 			});
 	   });
 	   
-	   
+	   $("#menu_item_help").click(function(){
+			DIALOG = $(".addMemeberDialog");
+			DIALOG.dialog({autoOpen: false, 
+					                    title: "设置项目成员",
+						                modal: true,
+						                width :500,
+						                height:600,
+		                                close: function() {}
+		                                });
+			DIALOG.load("${pageContext.request.contextPath}/helppages/projectdetail.html").dialog('open');
+			customizeDialog();
+		});
 		
 	});
 	
@@ -365,6 +376,13 @@
 			    </a>
 			</li>
 			
+			<li id="menu_item_help">
+				    <a href="#">
+				       <img src="${ pageContext.request.contextPath }/images/icon/help.png"/>
+				       <p class="item_name">帮助</p>
+				    </a>
+			</li>
+				
 			<li id="menu_item_quit">
 			    <a href="${ pageContext.request.contextPath }/user/logout.action">
 			       <img src="${ pageContext.request.contextPath }/images/icon/quit.png"/>
