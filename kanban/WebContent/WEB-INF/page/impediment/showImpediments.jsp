@@ -264,6 +264,20 @@
 			   
 		});
 		
+		$("#menu_item_help").click(function(){
+			DIALOG = $(".impediment_dialog");
+			DIALOG.dialog({autoOpen: false, 
+					                    title: "设置项目成员",
+						                modal: true,
+						                width :500,
+						                height:640,
+		                                close: function() {}
+		                                });
+			DIALOG.load("${pageContext.request.contextPath}/helppages/impediment.html").dialog('open');
+			customizeDialog();
+		});
+		
+		
 		showToolTipForContent();
 		
 	});

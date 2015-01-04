@@ -30,9 +30,6 @@
 			</p>
 			<p class="page_info">计划</p>
 		</div>
-		<div class="page_help">
-		    帮助：点击阶段进行创建、编辑、查看、删除阶段。注意：请不要创建时间重复的阶段。
-		</div>
 		<div class="sprints_overview">
 		   <ul id="treeDemo" class="ztree"></ul>
 		</div>
@@ -229,6 +226,19 @@
 			initialCurrentMenuItem("menu_item_plan");
 			prepareNodes();
 			rMenu = $("#rMenu");
+			
+			$("#menu_item_help").click(function(){
+				DIALOG = $(".sprint_dialog");
+				DIALOG.dialog({autoOpen: false, 
+						                    title: "设置项目成员",
+							                modal: true,
+							                width :500,
+							                height:640,
+			                                close: function() {}
+			                                });
+				DIALOG.load("${pageContext.request.contextPath}/helppages/plan.html").dialog('open');
+				customizeDialog();
+			});
 		});
 		
 	</SCRIPT>
