@@ -42,7 +42,7 @@
 			        </div>
 			        
 			        <div class="date">
-			            <s:date name="%{#sprint.startTime}" format="yyyy-MM-dd" />--<s:date name="%{#sprint.endTime}" format="yyyy-MM-dd" />
+			            <s:date name="%{#sprint.startTime}" format="yyyy/MM/dd" /> - <s:date name="%{#sprint.endTime}" format="yyyy/MM/dd" />
 			        </div>
 			        
 			        <div class="child_sprints">
@@ -51,14 +51,14 @@
 							<s:iterator value="%{#sprint.subSprints}">
 							    <div class="child_sprint" id="<s:property value='id'/>">
 							        <div class="info">
-                                      <div class="name">
+                                      <div class="child_name">
                                            <s:property value='name' />
                                       </div>
 										
 									  <div class="date">
-										<s:date name="startTime" format="yyyy-MM-dd" />
+										<s:date name="startTime" format="yyyy/MM/dd" />
 										-
-										<s:date name="endTime" format="yyyy-MM-dd" />
+										<s:date name="endTime" format="yyyy/MM/dd" />
 									  </div>
 									</div>
 									

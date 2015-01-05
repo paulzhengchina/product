@@ -1415,22 +1415,23 @@ ol li{
 }
 
 .sprints_overview .parent_sprint{
-	width:400px;
+	width:410px;
 	float:left;
-	border:1px solid;
-	margin-left:10px;
-	min-height:150px;
+	margin-left:4px;
+	margin-top:6px;
+	min-height:230px;
 	height:auto;
-	background:#dfa66b;
-	color:#ffffff;
+	background:#f7f7ff;
+	color:#3783B3;
 	position:relative;
+	
 }
 .sprints_overview .parent_sprint .operations
 {
 	visibility:hidden;
 	position:absolute;
-	top:2px;
-	right:2px;
+	top:12px;
+	right:4px;
 }
 
 .parent_sprint:hover .operations {
@@ -1440,12 +1441,15 @@ ol li{
 .sprints_overview .parent_sprint .name{
 	height:20px;
 	text-align:center;
+	margin-top:6px;
+	font-size:14px;
 }
 
 .sprints_overview .parent_sprint .date{
 	height:20px;
 	text-align:center;
 	width:100%;
+	font-size:12px;
 }
 
 .sprints_overview .parent_sprint .child_sprints{
@@ -1454,36 +1458,66 @@ ol li{
 
 .child_sprint
 {
-	width:49%;
-	height:40px;
+	width:200px;
+	height:74px;
 	float:left;
-	background:#dd7b14;
+	background:#4ea2d1;
 	margin:2px 0px 0px 3px;
+	border:1px solid #3783B3;
 }
 
 .child_sprint .info{
 	float:left;
-	width:80%;
+	width:146px;
 	color:#ffffff;
+	padding:8px 10px;
+	text-align:left;
+}
+
+.child_sprint .info .child_name{
+	font-size:14px;
+	line-height:18px;
+	height:30px;
+}
+
+.child_sprint .info .date{
+	font-size:12px;
+	margin-top:10px;
 }
 
 .child_sprint .child_operations{
 	float:left;
-	width:20%;
+	width:34px;
+
 }
 
 .child_sprint .child_operations .flag{
 	text-align:bottom;
-	height:40px;
-	line-height:40px;
-	background:#f97f00;
+	height:74px;
+	line-height:74px;
+	background:#3783B3;
+	color:#ffffff;
 }
 
 .child_sprint .child_operations .operation_items{
 	visibility:hidden;
 	position:relative; 
 	z-index:99999;
-	background:#f97f00;
+	background:#3783B3;
+}
+
+.child_sprint .child_operations .operation_items li{
+	
+}
+
+.child_sprint .child_operations .operation_items a{
+	color:#ffffff;
+	line-height:20px;
+}
+
+.child_sprint .child_operations .operation_items a:hover{
+	color:#eeeeee;
+	line-height:20px;
 }
 
 .child_sprint .child_operations:hover .operation_items {
