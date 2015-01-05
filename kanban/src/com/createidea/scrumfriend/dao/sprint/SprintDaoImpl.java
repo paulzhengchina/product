@@ -59,50 +59,15 @@ public class SprintDaoImpl extends BaseDaoImpl implements  SprintDao {
 		
 	}
 
-	@Override
-	public SprintTo getCurrentSprint(String projectId, Date date) {
-		// TODO Auto-generated method stub
+	public List<SprintTo> getCurrentSprints(String projectId, Date date) {
 		DetachedCriteria detachedCriteria = DetachedCriteria.forClass(SprintTo.class);
 		detachedCriteria.add(Restrictions.eq("project.id", projectId));
 		detachedCriteria.add(Restrictions.le("startTime", getPureDateOfToday()));
 		detachedCriteria.add(Restrictions.ge("endTime", getLatestDateOfToday()));
 		List<SprintTo> sprints=this.getHibernateTemplate().findByCriteria(detachedCriteria);
-		List<SprintTo> sprintsWithChild=new ArrayList<SprintTo>();
-		if(sprints!=null&&sprints.size()>0){
-			for(SprintTo sprint :sprints ){
-				if(sprint.getSubSprints()!=null&&sprint.getSubSprints().size()>0)
-					sprintsWithChild.add(sprint);
-			}
-			if(sprintsWithChild.size()>0)
-			   sprints.removeAll(sprintsWithChild);
-			if(sprints.size()>0)
-				return sprints.get(0);
-			else 
-				return null;
-		}
-		else
-			return null;
+		return sprints;
 	}
 	
-//	private SprintTo findCurrentSprintForSprintsList(List<SprintTo> sprints)
-//	{
-//		List<SprintTo> sprintsWithChild=new ArrayList<SprintTo>();
-//		if(sprints!=null&&sprints.size()>0){
-//			return null;
-//		}
-//		for(SprintTo sprint :sprints ){
-//			if(sprint.getSubSprints()!=null&&sprint.getSubSprints().size()>0)
-//					sprintsWithChild.add(sprint);
-//			}
-//			if(sprintsWithChild.size()>0)
-//			   sprints.removeAll(sprintsWithChild);
-//			if(sprints.size()>0)
-//				return sprints.get(0);
-//			else 
-//				return null;
-//		}
-//		
-    
 	private Date getPureDateOfToday(){
 		Calendar time=Calendar.getInstance();
 		time.set(Calendar.HOUR_OF_DAY, 23);

@@ -21,8 +21,6 @@ public interface SprintService {
 
 	public SprintTo getCurrentSprint(String projectId);
 
-	public List<TreeNodeTo> prepareSprintTreeNodes(String projectId);
-
 	public TreeNodeTo createSprintNode(SprintTo sprint, String projectId,String sprintId);
 	
 	public  List<SprintTo> getParentSprints(String projectId);

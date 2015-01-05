@@ -21,10 +21,10 @@ public interface SprintDao {
 
 	public void deleteSprint(String sprintId);
 
-	public SprintTo getCurrentSprint(String projectId, Date date);
-
 	public List<SprintTo> getSprintsFinishedYesterday(Date today,Date twoDaysAgo);
 
 	public List<SprintTo> getParentSprints(String projectId);
+	
+	public List<SprintTo> getCurrentSprints(String projectId, Date date);
 
 }

@@ -65,11 +65,6 @@ public class SprintAction extends BaseAction {
 		sprintNode=sprintService.createSprintNode(sprint, projectId, sprintId);
 		return SUCCESS;
 	}
-	public String listSprints(){
-		sprints=sprintService.getSprintsForProject(projectId);
-		project=projectService.getProjectById(projectId);
-		return SUCCESS;
-	}
 	
 	public String loadKanban() {
 		if(sprintId==null||"".equals(sprintId)){

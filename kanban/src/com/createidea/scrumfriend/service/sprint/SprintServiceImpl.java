@@ -83,43 +83,27 @@ public class SprintServiceImpl implements SprintService {
 	@Override
 	public SprintTo getCurrentSprint(String projectId) {
 		// TODO Auto-generated method stub
-		return sprintDao.getCurrentSprint(projectId,new Date());
-	}
-
-	@Override
-	public List<TreeNodeTo> prepareSprintTreeNodes(String projectId) {
-		// TODO Auto-generated method stub
-		TreeNodeTo rootNode=prepareRootNode();
-		List sprintNodes=new ArrayList<TreeNodeTo>();
-		sprintNodes.add(rootNode);
-		List<SprintTo> sprints=sprintDao.getSprintForProject(projectId);
-		if(sprints!=null&&sprints.size()>0){
-			for(SprintTo sprint : sprints){
-				TreeNodeTo node=new TreeNodeTo();
-				node.setId(sprint.getId());
-				node.setName("<span class='sprint_name'>"+sprint.getName()+"</span>"+" : "+dateFormat.format(sprint.getStartTime())+"--"+dateFormat.format(sprint.getEndTime()));
-				if(sprint.getParentSprint()==null){
-					node.setpId("0");
-					node.setOpen(true);
-				}					
-				else {
-					node.setpId(sprint.getParentSprint().getId());
-					node.setOpen(false);
-				}
-				sprintNodes.add(node);
-			}
-		}
-		return sprintNodes;
+		List<SprintTo> allCurrentSprints=sprintDao.getCurrentSprints(projectId, new Date());
+		return findCurrentChildSprint(allCurrentSprints);
 	}
 	
-    private TreeNodeTo prepareRootNode(){
-    	TreeNodeTo rootNode=new TreeNodeTo();
-    	rootNode.setId("0");
-    	rootNode.setpId("-1");
-    	rootNode.setName("阶段列表");
-    	rootNode.setOpen(true);
-    	return rootNode;
-    }
+	private SprintTo findCurrentChildSprint(List<SprintTo> sprints)
+	{
+		if(sprints!=null&&sprints.size()>0)
+			return null;
+		
+		for(SprintTo sprint :sprints ){
+			if(sprint.getSubSprints()!=null&&sprint.getSubSprints().size()>0)
+				sprints.remove(sprint);
+			}
+		
+		if(sprints.size()<=0)
+			return null;
+		
+		return sprints.get(0);
+		}
+		
+
 
 	@Override
 	public TreeNodeTo createSprintNode(SprintTo sprint, String projectId,String sprintId) {
