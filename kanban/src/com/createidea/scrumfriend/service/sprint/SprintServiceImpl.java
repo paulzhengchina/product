@@ -31,12 +31,7 @@ public class SprintServiceImpl implements SprintService {
 		this.storyDao = storyDao;
 	}
 
-	@Override
-	public List<SprintTo> getSprintsForProjectByStatus(String projectId,
-			int status) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	
 
 	@Override
 	public TreeNodeTo updateSprint(SprintTo sprint) {
@@ -54,11 +49,6 @@ public class SprintServiceImpl implements SprintService {
 		
 	}
 
-	@Override
-	public void updateSprintStatus(String card_id, String box_id, String user) {
-		// TODO Auto-generated method stub
-		
-	}
 
 	@Override
 	public SprintTo createSprint(SprintTo sprint, String projectId ,String parentSprintId) {
@@ -107,7 +97,7 @@ public class SprintServiceImpl implements SprintService {
 			for(SprintTo sprint : sprints){
 				TreeNodeTo node=new TreeNodeTo();
 				node.setId(sprint.getId());
-				node.setName("<Strong>"+sprint.getName()+"</Strong>"+" : "+dateFormat.format(sprint.getStartTime())+"--"+dateFormat.format(sprint.getEndTime()));
+				node.setName("<span class='sprint_name'>"+sprint.getName()+"</span>"+" : "+dateFormat.format(sprint.getStartTime())+"--"+dateFormat.format(sprint.getEndTime()));
 				if(sprint.getParentSprint()==null){
 					node.setpId("0");
 					node.setOpen(true);
@@ -150,9 +140,10 @@ public class SprintServiceImpl implements SprintService {
 	}
 
 	@Override
-	public List<SprintTo> getSprintWithNoChildrenForProject(String projectId) {
+	public List<SprintTo> getParentSprints(String projectId) {
 		// TODO Auto-generated method stub
-		return sprintDao.getSprintWithNoChildrenForProject(projectId);
+		return sprintDao.getParentSprints(projectId);
 	}
+
 	  
 }

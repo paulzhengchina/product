@@ -112,8 +112,9 @@ public class SprintAction extends BaseAction {
 		return SUCCESS;
 	}
 	
-	public String getSprintsList(){
-		sprintNodes=sprintService.prepareSprintTreeNodes(projectId);
+	public String showAllSprintsForProject(){
+		sprints=sprintService.getParentSprints(projectId);
+		project=projectService.getProjectById(projectId);
 		return SUCCESS;
 	}
 	/*

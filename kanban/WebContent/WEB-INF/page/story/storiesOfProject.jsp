@@ -89,8 +89,8 @@
 				  <p class="priorityNum"><span class="property_name">优先级</span>   <span class="property_value"> <s:property value="%{#story.priorityNum}"/></span></p>
 				
 				  <div class="operations">
-				     <a href="#" title="编辑"><img src="${ pageContext.request.contextPath }/images/icon/edit.png" id="<s:property value='%{#story.id}'/>" class="editStory"/></a>
-					 <a href="#" title="删除"><img src="${ pageContext.request.contextPath }/images/icon/delete.png" id="<s:property value='%{#story.id}'/>" class="deleteStory"></img></a>
+				     <a href="#" title="编辑"><img src="${ pageContext.request.contextPath }/images/icon/edit.png" id="<s:property value='%{#story.id}'/>" class="editSprint"/></a>
+					 <a href="#" title="删除"><img src="${ pageContext.request.contextPath }/images/icon/delete.png" id="<s:property value='%{#story.id}'/>" class="deleteSprint"></img></a>
 				  </div>
 				</div>
 			 </s:iterator>		

@@ -16,11 +16,6 @@ import com.createidea.scrumfriend.to.StoryTo;
 
 public class SprintDaoImpl extends BaseDaoImpl implements  SprintDao {
 
-	@Override
-	public List<SprintTo> sprintsByStatus(int status) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 	@Override
 	public void updateSprint(SprintTo sprint) {		
@@ -88,8 +83,27 @@ public class SprintDaoImpl extends BaseDaoImpl implements  SprintDao {
 		else
 			return null;
 	}
+	
+//	private SprintTo findCurrentSprintForSprintsList(List<SprintTo> sprints)
+//	{
+//		List<SprintTo> sprintsWithChild=new ArrayList<SprintTo>();
+//		if(sprints!=null&&sprints.size()>0){
+//			return null;
+//		}
+//		for(SprintTo sprint :sprints ){
+//			if(sprint.getSubSprints()!=null&&sprint.getSubSprints().size()>0)
+//					sprintsWithChild.add(sprint);
+//			}
+//			if(sprintsWithChild.size()>0)
+//			   sprints.removeAll(sprintsWithChild);
+//			if(sprints.size()>0)
+//				return sprints.get(0);
+//			else 
+//				return null;
+//		}
+//		
     
-	public Date getPureDateOfToday(){
+	private Date getPureDateOfToday(){
 		Calendar time=Calendar.getInstance();
 		time.set(Calendar.HOUR_OF_DAY, 23);
 		time.set(Calendar.MINUTE, 59);
@@ -97,7 +111,7 @@ public class SprintDaoImpl extends BaseDaoImpl implements  SprintDao {
 		return time.getTime();
 	}
 	
-	public Date getLatestDateOfToday(){
+	private Date getLatestDateOfToday(){
 		Calendar time=Calendar.getInstance();
 		time.set(Calendar.DATE,time.get(Calendar.DATE)-1);
 		time.set(Calendar.HOUR_OF_DAY, 23);
@@ -106,7 +120,7 @@ public class SprintDaoImpl extends BaseDaoImpl implements  SprintDao {
 		return time.getTime();
 	}
 	
-	public Date getEarlistTimeOfToday(){
+	private Date getEarlistTimeOfToday(){
 		Calendar time=Calendar.getInstance();
 		time.set(Calendar.HOUR, 0);
 		time.set(Calendar.MINUTE, 0);
@@ -124,7 +138,7 @@ public class SprintDaoImpl extends BaseDaoImpl implements  SprintDao {
 	}
 
 	@Override
-	public List<SprintTo> getSprintWithNoChildrenForProject(String projectId) {
+	public List<SprintTo> getParentSprints(String projectId) {
 		// TODO Auto-generated method stub
 		DetachedCriteria detachedCriteria = DetachedCriteria.forClass(SprintTo.class);
 		detachedCriteria.add(Restrictions.eq("project.id", projectId));

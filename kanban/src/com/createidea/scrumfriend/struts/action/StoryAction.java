@@ -48,7 +48,7 @@ public class StoryAction extends BaseAction {
 	
 	public String loadEditStory(){
 		story=storyService.getStoryById(storyId);
-		sprints=sprintService.getSprintWithNoChildrenForProject(story.getProject().getId());
+		sprints=sprintService.getParentSprints(story.getProject().getId());
 		currentSprint=sprintService.getCurrentSprint(story.getProject().getId());
 		return SUCCESS;
 	}

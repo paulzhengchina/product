@@ -8,8 +8,6 @@ import com.createidea.scrumfriend.to.StoryTo;
 
 
 public interface SprintDao {
-
-	public List<SprintTo> sprintsByStatus(int status);
 	
 	public void updateSprint(SprintTo sprint);
 
@@ -27,6 +25,6 @@ public interface SprintDao {
 
 	public List<SprintTo> getSprintsFinishedYesterday(Date today,Date twoDaysAgo);
 
-	public List<SprintTo> getSprintWithNoChildrenForProject(String projectId);
+	public List<SprintTo> getParentSprints(String projectId);
 
 }

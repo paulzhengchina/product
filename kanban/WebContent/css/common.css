@@ -910,6 +910,7 @@ ol li{
 .story_card:hover .operations {
 	visibility: visible;
 }
+
 .story_card h2{
 	margin:56px 4px 4px;
 	vertical-align:baseline;
@@ -1410,9 +1411,83 @@ ol li{
 
 .sprints_overview{
 	float:left;
-	text-align:left;
 	margin-top:10px;
-	margin-left:170px;
+}
+
+.sprints_overview .parent_sprint{
+	width:400px;
+	float:left;
+	border:1px solid;
+	margin-left:10px;
+	min-height:150px;
+	height:auto;
+	background:#dfa66b;
+	color:#ffffff;
+	position:relative;
+}
+.sprints_overview .parent_sprint .operations
+{
+	visibility:hidden;
+	position:absolute;
+	top:2px;
+	right:2px;
+}
+
+.parent_sprint:hover .operations {
+	visibility: visible;
+}
+
+.sprints_overview .parent_sprint .name{
+	height:20px;
+	text-align:center;
+}
+
+.sprints_overview .parent_sprint .date{
+	height:20px;
+	text-align:center;
+	width:100%;
+}
+
+.sprints_overview .parent_sprint .child_sprints{
+	margin-top:5px;
+}
+
+.child_sprint
+{
+	width:49%;
+	height:40px;
+	float:left;
+	background:#dd7b14;
+	margin:2px 0px 0px 3px;
+}
+
+.child_sprint .info{
+	float:left;
+	width:80%;
+	color:#ffffff;
+}
+
+.child_sprint .child_operations{
+	float:left;
+	width:20%;
+}
+
+.child_sprint .child_operations .flag{
+	text-align:bottom;
+	height:40px;
+	line-height:40px;
+	background:#f97f00;
+}
+
+.child_sprint .child_operations .operation_items{
+	visibility:hidden;
+	position:relative; 
+	z-index:99999;
+	background:#f97f00;
+}
+
+.child_sprint .child_operations:hover .operation_items {
+	visibility: visible;
 }
 
 #rMenu {
@@ -1643,11 +1718,14 @@ ol li{
 	width:220px;
 	float:left;
 	margin-left:30px;
+	height:inherit;
+	border-right:1px solid #999999; 
 }
 
 .impediment_detail .right-part{
 	width:506px;
 	float:left;
+	margin-left:15px;
 }
 
 .impediment_detail img{

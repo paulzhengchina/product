@@ -27,7 +27,7 @@
 		    </result>
 		</action>
 		
-		<action name="listSprints" class="sprintAction" method="listSprints">
+		<action name="listSprints" class="sprintAction" method="showAllSprintsForProject">
 			<result name="success">/WEB-INF/page/sprint/sprintsPage.jsp</result>
 			<result name="input">/index.jsp</result>
 		</action>
@@ -102,13 +102,6 @@
 	                                             stories
 	           </param>
 			</result>
-		</action>
-		<action name="getSprintsList" class="sprintAction" method="getSprintsList">
-		    <result type="json">
-		          <param name="includeProperties">
-	                   sprintNodes\[\d+\]\.id, sprintNodes\[\d+\]\.name,sprintNodes\[\d+\]\.pId,sprintNodes\[\d+\]\.open                          
-	           </param>
-		    </result>
 		</action>
 	</package>
 </struts>	
