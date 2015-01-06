@@ -918,9 +918,7 @@ ol li{
 	font-family:Microsoft YaHei,SimSun;
 	line-height:26px;
 	padding-top:5px;
-	text-align:left;
-	font-size:18px;
-	
+	text-align:left;	
 }
 
 .story_card h1{
@@ -1637,32 +1635,32 @@ ol li{
 	border-radius:3px;
 }
 
-.impediment_item .serverity_time{
-	height:36px;
+.impediment_item .serverity_time_title{
+	height:72px;
 	line-height:36px;
 	font-size:12px;
 	margin-bottom:12px;
 }
 
-.impediment_item .serverity_time img{
+.impediment_item .serverity_time_title img{
 	float:left;
-	margin-right:21px;
+	margin-right:10px;
 }
 
-.impediment_item .serverity_time span{
+.impediment_item .serverity_time_title span{
 	color: #ffffff;
 	font-size:10px;
 	padding:0 3px;
 }
 
-.impediment_item .serverity_time .waiting{
+.impediment_item .serverity_time_title .waiting{
 	background: none repeat scroll 0 0 #EA0000;
 }
-.impediment_item .serverity_time .on_going{
+.impediment_item .serverity_time_title .on_going{
 	background: none repeat scroll 0 0 #C6A300;
 }
 
-.impediment_item .serverity_time .completed{
+.impediment_item .serverity_time_title .completed{
 	background: none repeat scroll 0 0 #02C874;
 }
 
@@ -1680,10 +1678,11 @@ ol li{
 	height:64px;
 	text-overflow:ellipsis;
 	overflow: hidden;
+	font-size:16px;
 }
 
 .impediment_item .title{
-	height:20px;
+	height:40px;
 	text-overflow:ellipsis;
 	overflow: hidden;
 }

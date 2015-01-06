@@ -28,13 +28,11 @@
 		<s:iterator value="impediments">
 			<div class="impediment_item">
 			  <s:if test="status==0">
-			      <div class="serverity_time">
+			      <div class="serverity_time_title">
 			          <img title="" id="severity_legend_<s:property value='severity'/>" class="severity_legend" src="${pageContext.request.contextPath}/images/icon/impediment_serverity_<s:property value='severity'/>.png"/>
-			          <p><s:date name="createdTime" format="yyyy-MM-dd" /> 创建   <span class="waiting">等待解决</span></p>
+			          <p class="column_content title"><s:property value="name"/></p>
 			          <div class="clear"></div>
 			      </div>
-			      <p class="column">标题</p>
-				  <p class="column_content title"><s:property value="name"/></p>
 				  <p class="column">描述</p>
 				  <p class="column_content"><s:property value="description"/></p>
 				  <div class="relative_users">
@@ -51,13 +49,12 @@
 			      </div>
 			  </s:if>
 			  <s:if test="status==1">
-			      <div class="serverity_time">
+			      <div class="serverity_time_title">
 			          <img title="" id="severity_legend_<s:property value='severity'/>" class="severity_legend" src="${pageContext.request.contextPath}/images/icon/impediment_serverity_<s:property value='severity'/>.png"/>
-			          <p><s:date name="createdTime" format="yyyy-MM-dd" /> 创建   <span class="on_going">进行中</span></p>
+			          <p class="column_content title"><s:property value="name"/></p>
 			          <div class="clear"></div>
 			      </div>
-			      <p class="column">标题</p>
-				  <p class="column_content title"><s:property value="name"/></p>
+			 
 				  <p class="column">原因分析</p>
 				  <p class="column_content"><s:property value="reason"/></p>
 				  <p class="column">方案</p>
@@ -79,13 +76,12 @@
 			  </div>
 			  </s:if>
 			  <s:if test="status==2||status==3">
-			      <div class="serverity_time">
+			      <div class="serverity_time_title">
 			          <img title="" id="severity_legend_<s:property value='severity'/>" class="severity_legend" src="${pageContext.request.contextPath}/images/icon/impediment_serverity_<s:property value='severity'/>.png"/>
-			          <p><s:date name="createdTime" format="yyyy-MM-dd" /> -- <s:date name="fixedTime" format="yyyy-MM-dd" /> <span class="completed">结束</span></p>
+			          <p class="column_content title"><s:property value="name"/></p>
 			          <div class="clear"></div>
 			      </div>
-			      <p class="column">标题</p>
-				  <p class="column_content title"><s:property value="name"/></p>
+			     
 				  <p class="column">方案</p>
 				  <p class="column_content"><s:property value="solution"/></p>
 				  <p class="column">结果</p>
