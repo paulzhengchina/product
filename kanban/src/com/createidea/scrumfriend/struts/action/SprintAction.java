@@ -26,25 +26,21 @@ public class SprintAction extends BaseAction {
 	private UserService userService;
 	private List<StoryTo> storysByStatus0;
 	private List<StoryTo> storysByStatus1;
-	private List<StoryTo> storysByStatus2;
-	private List<StoryTo> storysByStatus3;
 	private String box_id;
 	private String card_id;
 	private List<StoryTo> stories;
 	private static final String REDIRECT_TO_LoadKanban="redirect_to_load_kanban";
-	private String fromKanban;//flat
 	private StatisticsService statisticsService;
 	private List<TaskTo> tasksOfStory;
 	private String storyId;
 	private TaskService taskService;
 	private TaskTo task;
-	private List<TreeNodeTo> sprintNodes;
 	private ProjectTo project;
 	private ProjectService projectService;
-	private TreeNodeTo sprintNode;
 	
 	public String updateSprint(){
-		sprintNode=sprintService.updateSprint(sprint);
+		sprint=sprintService.updateSprint(sprint);
+		projectId=sprint.getProject().getId();
 		return SUCCESS;
 	}
 	public String modifySprint(){
@@ -61,8 +57,8 @@ public class SprintAction extends BaseAction {
 	}
 	
 
-	public String createSprintNode(){
-		sprintNode=sprintService.createSprintNode(sprint, projectId, sprintId);
+	public String saveSprint(){
+		sprintService.createSprint(sprint, projectId, sprintId);
 		return SUCCESS;
 	}
 	
@@ -121,8 +117,7 @@ public class SprintAction extends BaseAction {
 	public void setProjectId(String projectId) {
 		this.projectId = projectId;
 	}
-	
-	
+		
 	public SprintService getSprintService() {
 		return sprintService;
 	}
@@ -173,18 +168,6 @@ public class SprintAction extends BaseAction {
 	public void setStorysByStatus1(List<StoryTo> storysByStatus1) {
 		this.storysByStatus1 = storysByStatus1;
 	}
-	public List<StoryTo> getStorysByStatus2() {
-		return storysByStatus2;
-	}
-	public void setStorysByStatus2(List<StoryTo> storysByStatus2) {
-		this.storysByStatus2 = storysByStatus2;
-	}
-	public List<StoryTo> getStorysByStatus3() {
-		return storysByStatus3;
-	}
-	public void setStorysByStatus3(List<StoryTo> storysByStatus3) {
-		this.storysByStatus3 = storysByStatus3;
-	}
 	public String getBox_id() {
 		return box_id;
 	}
@@ -202,12 +185,6 @@ public class SprintAction extends BaseAction {
 	}
 	public void setStories(List<StoryTo> stories) {
 		this.stories = stories;
-	}
-	public String getFromKanban() {
-		return fromKanban;
-	}
-	public void setFromKanban(String fromKanban) {
-		this.fromKanban = fromKanban;
 	}
 	public StatisticsService getStatisticsService() {
 		return statisticsService;
@@ -239,12 +216,6 @@ public class SprintAction extends BaseAction {
 	public void setTask(TaskTo task) {
 		this.task = task;
 	}
-	public List<TreeNodeTo> getSprintNodes() {
-		return sprintNodes;
-	}
-	public void setSprintNodes(List<TreeNodeTo> sprintNodes) {
-		this.sprintNodes = sprintNodes;
-	}
 	public ProjectTo getProject() {
 		return project;
 	}
@@ -257,12 +228,5 @@ public class SprintAction extends BaseAction {
 	public void setProjectService(ProjectService projectService) {
 		this.projectService = projectService;
 	}
-	public TreeNodeTo getSprintNode() {
-		return sprintNode;
-	}
-	public void setSprintNode(TreeNodeTo sprintNode) {
-		this.sprintNode = sprintNode;
-	}
-	
 	
 }

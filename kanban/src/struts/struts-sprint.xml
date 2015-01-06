@@ -14,17 +14,14 @@
             </interceptor-stack>  
         </interceptors>  
         <default-interceptor-ref name="customizedStack" />	
+        
 		<action name="modifySprint" class="sprintAction" method="modifySprint">
 			<result name="success">/WEB-INF/page/sprint/modifySprint.jsp</result>
 			<result name="input">/index.jsp</result>
 		</action>
 		
 		<action name="updateSprint" class="sprintAction" method="updateSprint">
-			 <result type="json">
-		          <param name="includeProperties">
-	                   sprintNode\.name                         
-	           </param>
-		    </result>
+			 <result name="success" type="redirect">listSprints.action?projectId=${projectId}</result>
 		</action>
 		
 		<action name="listSprints" class="sprintAction" method="showAllSprintsForProject">
@@ -41,12 +38,9 @@
 			<result name="success">/WEB-INF/page/sprint/createSprintPage.jsp</result>
 		</action>
 		
-		<action name="createSprintNode" class="sprintAction" method="createSprintNode">
-			 <result type="json">
-		          <param name="includeProperties">
-	                   sprintNode\.id,sprintNode\.name,sprintNode\.pId                         
-	           </param>
-		    </result>
+		<action name="saveSprint" class="sprintAction" method="saveSprint">
+			 <result name="success" type="redirect">listSprints.action?projectId=${projectId}</result>
+			 <result name="input">/index.jsp</result>
 		</action>
 			
 		<action name="loadKanban" class="sprintAction" method="loadKanban">

@@ -1068,7 +1068,7 @@ ol li{
 
 .story_card_kanban .done_story{
 	left:2px;
-	bottom:2px;
+	bottom:0px;
 	position:absolute;
 }
 

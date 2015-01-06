@@ -34,18 +34,12 @@ public class SprintServiceImpl implements SprintService {
 	
 
 	@Override
-	public TreeNodeTo updateSprint(SprintTo sprint) {
-		TreeNodeTo node=new TreeNodeTo();
-		if(sprint.getParentSprint()!=null&&"".equals(sprint.getParentSprint().getId())){
+	public SprintTo updateSprint(SprintTo sprint) {
+		if("".equals(sprint.getParentSprint().getId()))
 			sprint.setParentSprint(null);
-		}
-		if(sprint.getParentSprint()==null){
-			SprintTo previousSprint=sprintDao.getSprintById(sprint.getId());
-			sprint.setSubSprints(previousSprint.getSubSprints());
-		}
-	    sprintDao.updateSprint(sprint);
-	    node.setName("<Strong>"+sprint.getName()+"</Strong>"+" : "+dateFormat.format(sprint.getStartTime())+"--"+dateFormat.format(sprint.getEndTime()));
-		return node;
+		sprint.setSubSprints(sprintDao.getSprintById(sprint.getId()).getSubSprints());
+	    sprintDao.updateSprint(sprint);	    
+		return sprint;
 		
 	}
 
@@ -89,39 +83,21 @@ public class SprintServiceImpl implements SprintService {
 	
 	private SprintTo findCurrentChildSprint(List<SprintTo> sprints)
 	{
-		if(sprints!=null&&sprints.size()>0)
+		List<SprintTo> parentSprints=new ArrayList<SprintTo>();
+		if(sprints==null&&sprints.size()<1)
 			return null;
 		
 		for(SprintTo sprint :sprints ){
 			if(sprint.getSubSprints()!=null&&sprint.getSubSprints().size()>0)
-				sprints.remove(sprint);
+				parentSprints.add(sprint);
 			}
-		
+		sprints.remove(parentSprints);
 		if(sprints.size()<=0)
 			return null;
 		
 		return sprints.get(0);
 		}
 		
-
-
-	@Override
-	public TreeNodeTo createSprintNode(SprintTo sprint, String projectId,String sprintId) {
-		// TODO Auto-generated method stub
-		sprint=createSprint(sprint, projectId, sprintId);
-		TreeNodeTo node=new TreeNodeTo();
-		node.setId(sprint.getId());
-		node.setName("<Strong>"+sprint.getName()+"</Strong>"+" : "+dateFormat.format(sprint.getStartTime())+"--"+dateFormat.format(sprint.getEndTime()));
-		if(sprint.getParentSprint()==null){
-			node.setpId("0");
-			node.setOpen(true);
-		}					
-		else {
-			node.setpId(sprint.getParentSprint().getId());
-			node.setOpen(false);
-		}
-		return node;
-	}
 
 	@Override
 	public List<SprintTo> getParentSprints(String projectId) {

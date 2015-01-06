@@ -53,24 +53,7 @@
 				 else{
 					 return false;
 				 }
-			    var options={
-			    			url: "${ pageContext.request.contextPath }/sprint/updateSprint.action",
-			    			type: "post",
-			    			dataType : "json", 
-			    			success : function(data){
-			    				var zTree = $.fn.zTree.getZTreeObj("treeDemo");
-			    				var node=zTree.getSelectedNodes()[0];
-			    				node.name=data.sprintNode.name;
-			    			    zTree.updateNode(node);
-			    				DIALOG = $(".sprint_dialog");
-			    				DIALOG.dialog("close");
-			    				
-			    			},
-			    			error:function(XMLHttpRequest, textStatus, errorThrown){
-								alert(textStatus);
-							} 
-					}
-			    $("form").ajaxSubmit(options);  	
+				 $("form").submit();
 				return false;
 				});
 				

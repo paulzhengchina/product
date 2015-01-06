@@ -14,7 +14,7 @@
 		$( "#endtm" ).datepicker({showButtonPanel: true,dateFormat : "yy-mm-dd"});
 		    
 		$("#sbm_button").click(function(){
-			 $("#createSprintNode").validate({
+			 $("#saveSprint").validate({
 					rules: {					
 						'sprint.name': {
 							required: true
@@ -50,26 +50,7 @@
 			 else{
 				 return false;
 			 }
-				
-		    var options={
-		    			url: "${ pageContext.request.contextPath }/sprint/createSprintNode.action",
-		    			type: "post",
-		    			dataType : "json", 
-		    			success : function(data){
-		    				var zTree = $.fn.zTree.getZTreeObj("treeDemo");
-		    				var newNode = { name:data.sprintNode.name,id:data.sprintNode.id,pId:data.sprintNode.pId};
-		    				newNode.checked = zTree.getSelectedNodes()[0].checked;
-		    				zTree.addNodes(zTree.getSelectedNodes()[0], newNode);
-		    				DIALOG = $(".sprint_dialog");
-		    				DIALOG.dialog("close");
-		    				
-		    			},
-		    			error:function(XMLHttpRequest, textStatus, errorThrown){
-							alert(textStatus);
-						} 
-				}
-		    
-		    $("form").ajaxSubmit(options);		   
+		    $("form").submit();		   
 			return false;
 			});
 			
@@ -77,7 +58,7 @@
 </script>
 </head>
 <body>
-	<s:form name="createSprintNode" action="createSprintNode" method="POST"
+	<s:form name="saveSprint" action="saveSprint" method="POST"
 		theme="simple">
 		<s:hidden name="projectId" value="%{projectId}" />
 		<s:hidden name="sprintId" value="%{sprintId}" />

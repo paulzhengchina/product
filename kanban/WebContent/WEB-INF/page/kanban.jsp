@@ -57,12 +57,12 @@
 									      <div class="create_task_icon">
 										      <a href="#" title="创建任务"><img alt="" src="${ pageContext.request.contextPath }/images/icon/plus.png" /></a>
 										  </div>
-										  <div class="done_story" rel="0" title="完成">
+										  <div class="done_story" rel="0" title="点击完成">
 										      <a href="#" ><img alt="" src="${ pageContext.request.contextPath }/images/icon/story_complet.png"/></a>
 										  </div>
 									  </s:if>
 									  <s:if test="%{#story1.status==1}">
-									      <div class="done_story" rel="1"  title="继续">
+									      <div class="done_story" rel="1"  title="点击继续">
 										      <a href="#"><img alt="" src="${ pageContext.request.contextPath }/images/icon/flag_mark_green.png" /></a>
 										  </div>
 										  <div class="create_task_icon" rel="0" style="display:none"  title="完成">
