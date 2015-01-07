@@ -226,7 +226,7 @@
 						      </div>
 						      <div class="project_name">
 							       <a href='${ pageContext.request.contextPath }/project/viewProject.action?projectId=<s:property value="id"/>' >
-									   <h4> <s:property value="name" /></h4>
+									   <s:property value="name" />
 									</a>
 						      </div>
 						</div>								

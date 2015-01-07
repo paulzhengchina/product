@@ -1186,14 +1186,15 @@ ol li{
 
 .project_card{
 	background-position: center; 
-	height:250px;
-	width:190px;
+	height:290px;
+	width:230px;
 	margin-right:60px;
 	margin-top:20px;
 	float:left;
 	border:1px solid #e5e5e5;
-	padding:10px 10px 0;
+	padding:20px;
 	border-radius: 3px;
+	
 }
 
 .defaultprojectoverview{
@@ -1225,10 +1226,12 @@ ol li{
 
 .project_card .projectDescription {
 	margin-top:10px;
-	margin-bottom:5px;
-	padding-top:5px;
-	height:90px;
+	margin-bottom:25px;
+	padding-top:15px;
+	height:110px;
 	overflow:hidden;
+	letter-spacing:1px;
+	font-size:16px;
 }
 
 .project_card .projectTime {
@@ -1290,7 +1293,7 @@ ol li{
 
 .project_card .top_part .top_part_right .project_name{
     margin-top:10px;
-    font-size: 12px;
+    font-size: 16px;
     padding: 2px;
     width:inherit;
     overflow:hidden;
@@ -1621,7 +1624,6 @@ ol li{
 .impediment_item{
 	width:300px;
 	height:410px;
-	border: 1px solid #e5e5e5;
 	float:left;
 	margin-right:30px;
 	margin-bottom:20px;
@@ -1631,15 +1633,16 @@ ol li{
 	font-size:16px;
 	font-family:Microsoft YaHei;
 	position:relative;
-	background:#fafaff;
+	background:#f7f7ff;
 	border-radius:3px;
 }
 
 .impediment_item .serverity_time_title{
-	height:72px;
-	line-height:36px;
+	height:40px;
+	line-height:20px;
 	font-size:12px;
 	margin-bottom:12px;
+	margin-top:10px;
 }
 
 .impediment_item .serverity_time_title img{
@@ -1681,6 +1684,11 @@ ol li{
 	font-size:16px;
 }
 
+.impediment_item .date
+{
+	height:24px;
+}
+
 .impediment_item .title{
 	height:40px;
 	text-overflow:ellipsis;
@@ -1703,12 +1711,13 @@ ol li{
 
 .impediment_item .relative_users .user_name{
 	height:20px;
+	margin-bottom:6px;
 }
 
 .impediment_item .final_status{
 	position:absolute;
-	bottom:54px;
-	right:175px;
+	bottom:52px;
+	right:60px;
 }
 
 .impediment_item .final_status img{
@@ -1752,7 +1761,7 @@ ol li{
 	float:left;
 	margin-left:30px;
 	height:inherit;
-	border-right:1px solid #999999; 
+	border-right:1px solid #cccccc; 
 }
 
 .impediment_detail .right-part{

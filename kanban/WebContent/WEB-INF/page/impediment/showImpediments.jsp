@@ -30,18 +30,29 @@
 			  <s:if test="status==0">
 			      <div class="serverity_time_title">
 			          <img title="" id="severity_legend_<s:property value='severity'/>" class="severity_legend" src="${pageContext.request.contextPath}/images/icon/impediment_serverity_<s:property value='severity'/>.png"/>
-			          <p class="column_content title"><s:property value="name"/></p>
+			         
+			            <table class="column_content title"> 
+						<tr> 
+						<td style="vertical-align:middle;height:40px"><s:property value="name"/></td> 
+						</tr> 
+						</table> 
+                      
 			          <div class="clear"></div>
 			      </div>
 				  <p class="column">描述</p>
-				  <p class="column_content"><s:property value="description"/></p>
+				  <p class="column_content"><s:property value="description"/></p>				  
 				  <div class="relative_users">
 				     <div class="creater">
 					     <P class="column">创建者</P>
 					     <p class="column_content user_name"><s:property value="createdBy.name"/></p>
-				     </div>				     
+				     </div>	
+				     <div class="clear"></div>			     
 				  </div>
-				  <button class="implement_btn analyse" id='<s:property value="id"/>'>分析方案</button>
+				  <p class="column_content date"><s:date name="createdTime" format="yyyy/MM/dd" /></p>
+				  <div class="final_status">
+				     <img src="${pageContext.request.contextPath}/images/icon/impediment_final_status_<s:property value='status'/>.png"/>
+				  </div>
+				  <button class="implement_btn analyse" id='<s:property value="id"/>'>分析</button>
 				  <div class="operations">
 				   <a href="#" title="查看" class="viewImpediment" id='<s:property value="id"/>'><img src="${ pageContext.request.contextPath }/images/icon/view.png" id="<s:property value='id'/>"/></a>
 			       <a href="#" title="编辑"><img src="${ pageContext.request.contextPath }/images/icon/edit.png" id="<s:property value='id'/>" class="editImpediment"/></a>
@@ -51,7 +62,11 @@
 			  <s:if test="status==1">
 			      <div class="serverity_time_title">
 			          <img title="" id="severity_legend_<s:property value='severity'/>" class="severity_legend" src="${pageContext.request.contextPath}/images/icon/impediment_serverity_<s:property value='severity'/>.png"/>
-			          <p class="column_content title"><s:property value="name"/></p>
+			          <table class="column_content title"> 
+						<tr> 
+						<td style="vertical-align:middle;height:40px"><s:property value="name"/></td> 
+						</tr> 
+					  </table> 
 			          <div class="clear"></div>
 			      </div>
 			 
@@ -67,7 +82,12 @@
 				     <div class="performer">
 					     <P class="column">负责人</P>
 					     <p class="column_content user_name"><s:property value="fixedBy.name"/></p>
-				     </div>					     
+				     </div>	
+				     <div class="clear"></div>				     
+				  </div>
+				  <p class="column_content"><s:date name="createdTime" format="yyyy/MM/dd" /></p>
+				  <div class="final_status">
+				     <img src="${pageContext.request.contextPath}/images/icon/impediment_final_status_<s:property value='status'/>.png"/>
 				  </div>
 				  <button class="implement_btn complete" id='<s:property value="id"/>'>完成</button>
 				  <div class="operations">
@@ -78,7 +98,11 @@
 			  <s:if test="status==2||status==3">
 			      <div class="serverity_time_title">
 			          <img title="" id="severity_legend_<s:property value='severity'/>" class="severity_legend" src="${pageContext.request.contextPath}/images/icon/impediment_serverity_<s:property value='severity'/>.png"/>
-			          <p class="column_content title"><s:property value="name"/></p>
+			          <table class="column_content title"> 
+						<tr> 
+						<td style="vertical-align:middle;height:40px"><s:property value="name"/></td> 
+						</tr> 
+					  </table> 
 			          <div class="clear"></div>
 			      </div>
 			     
@@ -94,8 +118,11 @@
 				     <div class="performer">
 					     <P class="column">负责人</P>
 					     <p class="column_content user_name"><s:property value="fixedBy.name"/></p>
-				     </div>					     
+				     </div>	
+				     <div class="clear"></div>				     
 				  </div>
+				
+				  <p class="column_content"><s:date name="createdTime" format="yyyy/MM/dd" /> - <s:date name="fixedTime" format="yyyy/MM/dd" /></p>
 				  <div class="final_status">
 				     <img src="${pageContext.request.contextPath}/images/icon/impediment_final_status_<s:property value='status'/>.png"/>
 				  </div>
