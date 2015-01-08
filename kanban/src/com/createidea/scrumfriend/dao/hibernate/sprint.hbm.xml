@@ -33,7 +33,7 @@
             <column name="parent_id"></column>
         </many-to-one>
         
-        <set name="subSprints" cascade="save-update" lazy="false"> 
+        <set name="subSprints" cascade="save-update" lazy="false" order-by="start_time asc"> 
              <key column="parent_id"></key> 
              <one-to-many class="com.createidea.scrumfriend.to.SprintTo"/> 
          </set> 

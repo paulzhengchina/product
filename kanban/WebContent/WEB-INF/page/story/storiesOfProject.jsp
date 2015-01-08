@@ -76,7 +76,7 @@
 			     document.write("<div class='"+className+"'rel='"+rel+ "'>");
 			     document.write("<div class=necessary"+priority+ ">"+"</div>");
 				 </script>
-				  <h2><s:property value="%{#story.name}"/></h2>
+				  <p class="name"><s:property value="%{#story.name}"/><p>
 				 
 				    <div class="acceptance_criteria">
 				      <div>

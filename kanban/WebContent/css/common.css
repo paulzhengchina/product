@@ -894,7 +894,7 @@ ol li{
 	padding-left:10px;
 	padding-right:10px;
 	color:#ffffff;
-	font-size:16px;
+	font-size:14px;
 	line-height:30px;
 	text-align:left;
 	border-radius:3px;
@@ -911,7 +911,7 @@ ol li{
 	visibility: visible;
 }
 
-.story_card h2{
+.story_card .name{
 	margin:56px 4px 4px;
 	vertical-align:baseline;
 	font-size:16px;
@@ -1194,11 +1194,12 @@ ol li{
 	border:1px solid #e5e5e5;
 	padding:20px;
 	border-radius: 3px;
+	position:relative;
 	
 }
 
 .defaultprojectoverview{
-	border:1px solid green;
+	border:1px solid #66ff11;
 }
 
 .project_card:hover .project_action_btns {
@@ -1230,7 +1231,7 @@ ol li{
 	padding-top:15px;
 	height:110px;
 	overflow:hidden;
-	letter-spacing:1px;
+	letter-spacing:1.5px;
 	font-size:14px;
 }
 
@@ -1277,13 +1278,13 @@ ol li{
 	margin-left:2px;
 	height:inherit;
 	
-}
-.project_card .top_part .top_part_right .project_action_btns {
 	
-    font-size: 14px;
-    margin-top:2px;
-    height:30px;
-    margin-bottom:5px;
+}
+.project_card .top_part  .project_action_btns {
+	
+    position:absolute;
+    top:12px;
+    right:2px;
     
 }
 
@@ -1292,13 +1293,21 @@ ol li{
 }
 
 .project_card .top_part .top_part_right .project_name{
-    margin-top:10px;
     font-size: 16px;
     padding: 2px;
-    width:inherit;
+    width:140px;
     overflow:hidden;
     height:60px;
     text-align:left;
+}
+
+.project_card a{
+    color:#666666;
+    letter-spacing:1px;
+}
+
+.project_card a:hover{
+    color:#999999;
 }
 
 .projectDescription p {
@@ -1425,6 +1434,7 @@ ol li{
 	background:#f7f7ff;
 	color:#3783B3;
 	position:relative;
+	padding-bottom:15px;
 	
 }
 .sprints_overview .parent_sprint .operations
@@ -1672,6 +1682,7 @@ ol li{
 	margin-bottom:5px;
 	text-overflow:ellipsis;
 	overflow: hidden;
+	letter-spacing:1px;
 }
 
 .impediment_item .column_content{
@@ -1681,7 +1692,8 @@ ol li{
 	height:64px;
 	text-overflow:ellipsis;
 	overflow: hidden;
-	font-size:16px;
+	font-size:14px;
+	letter-spacing:0.5px;
 }
 
 .impediment_item .date
@@ -1693,6 +1705,7 @@ ol li{
 	height:40px;
 	text-overflow:ellipsis;
 	overflow: hidden;
+	font-size:16px;
 }
 
 .impediment_item .relative_users{

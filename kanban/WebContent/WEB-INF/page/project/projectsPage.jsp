@@ -58,17 +58,21 @@
 			DIALOG.load("${pageContext.request.contextPath}/project/modifyProject.action?projectId="+projectId,function(){DIALOG.css('background','none') ;});
 		   });
 		  
-			$(".setDefaultProject").click(
-			   function(){
+			$(".setDefaultProject").live('click',function(){
 				   var currentItem=$(this);
 				   $.ajax({
 						  "url":"${pageContext.request.contextPath }/user/setDefaultProject.action",
 						  "type":"post",
 						  "data":{projectId:$(this).attr("id")},
 						  "success":function(data,status){
-							  if(data){									  
-								  $(".defaultprojectoverview").removeClass("defaultprojectoverview");
-								  currentItem.parents(".project_card").addClass("defaultprojectoverview");									  								  
+							  if(data){
+								  var defaultprojectId=$(".defaultprojectoverview").attr("id").substring(15);
+								  var setDefault='<a href="#" title="设置为默认项目" id="'+defaultprojectId+'" class="setDefaultProject"><img  src="${ pageContext.request.contextPath }/images/icon/set_default.png" ></img></a>';
+								  var currentProject=currentItem.parents(".project_card");
+								  $(".defaultprojectoverview").find(".editProject").before(setDefault);
+								  $(".defaultprojectoverview").removeClass("defaultprojectoverview");								
+								  currentProject.addClass("defaultprojectoverview");
+								  currentProject.find(".setDefaultProject").remove();
 							  }
 						},
 						"error":function(xhr,s1,s2){
@@ -96,7 +100,8 @@
 				  "type":"get",
 				  "success":function(data,status){
 					  if(data){	
-						  $("#projectoverview"+data).addClass("defaultprojectoverview");									  								  
+						  $("#projectoverview"+data).addClass("defaultprojectoverview");
+						  $("#projectoverview"+data).find(".setDefaultProject").remove();
 					  }
 				}
 				
@@ -219,16 +224,19 @@
 							</s:else>
 						 </div>
 						 <div class="top_part_right">
-							 <div class="project_action_btns">
-							        <a href="#" title="设置为默认项目"><img  src="${ pageContext.request.contextPath }/images/icon/set_default.png" id="<s:property value='id'/>" class="setDefaultProject"></img></a>
-							        <a href="#" title="编辑"><img src="${ pageContext.request.contextPath }/images/icon/edit.png" id="<s:property value='id'/>" class="editProject"/></a>
-							        <a href="#" title="删除"><img  src="${ pageContext.request.contextPath }/images/icon/delete.png" id="<s:property value='id'/>" class="deleteProject"></img></a>
-						      </div>
-						      <div class="project_name">
-							       <a href='${ pageContext.request.contextPath }/project/viewProject.action?projectId=<s:property value="id"/>' >
-									   <s:property value="name" />
-									</a>
-						      </div>
+						      <table class="project_name"> 
+								<tr> 
+									<td style="vertical-align:middle;height:80px"> <a href='${ pageContext.request.contextPath }/project/viewProject.action?projectId=<s:property value="id"/>' >
+										   <s:property value="name" />
+										</a>
+									</td> 
+								</tr> 
+							  </table> 
+						</div>
+						<div class="project_action_btns">
+							        <a href="#" title="设置为默认项目" id="<s:property value='id'/>" class="setDefaultProject"><img  src="${ pageContext.request.contextPath }/images/icon/set_default.png" ></img></a>
+							        <a href="#" title="编辑" id="<s:property value='id'/>" class="editProject"><img src="${ pageContext.request.contextPath }/images/icon/edit.png" /></a>
+							        <a href="#" title="删除" id="<s:property value='id'/>" class="deleteProject"><img  src="${ pageContext.request.contextPath }/images/icon/delete.png"></img></a>
 						</div>								
 					</div>
 					
@@ -236,7 +244,7 @@
 					    <p><s:property  value="description"/></p>
 					</div>
 					<div id="projectTime" class="projectTime">
-						<span><s:date name="start_time" format="yyyy-MM-dd"/></span>至<span><s:date name="end_time" format="yyyy-MM-dd"/></span>
+						<span><s:date name="start_time" format="yyyy/MM/dd"/></span> - <span><s:date name="end_time" format="yyyy/MM/dd"/></span>
 					</div>
 
 			</div>	
