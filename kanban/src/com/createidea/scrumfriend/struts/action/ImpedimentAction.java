@@ -17,10 +17,16 @@ public class ImpedimentAction extends BaseAction {
     private String impedimentId;
 	private ProjectService projectService;
 	private ProjectTo project;
+	private String fileterConditions;
     
     public String showImpediments(){
     	impediments=impedimentService.getAllImpediments(projectId);
     	project=projectService.getProjectById(projectId);
+    	return SUCCESS;
+    }
+    
+    public String filterImpediments(){
+    	impediments=impedimentService.filterImpediments(fileterConditions,projectId);
     	return SUCCESS;
     }
     
@@ -148,6 +154,14 @@ public class ImpedimentAction extends BaseAction {
 
 	public void setProject(ProjectTo project) {
 		this.project = project;
+	}
+
+	public String getFileterConditions() {
+		return fileterConditions;
+	}
+
+	public void setFileterConditions(String fileterConditions) {
+		this.fileterConditions = fileterConditions;
 	}
     
     

@@ -12,4 +12,6 @@ public interface ImpedimentDao {
 
 	public ImpedimentTo getImpediment(String id);
 
+	public List<ImpedimentTo> searchImpedimentsByConditions(Integer[] filteredSatuses, Integer[] filteredseverities, String projectId);
+
 }

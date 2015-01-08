@@ -9,9 +9,12 @@
 <LINK rel="Shortcut Icon" href="${pageContext.request.contextPath}/images/icon/shortcut.png" />
 <link rel="stylesheet" type="text/css" href="${ pageContext.request.contextPath }/css/common.css">
 <link rel="stylesheet" href="${ pageContext.request.contextPath }/css/jquery-ui.css" />
+<link rel="stylesheet" href="${ pageContext.request.contextPath }/css/multi-select/jquery.multiselect.css" />
 <script type="text/javascript" src="${ pageContext.request.contextPath }/js/jquery-1.6.2.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/common.js"></script>
 <script type="text/javascript" src="${ pageContext.request.contextPath }/js/jquery-ui.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery.multiselect.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery.multiselect.zh-cn.js"></script>
 	
 
 </head>
@@ -24,6 +27,20 @@
 			</p>
 			<p class="page_info">障碍列表</p>
 			<p class="create_item">+创建障碍</p>
+			<select name="filter" multiple="multiple" style="width:300px">
+				<optgroup label="优先级">
+					<option value="severity0" selected="selected">紧急</option>
+					<option value="severity1" selected="selected">高</option>
+					<option value="severity2" selected="selected">一般</option>
+					<option value="severity3" selected="selected">低）</option>
+			    </optgroup>
+				<optgroup label="状态">
+					<option value="status0" selected="selected">等待</option>
+					<option value="status1" selected="selected">进行中</option>
+					<option value="status2">完成</option>
+					<option value="status2">失败</option>
+				</optgroup>
+			 </select>
 		</div>
 		<s:iterator value="impediments">
 			<div class="impediment_item">
@@ -302,6 +319,22 @@
 		
 		
 		showToolTipForContent();
+		
+		$("select").multiselect({
+			 selectedList: 5,
+			 close: function(){	
+				     var fileterConditions="";
+				     var projectId=$("#projectId").val();
+					 $('input[name=filter[]]:checked').each(function() {
+						 fileterConditions+=$(this).val()+";";					    	
+					 });
+					 window.location.href="${pageContext.request.contextPath}//impediment/filterimpediments.action?fileterConditions="+fileterConditions+"&projectId="+projectId;  
+			   },
+			  beforeclose: function(){
+				 
+			}
+		});
+		
 		
 	});
 	

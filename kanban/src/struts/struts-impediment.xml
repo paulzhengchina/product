@@ -19,6 +19,11 @@
 		   <result name="input">/index.jsp</result>
 		</action>
 		
+		<action name="filterimpediments" class="impedimentAction" method="filterImpediments">
+		   <result name="success">/WEB-INF/page/impediment/showImpediments.jsp</result>
+		   <result name="input">/index.jsp</result>
+		</action>
+		
 		<action name="createimpediment" class="impedimentAction" method="createImpediment">
 		   <result name="success">/WEB-INF/page/impediment/createImpediment.jsp</result>
 		   <result name="input">/index.jsp</result>

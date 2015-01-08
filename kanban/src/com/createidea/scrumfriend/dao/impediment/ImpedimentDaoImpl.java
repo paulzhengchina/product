@@ -9,6 +9,7 @@ import org.hibernate.criterion.Restrictions;
 
 import com.createidea.scrumfriend.dao.BaseDaoImpl;
 import com.createidea.scrumfriend.to.ImpedimentTo;
+import com.createidea.scrumfriend.to.StoryTo;
 
 
 public class ImpedimentDaoImpl extends BaseDaoImpl implements ImpedimentDao {
@@ -54,6 +55,18 @@ public class ImpedimentDaoImpl extends BaseDaoImpl implements ImpedimentDao {
 		else
 			return null;
 			
+	}
+
+	@Override
+	public List<ImpedimentTo> searchImpedimentsByConditions(Integer[] filteredSatuses, Integer[] filteredseverities, String projectId) {
+		// TODO Auto-generated method stub
+		DetachedCriteria detachedCriteria = DetachedCriteria.forClass(ImpedimentTo.class);
+		detachedCriteria.add(Restrictions.eq("project.id", projectId));
+		detachedCriteria.add(Restrictions.in("status", filteredSatuses));
+		detachedCriteria.add(Restrictions.in("severity", filteredseverities));
+		detachedCriteria.addOrder(Order.asc("status"));
+		detachedCriteria.addOrder(Order.asc("severity"));		
+		return this.getHibernateTemplate().findByCriteria(detachedCriteria);
 	}
 
 	

@@ -15,7 +15,6 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jscrollpane/jquery.jscrollpane.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jscrollpane/jquery.mousewheel.js"></script>
 <script type="text/javascript" src="${ pageContext.request.contextPath }/js/jquery-ui.min.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/js/freewall.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/scrum-shrink.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery.multiselect.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery.multiselect.zh-cn.js"></script>

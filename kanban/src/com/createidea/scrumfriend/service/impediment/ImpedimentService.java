@@ -18,4 +18,6 @@ public interface ImpedimentService {
 
 	public ImpedimentTo deleteImpediment(String impedimentId);
 
+	public List<ImpedimentTo> filterImpediments(String filterConditions,String projectId);
+
 }
