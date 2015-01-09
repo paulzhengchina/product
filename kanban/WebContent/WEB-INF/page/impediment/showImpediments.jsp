@@ -165,6 +165,7 @@
 	$(document).ready(function() {
 		
 		initialCurrentMenuItem("menu_item_impediment");
+		initialFilter();
 		
 		var severities=["紧急","高","一般","低"];
 		$(".severity_legend").each(function(){
@@ -335,6 +336,15 @@
 			}
 		});
 		
+		function initialFilter(){
+			var filterConditions='<s:property value="fileterConditions"/>';
+			var conditions=filterConditions.split(";",10);
+			$("option").removeAttr("selected");
+			for(condition in conditions)
+				{
+				$("option[value="+conditions[condition]+"]").attr("selected","selected");				
+				}
+		}
 		
 	});
 	

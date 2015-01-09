@@ -62,7 +62,9 @@ public class ImpedimentDaoImpl extends BaseDaoImpl implements ImpedimentDao {
 		// TODO Auto-generated method stub
 		DetachedCriteria detachedCriteria = DetachedCriteria.forClass(ImpedimentTo.class);
 		detachedCriteria.add(Restrictions.eq("project.id", projectId));
+		if(filteredSatuses.length>0)
 		detachedCriteria.add(Restrictions.in("status", filteredSatuses));
+		if(filteredseverities.length>0)
 		detachedCriteria.add(Restrictions.in("severity", filteredseverities));
 		detachedCriteria.addOrder(Order.asc("status"));
 		detachedCriteria.addOrder(Order.asc("severity"));		

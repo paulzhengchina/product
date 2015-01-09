@@ -21,10 +21,10 @@ public class AdminAction extends BaseAction {
 		sendEmailService.sendWithHtmlContent("paulzheng@antkanban.com", getApplicationRootPath());
 
 		
-//		for(UserTo user : allRegistedUsers)
-//		{
-//			sendEmailService.sender(user.getEmail(), "test", "Test");
-//		}
+		for(UserTo user : allRegistedUsers)
+		{
+			sendEmailService.sender(user.getEmail(), "test", "Test");
+		}
 		return SUCCESS;
 	}
 

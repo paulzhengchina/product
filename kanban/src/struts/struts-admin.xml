@@ -15,7 +15,6 @@
 		     <result name="success">/WEB-INF/page/admin/console.jsp</result>		     
 		</action>
 	    
-	    
-	    		
+	    	    		
 	</package>
 </struts>	
