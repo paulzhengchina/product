@@ -17,14 +17,14 @@ public class AdminAction extends BaseAction {
 	
 	public String sendUpdateInfo()
 	{
-		List<UserTo> allRegistedUsers= userService.getAllUsers();
-		sendEmailService.sendWithHtmlContent("paulzheng@antkanban.com", getApplicationRootPath());
+	//	List<UserTo> allRegistedUsers= userService.getAllUsers();
+		sendEmailService.sendWithHtmlContent("zheng.renhua@163.com", getApplicationRootPath());
 
 		
-		for(UserTo user : allRegistedUsers)
-		{
-			sendEmailService.sender(user.getEmail(), "test", "Test");
-		}
+		//for(UserTo user : allRegistedUsers)
+		//{
+		//	sendEmailService.sender(user.getEmail(), "test", "Test");
+		//}
 		return SUCCESS;
 	}
 

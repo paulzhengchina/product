@@ -111,7 +111,7 @@ public class SimpleMailSender {
 	      mailMessage.setSentDate(new Date());   
 	   
 	      // 将MiniMultipart对象设置为邮件内容   
-	      mailMessage.setContent(prepareMailContent(rootpath));
+	      mailMessage.setContent("<div style='background:green'>test</div>","text/html;charset=gb2312");
 	      mailMessage.saveChanges();
 	      // 发送邮件   
 	      Transport transport = sendMailSession.getTransport();// 发送用户名、密码连接到指定的 smtp 服务器  
@@ -126,7 +126,7 @@ public class SimpleMailSender {
 	    }  
 	    
 	public MimeMultipart prepareMailContent(String rootpath){
-		MimeMultipart allPart = new MimeMultipart("related");
+		MimeMultipart allPart = new MimeMultipart("mixed");
 		try {
 			allPart.addBodyPart(prepareLogo(rootpath));
 			allPart.addBodyPart(prepareTextContent(rootpath+"/WEB-INF/classes/com/createidea/scrumfriend/utils/email/content/template/update.html"));

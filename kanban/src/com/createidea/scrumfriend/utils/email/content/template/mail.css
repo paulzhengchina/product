@@ -10,7 +10,7 @@ html,body {
 
 .head{
 	height:100px;
-	background:url(http://localhost:8080/ant/images/banner.jpg) no-repeat;
+	background:url(http://www.antkanban.com/images/banner.jpg) no-repeat;
 	border:1px solid green;
 	width:inherit;
 }
