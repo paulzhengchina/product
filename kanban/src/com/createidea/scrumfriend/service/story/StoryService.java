@@ -17,16 +17,10 @@ public interface StoryService {
 
 	public List<StoryTo> getActiveStoriesForProject(String projectId);
 
-	public float calculateTotalPointsForProject(ProjectTo project);
-
-	public float calculateCompletedPointForProject(ProjectTo project);
-
-	public float calculateRemainingPointForProject(ProjectTo project);
-
+	public float calculateStoryPoints(ProjectTo project,int status,int priority);
+	
 	public List<StoryTo> getStoriesForSprintByStatus(String sprintId, int status);
 	
-	public List<StoryTo> getStoriesOfProjectByPager(String projectId,int page,int rp, String qtype, String sortname, String sortorder);
-
 	public List getStoriesForProjectBySearchWithName(String projectId,
 			String query);
 	

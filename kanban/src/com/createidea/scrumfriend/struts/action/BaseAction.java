@@ -10,6 +10,7 @@ import java.io.OutputStream;
 import java.lang.reflect.Method;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 
@@ -29,10 +30,43 @@ public class BaseAction extends ActionSupport implements MethodInterceptor{
 	/*
 	 * add some usefully method here to facility the development
 	 */
-	
+	 
 	 static Logger logger = Logger.getLogger(BaseAction.class.getName());
 	// public int currentPage; 
 	// public Pager pager;
+	protected static final SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+	protected static final String STORY_EFFORT_ALL="allStoryEffort";
+	
+	protected static final String STORY_EFFORT_MUST_AND_COMPLETED="completedStoryEffortOfMust";
+	protected static final String STORY_EFFORT_MUST_AND_NOTCOMPLETED="notCompletedStoryEffortOfMust";
+	
+	protected static final String STORY_EFFORT_SHOULD_AND_COMPLETED="completedStoryEffortOfShould";
+	protected static final String STORY_EFFORT_SHOULD_AND_NOTCOMPLETED="notCompletedStoryEffortOfShould";
+	
+	protected static final String STORY_EFFORT_CAN_AND_COMPLETED="completedStoryEffortOfCan";
+	protected static final String STORY_EFFORT_CAN_AND_NOTCOMPLETED="notCompletedStoryEffortOfCan";
+	
+	protected static final String STORY_EFFORT_CANNOT_AND_COMPLETED="completedStoryEffortOfCannot";
+	protected static final String STORY_EFFORT_CANNOT_AND_NOTCOMPLETED="notCompletedStoryEffortOfCannot";
+	
+	protected static final String STORY_EFFORT_COMPLETED="storyEffortOfCompleted";
+	protected static final String STORY_EFFORT_NOTCOMPLETED="storyEffortOfNotCompleted";
+	/*
+	 * story status
+	 */
+	protected static final int STORY_STATUS_NEW=0;	
+	protected static final int STORY_STATUS_COMPLETED=1;
+	protected static final int STORY_STATUS_REMOVED=1;
+	/*
+	 * story Priority
+	 */
+	protected static final int STORY_PRIORITY_MUST=0;	
+	protected static final int STORY_PRIORITY_SHOULD=1;
+	protected static final int STORY_PRIORITY_CAN=2;
+	protected static final int STORY_PRIORITY_CANNOT=3;
+	
+	
+		
 	 public final static String USER="CRNTUSER";
      private static int BUFFER_SIZE=16*1024;
 	 

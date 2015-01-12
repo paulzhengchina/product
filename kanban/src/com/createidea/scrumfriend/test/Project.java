@@ -98,16 +98,16 @@ public class Project extends TestCase{
 		
 	public StatisticsProjectTo setUpStatisticsProject(SprintTo sprint){
 		ProjectTo project=sprint.getProject();
-		float totalStoryPoint=storyService.calculateTotalPointsForProject(project);
-		float completedStoryPoint=storyService.calculateCompletedPointForProject(project);
-		float remainingStoryPoint=storyService.calculateRemainingPointForProject(project);
+	//	float totalStoryPoint=storyService.calculateTotalPointsForProject(project);
+	//	float completedStoryPoint=storyService.calculateCompletedPointForProject(project);
+	//	float remainingStoryPoint=storyService.calculateRemainingPointForProject(project);
 		StatisticsProjectTo statistics=new StatisticsProjectTo();
 		statistics.setDate(sprint.getEndTime());
 		statistics.setProject(sprint.getProject());
 		//statistics.setSprintSerial(sprint.getSerial());
-		statistics.setCompletedStoryPoint(completedStoryPoint);
-		statistics.setRemainingStoryPoint(remainingStoryPoint);
-		statistics.setTotalStoryPoint(totalStoryPoint);
+	//	statistics.setCompletedStoryPoint(completedStoryPoint);
+	//	statistics.setRemainingStoryPoint(remainingStoryPoint);
+	//	statistics.setTotalStoryPoint(totalStoryPoint);
 		return statistics;
 	}
 	

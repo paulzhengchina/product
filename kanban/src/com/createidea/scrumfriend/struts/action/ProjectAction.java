@@ -20,7 +20,8 @@ import com.createidea.scrumfriend.to.StoryTo;
 import com.createidea.scrumfriend.to.UserTo;
 
 public class ProjectAction extends BaseAction {
-	private static final SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+
+	
 	private ProjectService projectService;
 	private ProjectTo project;
 	private List<ProjectTo> projects;
@@ -39,7 +40,7 @@ public class ProjectAction extends BaseAction {
 	private String userEmail;
 	private List<SprintTo> sprintsOfProject;
 	private SprintService sprintService;
-	private Map projectStatus =new HashMap<String,Integer>();
+	private Map<String,Float> storySummray =new HashMap<String,Float>();
 	private StoryService storyService;
 	
 
@@ -81,8 +82,7 @@ public class ProjectAction extends BaseAction {
     	return SUCCESS;
     }
     
-    public String setUsersOfProject(){
-    	projectId=projectId; 	
+    public String setUsersOfProject(){	
     	usersOfProject=new ArrayList<UserTo>(projectService.getProjectById(projectId).getUsers());
     	return SUCCESS;
     }
@@ -105,9 +105,26 @@ public class ProjectAction extends BaseAction {
     public String viewProject(){
     	project = projectService.getProjectById(projectId);
     	sprintsOfProject=sprintService.getSprintsForProject(projectId);
-    	projectStatus.put("allStoryNumber", 100);
-    	projectStatus.put("completedStoryNumber", 20);
+    	setupSummaryOfStory();
     	return SUCCESS;
+    }
+    
+    private void setupSummaryOfStory(){
+    	storySummray.put(STORY_EFFORT_MUST_AND_COMPLETED,storyService.calculateStoryPoints(project,STORY_STATUS_COMPLETED, STORY_PRIORITY_MUST));
+    	
+    	storySummray.put(STORY_EFFORT_MUST_AND_NOTCOMPLETED,storyService.calculateStoryPoints(project,STORY_STATUS_NEW, STORY_PRIORITY_MUST));
+    	
+    	storySummray.put(STORY_EFFORT_SHOULD_AND_COMPLETED,storyService.calculateStoryPoints(project,STORY_STATUS_COMPLETED, STORY_PRIORITY_SHOULD));
+    	
+    	storySummray.put(STORY_EFFORT_SHOULD_AND_NOTCOMPLETED,storyService.calculateStoryPoints(project,STORY_STATUS_NEW, STORY_PRIORITY_SHOULD));
+    	
+    	storySummray.put(STORY_EFFORT_CAN_AND_COMPLETED,storyService.calculateStoryPoints(project,STORY_STATUS_COMPLETED, STORY_PRIORITY_CAN));
+    	
+    	storySummray.put(STORY_EFFORT_CAN_AND_NOTCOMPLETED,storyService.calculateStoryPoints(project,STORY_STATUS_NEW, STORY_PRIORITY_CAN));
+    	
+    	storySummray.put(STORY_EFFORT_CANNOT_AND_COMPLETED,storyService.calculateStoryPoints(project,STORY_STATUS_COMPLETED, STORY_PRIORITY_CAN));
+    	
+    	storySummray.put(STORY_EFFORT_CANNOT_AND_NOTCOMPLETED,storyService.calculateStoryPoints(project,STORY_STATUS_NEW, STORY_PRIORITY_CANNOT));
     }
     
     public String changeProjectLogo(){
@@ -268,12 +285,13 @@ public class ProjectAction extends BaseAction {
 		this.sprintService = sprintService;
 	}
 
-	public Map getProjectStatus() {
-		return projectStatus;
+	
+	public Map<String, Float> getStorySummray() {
+		return storySummray;
 	}
 
-	public void setProjectStatus(Map projectStatus) {
-		this.projectStatus = projectStatus;
+	public void setStorySummray(Map<String, Float> storySummray) {
+		this.storySummray = storySummray;
 	}
 
 	public StoryService getStoryService() {

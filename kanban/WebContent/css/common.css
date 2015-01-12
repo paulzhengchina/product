@@ -540,7 +540,7 @@ ol li{
 }
 
 .project_overview table{
-	width:643px;
+	width:550px;
 	background:#CAE1DA;
 	padding-right:5px;
 	border-spacing:0;
@@ -553,7 +553,7 @@ ol li{
 	font-size:30px;
 	color:#222222;
 	font-family:Microsoft YaHei;
-	width:170px;
+	width:140px;
 	text-align:center;
 }
 
@@ -567,7 +567,7 @@ ol li{
 
 .project_overview table .even_row{
 	background:white;
-	height:52px;
+	
 }
 
 .project_overview table .odd_row{
@@ -576,7 +576,6 @@ ol li{
 
 .project_overview table .empty{
 	background:#B0CDC4;
-	width:170px;
 }
 
 .project_overview table .name_logo{
@@ -598,18 +597,55 @@ ol li{
 }
 
 .project_overview table .second_col{
-	padding-left:36px;
-	width:160px;
+	padding-left:26px;
+	width:140px;
 }
 
 .project_overview .member table tr td .delete_member {
 	visibility: hidden;
 }
 
+.project_overview .story_summary{
+    height:418px;
+	float:left;
+	margin-left:10px;
+	width:400px;
+}
+
+table.story{
+	background:none;
+	height:300px;
+	width:380px;
+	border-spacing:1px;
+	
+}
+
+table.story caption{
+	margin-bottom:5px;
+}
+
+table.story th{
+	width:80px;
+	background:#69ab9c;
+	text-align:center;
+	font-size:16px;
+}
+
+table.story tr{
+	height:50px;
+	margin-top:2px;
+}
+
+table.story td{
+	background:#cae1da;
+	font-size:14px;
+	padding:5px;
+}
+
 .project_overview .project_burndown{
     height:418px;
 	float:left;
-	width:44%;
+	margin-left:10px;
 }
 
 .project_overview .project_burndown h1{
@@ -619,6 +655,18 @@ ol li{
 #upload_image{
 	margin-top:10px;
 }
+
+.summary{
+	width:100%;
+	margin-top:20px;
+	border:1px solid #CAE1DA;
+	height:418px;
+}
+
+.summary .table_name{
+	height:52px;
+}
+
 .member_overview{
 	width:100%;
 	margin-top:20px;
@@ -628,7 +676,7 @@ ol li{
 }
 
 .member_overview .member_list{
-	width:643px;
+	width:550px;
 	float:left;
 }
 
@@ -672,7 +720,7 @@ ol li{
 .member_overview .velocity{
     float:left;
     height:418px;
-    width:44%;
+    margin-left:10px;
 }
 
 .member_overview .velocity h1{

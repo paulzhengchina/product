@@ -68,40 +68,11 @@ public class StoryServiceImpl implements StoryService {
 		 
 	}
 
-	@Override
-	public float calculateTotalPointsForProject(ProjectTo project) {
 	
-		return storyDao.calculateTotalPointsForProject(project);
-	}
-
-	@Override
-	public float calculateCompletedPointForProject(ProjectTo project) {
-	
-	    return storyDao.calculateCompletedPointForProject(project);
-	}
-
-	@Override
-	public float calculateRemainingPointForProject(ProjectTo project) {
-		return storyDao.calculateRemainingPointForProject(project);
-	}
-
 	@Override
 	public List<StoryTo> getStoriesForSprintByStatus(String sprintId, int status) {
 		// TODO Auto-generated method stub
 		return storyDao.getStoriesForSprintByStatus(sprintId,status);
-	}
-
-	@Override
-	public List<StoryTo> getStoriesOfProjectByPager(String projectId, int page,
-			int rp ,String nameKeyWord, String sortname, String sortorder ) {
-		// TODO Auto-generated method stub
-        if(nameKeyWord!=null && !("".equals(nameKeyWord)))
-           return 	storyDao.getStoriesWithNameByPager(projectId,nameKeyWord,page,rp);       
-        else if (sortname!=null && !("".equals(sortname)))
-           return storyDao.getStoriesWithSortByPager(projectId,nameKeyWord,page,rp,sortname,sortorder);
-        else
- 		   return storyDao.getStoriesOfProjectByPager(projectId,page,rp);
-        
 	}
 
 	@Override
@@ -131,5 +102,14 @@ public class StoryServiceImpl implements StoryService {
 		// TODO Auto-generated method stub
 		return storyDao.getStoriesForKanban(sprintId);
 	}
-	  
+
+	@Override
+	public float calculateStoryPoints(ProjectTo project, int status,int priority) {
+		// TODO Auto-generated method stub
+		return storyDao.calculateStoryPoints(project.getId(), status, priority);
+	}
+
+
+	 
+	
 }

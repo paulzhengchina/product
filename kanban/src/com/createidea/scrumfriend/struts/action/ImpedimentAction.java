@@ -27,6 +27,7 @@ public class ImpedimentAction extends BaseAction {
     
     public String filterImpediments(){
     	impediments=impedimentService.filterImpediments(fileterConditions,projectId);
+    	project=projectService.getProjectById(projectId);
     	return SUCCESS;
     }
     

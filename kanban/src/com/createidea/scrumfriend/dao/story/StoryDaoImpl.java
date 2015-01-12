@@ -153,41 +153,6 @@ public class StoryDaoImpl extends BaseDaoImpl implements  StoryDao {
 	}
 
 	@Override
-	public List<StoryTo> getStoriesOfProjectByPager(String projectId, int page,
-			int rp) {
-		// TODO Auto-generated method stub
-		DetachedCriteria detachedCriteria = DetachedCriteria.forClass(StoryTo.class);
-		detachedCriteria.addOrder(Order.desc("priority"));
-		detachedCriteria.add(Restrictions.eq("project.id", projectId));
-		return this.getHibernateTemplate().findByCriteria(detachedCriteria, (page-1)*rp, rp);
-	}
-
-	@Override
-	public List<StoryTo> getStoriesWithNameByPager(String projectId,String nameKeyWord,
-			int page, int rp) {
-		// TODO Auto-generated method stub
-		DetachedCriteria detachedCriteria = DetachedCriteria.forClass(StoryTo.class);
-		detachedCriteria.add(Restrictions.eq("project.id", projectId));
-		detachedCriteria.add(Restrictions.ilike("name", nameKeyWord, MatchMode.ANYWHERE));
-		return this.getHibernateTemplate().findByCriteria(detachedCriteria, (page-1)*rp, rp);
-	}
-
-	@Override
-	public List<StoryTo> getStoriesWithSortByPager(String projectId,String nameKeyWord,
-			int page, int rp, String sortname, String sortorder) {
-		// TODO Auto-generated method stub
-		DetachedCriteria detachedCriteria = DetachedCriteria.forClass(StoryTo.class);
-		detachedCriteria.add(Restrictions.eq("project.id", projectId));
-		if("desc".equals(sortorder)){
-			detachedCriteria.addOrder(Order.desc(sortname));
-		}
-		else {
-			detachedCriteria.addOrder(Order.asc(sortname));
-		}
-		return this.getHibernateTemplate().findByCriteria(detachedCriteria, (page-1)*rp, rp);
-	}
-
-	@Override
 	public List getStoriesForProjectBySearchWithName(String projectId,
 			String query) {
 		// TODO Auto-generated method stub
@@ -213,6 +178,13 @@ public class StoryDaoImpl extends BaseDaoImpl implements  StoryDao {
 	public float calculateStoriesTotalPointByPriority(int priority,String projectId) {
 		// TODO Auto-generated method st
 		String sqlString="select sum(point) as point from story where status=1 and project_id='"+projectId+"'";
+		return calculateStoryPoint(sqlString);
+	}
+
+	@Override
+	public float calculateStoryPoints(String projectId, int status,int priority) {
+		// TODO Auto-generated method stub
+		String sqlString="select sum(point) as point from story where status='"+status+ "' and project_id='"+projectId+"' and priority='"+priority+"'" ;
 		return calculateStoryPoint(sqlString);
 	}
 

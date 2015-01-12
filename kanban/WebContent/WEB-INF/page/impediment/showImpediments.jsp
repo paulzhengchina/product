@@ -38,7 +38,7 @@
 					<option value="status0" selected="selected">等待</option>
 					<option value="status1" selected="selected">进行中</option>
 					<option value="status2">完成</option>
-					<option value="status2">失败</option>
+					<option value="status3">失败</option>
 				</optgroup>
 			 </select>
 		</div>

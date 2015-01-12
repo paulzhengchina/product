@@ -34,21 +34,14 @@ public interface StoryDao {
 
 	public List<StoryTo> getStoriesForSprintByStatus(String sprintId, int status);
 
-	public List<StoryTo> getStoriesOfProjectByPager(String projectId, int page,
-			int rp);
-
-	public List<StoryTo> getStoriesWithNameByPager(String projectId,String nameKeyWord,
-			int page, int rp);
-
-	public List<StoryTo> getStoriesWithSortByPager(String projectId,String nameKeyWord,
-			int page, int rp, String sortname, String sortorder);
-
 	public List getStoriesForProjectBySearchWithName(String projectId,
 			String query);
 
 	public List<StoryTo> getStoriesForKanban(String sprintId);
 	
 	public float calculateStoriesTotalPointByPriority(int priority,String projectId);
+	
+	public float calculateStoryPoints(String projectId, int status,int priority);
 
 
 }

@@ -232,7 +232,7 @@
 		</div>
 		<div class="project_overview">
 			<div class="general_info">
-				<table class="project_detail">
+				<table>
 					<tr class="odd_row">
 						<td class="table_name">项目简介</td>
 						<td colspan="2"></td>
@@ -313,6 +313,94 @@
 			   <canvas id="velocity_cvs" width="500" height="250">[No canvas support]</canvas>
 			</div>
 		    <div class="addMemeberDialog dialog"/>
+		</div>
+	    </div>
+	    <div class="summary">
+			    <table>
+			       <tr>
+			          <td class="table_name">统计</td>
+					  <td></td>
+			       </tr>
+			       <tr class="even_row members_tr">
+			          <td class="empty"></td>
+					  <td class="story_summary">
+					      <table  class="story">
+					         <caption>需求</caption>
+					         <tr>
+					           <th>
+					            
+					           </th>
+					           <th>
+					                                             未完成
+					           </th>
+					           <th>
+					                                             完成
+					           </th>
+					           <th>
+					                                             合计
+					           </th>
+					         </tr>
+					         <tr>
+					           <td>
+					                                            必须有 
+					           </td>
+					           <td>
+					            <s:property value="storySummray.notCompletedStoryEffortOfMust"/>
+					           </td>
+					           <td>
+					            <s:property value="storySummray.completedStoryEffortOfMust"/>
+					           </td>
+					           <td>
+					           <s:property value="%{storySummray.notCompletedStoryEffortOfMust + storySummray.completedStoryEffortOfMust}"/>
+					           </td>
+					         </tr>
+					         <tr>
+					           <td>
+					                                            应该有 
+					           </td>
+					           <td>
+					             <s:property value="storySummray.notCompletedStoryEffortOfShould"/>
+					           </td>
+					           <td>
+					             <s:property value="storySummray.completedStoryEffortOfShould"/>
+					           </td>
+					           <td>
+					           <s:property value="%{storySummray.notCompletedStoryEffortOfShould + storySummray.completedStoryEffortOfShould}"/>
+					           </td>
+					         </tr>
+					         <tr>
+					           <td>
+					                                           可以有 
+					           </td>
+					           <td>
+					            <s:property value="storySummray.notCompletedStoryEffortOfCan"/>
+					           </td>
+					           <td>
+					            <s:property value="storySummray.completedStoryEffortOfCan"/>
+					           </td>
+					           <td>
+					            <s:property value="%{storySummray.notCompletedStoryEffortOfCan + storySummray.completedStoryEffortOfCan}"/>
+					           </td>
+					         </tr>
+					         <tr>
+					           <td>
+					                                            可以没有 
+					           </td>
+					           <td>
+					            <s:property value="storySummray.notCompletedStoryEffortOfCannot"/>
+					           </td>
+					           <td>
+					            <s:property value="storySummray.completedStoryEffortOfCannot"/>
+					           </td>
+					           <td>
+					            <s:property value="%{storySummray.notCompletedStoryEffortOfCannot + storySummray.completedStoryEffortOfCannot}"/>
+					           </td>
+					         </tr>
+					      </table>                    
+					  </td>
+			       </tr>
+			    </table>
+			
 		</div>
 		
 	</div>
