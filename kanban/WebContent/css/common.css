@@ -1801,7 +1801,7 @@ table.story td{
 .impediment_item .operations {
 	visibility:hidden;
 	position:absolute;
-	top:2px;
+	top:12px;
 	right:2px;
 }
 
@@ -1829,6 +1829,7 @@ table.story td{
 	width:506px;
 	float:left;
 	margin-left:15px;
+	margin-top:52px;
 }
 
 .impediment_detail img{

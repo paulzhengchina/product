@@ -413,7 +413,7 @@
 			</s:if>
 			<s:else>
 				<a href='<s:url value="/project/viewProject.action"><s:param name="projectId" value="%{projectId}"/></s:url>'>
-				   <img src='${ pageContext.request.contextPath }/<s:property  value="%{project.logo.path}"/>' style="width: 40px; margin: 5px 0px;" title='<s:property  value="%{project.name}"/>' />
+				   <img src='${ pageContext.request.contextPath }/<s:property  value="%{project.logo.path}"/>' style="width: 40px; max-height:40px;margin: 5px 0px;" title='<s:property  value="%{project.name}"/>' />
 				</a>
 			</s:else>
 		</li>
