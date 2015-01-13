@@ -135,11 +135,11 @@ html,body {
 }
 
 .header .project_name{
-	font-size:32px;
+	font-size:26px;
 	color:#444444;
 	float:left;
 	margin-left:220px;
-	margin-top:22px;
+	margin-top:26px;
 }
 
 .header .page_info{

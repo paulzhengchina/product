@@ -91,7 +91,7 @@ public class SprintServiceImpl implements SprintService {
 			if(sprint.getSubSprints()!=null&&sprint.getSubSprints().size()>0)
 				parentSprints.add(sprint);
 			}
-		sprints.remove(parentSprints);
+		sprints.removeAll(parentSprints);
 		if(sprints.size()<=0)
 			return null;
 		
