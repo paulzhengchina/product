@@ -68,7 +68,7 @@ function showToolTipForContent()
 	        at: "center bottom+20",
 	        using: function( position, feedback ) {
 	          $( this ).css( position );
-	          $( this ).css("background","black").css("color","white").css("border-radius","10px").css("box-shadow", "0 0 4px black");	         
+	          $( this ).css("background","black").css("color","white").css("border-radius","10px").css("box-shadow", "0 0 2px black");	         
 	        }
 	      }
 	    });

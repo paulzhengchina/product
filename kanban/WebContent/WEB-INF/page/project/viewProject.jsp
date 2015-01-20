@@ -36,7 +36,7 @@
     border-radius: 10px;
     font: 14px;
     text-transform: uppercase;
-    box-shadow: 0 0 7px black;
+    box-shadow: 0 0 2px black;
     background: black;
   }
   </style>
@@ -57,6 +57,7 @@
 		          }
 		        }
 		      });
+		
 		$(".left_menu_wide li").mouseover(function(){
 			if($(this).parent().attr("id")!="project_logo" && !(typeof $(this).attr("id") === 'undefined') && $(this).attr("id").indexOf("menu_item")>=0){			
 				 var imgPath=$(this).find("img").attr("src");
@@ -79,7 +80,9 @@
 		});
 		
 		createProjectBurnDown();
+		
 		createTeamVelocity();
+		
 		$(".add_member").click(function(){
 			DIALOG = $(".addMemeberDialog");
 			DIALOG.dialog({autoOpen: false, 
@@ -207,6 +210,20 @@
 			}
 		return substringArray;
 	}
+	
+	function substrSprintDates(sprintDates){
+		var substringArray=new Array();
+		if(sprintDates!=null)
+			{
+			for(var i=0;i<sprintDates.length;i++)
+				{
+				substringArray[i]=sprintDates[i].substring(5);
+				}
+			}
+		return substringArray;
+	}
+	
+	
 	function customizeDialog(){
 		$(".ui-dialog-titlebar button").remove();
 		$(".ui-dialog-titlebar").html("<img src='${pageContext.request.contextPath}/images/icon/dialog_close.png'/>");
@@ -269,7 +286,7 @@
 			</div>
 			<div class="project_burndown">
 			   <h1>项目燃尽图</h1>
-			   <canvas id="cvs" width="500" height="250">[No canvas support]</canvas>
+			   <canvas id="cvs" width="600px" height="250px">[No canvas support]</canvas>
 			</div>
 			<div class="clear"/>
 		</div>
@@ -310,7 +327,7 @@
 			</div>
 			<div class="velocity">
 			   <h1>团队生产力</h1>
-			   <canvas id="velocity_cvs" width="500" height="250">[No canvas support]</canvas>
+			   <canvas id="velocity_cvs" width="600" height="250">[No canvas support]</canvas>
 			</div>
 		    <div class="addMemeberDialog dialog"/>
 		</div>
@@ -413,7 +430,7 @@
 			</s:if>
 			<s:else>
 				<a href='<s:url value="/project/viewProject.action"><s:param name="projectId" value="%{projectId}"/></s:url>'>
-				   <img src='${ pageContext.request.contextPath }/<s:property  value="%{project.logo.path}"/>' style="width: 40px; margin: 5px 0px;" title='<s:property  value="%{project.name}"/>' />
+				   <img src='${ pageContext.request.contextPath }/<s:property  value="%{project.logo.path}"/>' style="width: 40px; max-height:40px;margin: 5px 0px;" title='<s:property  value="%{project.name}"/>' />
 				</a>
 			</s:else>
 		</li>

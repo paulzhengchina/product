@@ -28,7 +28,7 @@
 		</action>
 		
 		<action name="deleteStory" class="storyAction" method="deleteStory">
-			<result name="success" type="redirect">/project/viewProject.action?projectId=${projectId}</result>
+			<result name="success" type="redirect">/story/viewStoriesOfProject.action?projectId=${projectId}</result>
 		</action>
 		
 	
