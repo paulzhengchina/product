@@ -27,7 +27,7 @@
 	     <p class="column">负责人</p>
 	     <p class="column_content"><s:property value='impediment.fixedBy.name'/></p>
 	     <p class="column">时间</p>
-	     <p class="column_content"><s:date name="impediment.createdTime" format="yyyy-MM-dd" /> -- <s:date name="impediment.fixedTime" format="yyyy-MM-dd" /></p>
+	     <p class="column_content"><s:date name="impediment.createdTime" format="yyyy/MM/dd" /> -- <s:date name="impediment.fixedTime" format="yyyy/MM/dd" /></p>
 	     <p class="column_content status">
 	        <s:if test="%{impediment.status==2||impediment.status==3}">
 	          <img src="${pageContext.request.contextPath}/images/icon/impediment_final_status_<s:property value='impediment.status'/>.png"/>

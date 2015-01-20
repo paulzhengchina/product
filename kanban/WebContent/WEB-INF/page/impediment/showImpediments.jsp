@@ -214,7 +214,7 @@
 			else if($(this).attr("class").substring(14)=='view'){
 				url="${pageContext.request.contextPath}/impediment/viewImpediment.action?impedimentId="+impedimentId;
 				width="900";
-				height="650";
+				height="620";
 			}
 			DIALOG = $(".impediment_dialog");
 			DIALOG.dialog({autoOpen: false, 

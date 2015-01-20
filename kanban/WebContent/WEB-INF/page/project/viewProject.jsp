@@ -413,6 +413,21 @@
 					            <s:property value="%{storySummray.notCompletedStoryEffortOfCannot + storySummray.completedStoryEffortOfCannot}"/>
 					           </td>
 					         </tr>
+					         <tr>
+					           <td>
+					                                            总计 
+					           </td>
+					           <td>
+					            <s:property value="%{storySummray.notCompletedStoryEffortOfMust + storySummray.notCompletedStoryEffortOfShould + storySummray.notCompletedStoryEffortOfCan + storySummray.notCompletedStoryEffortOfCannot}"/>
+					           </td>
+					           <td>
+					            <s:property value="%{storySummray.completedStoryEffortOfMust + storySummray.completedStoryEffortOfShould + storySummray.completedStoryEffortOfCan + storySummray.completedStoryEffortOfCannot}"/>
+					           </td>
+					           <td>
+					            <s:property value="%{storySummray.notCompletedStoryEffortOfMust + storySummray.notCompletedStoryEffortOfShould + storySummray.notCompletedStoryEffortOfCan + storySummray.notCompletedStoryEffortOfCannot + 
+					                                storySummray.completedStoryEffortOfMust + storySummray.completedStoryEffortOfShould + storySummray.completedStoryEffortOfCan + storySummray.completedStoryEffortOfCannot}"/>
+					           </td>
+					         </tr>
 					      </table>                    
 					  </td>
 			       </tr>

@@ -627,8 +627,8 @@ table.story caption{
 table.story th{
 	width:80px;
 	background:#69ab9c;
-	text-align:center;
 	font-size:16px;
+	padding-left:4px;
 }
 
 table.story tr{
@@ -945,7 +945,7 @@ table.story td{
 	font-size:14px;
 	line-height:30px;
 	text-align:left;
-	border-radius:3px;
+	border-radius:2px;
 }
 
 .story_card .operations{
@@ -1233,11 +1233,9 @@ table.story td{
 	margin-right:60px;
 	margin-top:20px;
 	float:left;
-	border:1px solid #e5e5e5;
 	padding:20px;
-	border-radius: 3px;
 	position:relative;
-	box-shadow: 0px 0px 2px rgba(0,0,0,0.2) inset;
+	box-shadow: 0px 0px 4px rgba(0,0,0,0.2) inset;
 	
 }
 
@@ -1687,7 +1685,7 @@ table.story td{
 	font-family:Microsoft YaHei;
 	position:relative;
 	background:#f7f7ff;
-	border-radius:3px;
+	box-shadow:0 0 2px rgba(0,0,0,0.2) inset;
 }
 
 .impediment_item .serverity_time_title{
@@ -1805,9 +1803,9 @@ table.story td{
 }
 
 .impediment_detail{
-	border: 1px solid #e5e5e5;
+	box-shadow:0 0 2px rgba(0,0,0,0.2);
 	padding:30px;
-	height:400px;
+	height:430px;
 	margin-top:30px;
 	background:#f6f6f6;
 }
