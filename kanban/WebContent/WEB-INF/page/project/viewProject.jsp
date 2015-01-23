@@ -27,6 +27,8 @@
 	src="${pageContext.request.contextPath}/js/rgraph/RGraph.line.js"></script>
 <script type="text/javascript"
 	src="${pageContext.request.contextPath}/js/rgraph/RGraph.common.key.js"></script>
+<script type="text/javascript"
+	src="${pageContext.request.contextPath}/js/rgraph/RGraph.pie.js"></script>
 
 <style>
   
@@ -82,6 +84,8 @@
 		createProjectBurnDown();
 		
 		createTeamVelocity();
+		
+		storiesSummaryPie();
 		
 		$(".add_member").click(function(){
 			DIALOG = $(".addMemeberDialog");
@@ -223,6 +227,95 @@
 		return substringArray;
 	}
 	
+	function storiesSummaryPie(){
+		var datas=new Array();
+		var labels=new Array();
+		var colors=new Array();
+		var explodeds=new Array();
+		prepareDatasForStoriesSummaryPie(datas,labels,colors,explodeds);
+		
+		 var pie = new RGraph.Pie('stories_summary_cvs', datas);
+	     pie.Set('chart.labels', labels);
+	     pie.Set('chart.colors',colors);
+	     pie.Set('chart.exploded', explodeds);
+	     pie.Set('chart.tooltips', datas);
+	     pie.Set('chart.radius', 100);
+	     pie.Draw();		
+	}
+	
+	function prepareDatasForStoriesSummaryPie(datas,labels,colors,explodeds){
+		var notCompletedStoryEffortOfMust = parseInt('<s:property value="storySummray.notCompletedStoryEffortOfMust"/>');
+		var notCompletedStoryEffortOfShould = parseInt('<s:property value="storySummray.notCompletedStoryEffortOfShould"/>');
+		var notCompletedStoryEffortOfCan = parseInt('<s:property value="storySummray.notCompletedStoryEffortOfCan"/>');
+		var notCompletedStoryEffortOfCannot = parseInt('<s:property value="storySummray.notCompletedStoryEffortOfCannot"/>');
+		var completedStoryEffortOfMust = parseInt('<s:property value="storySummray.completedStoryEffortOfMust"/>');
+		var completedStoryEffortOfShould = parseInt('<s:property value="storySummray.completedStoryEffortOfShould"/>');
+		var completedStoryEffortOfCan = parseInt('<s:property value="storySummray.completedStoryEffortOfCan"/>');
+		var completedStoryEffortOfCannot = parseInt('<s:property value="storySummray.completedStoryEffortOfCannot"/>');
+		
+		
+        var i=0;
+		if(notCompletedStoryEffortOfMust!=0){
+			datas[i]=notCompletedStoryEffortOfMust;
+			labels[i]='未完成-必须';
+			explodeds[i]=6;
+			colors[i]='#ca5c5d';
+			i++;
+		}
+		
+		if(notCompletedStoryEffortOfShould!=0){
+			datas[i]=notCompletedStoryEffortOfShould;
+			labels[i]='未完成-应该';
+			explodeds[i]=6;
+			colors[i]='#9677b3';
+			i++;
+		}
+		
+		if(notCompletedStoryEffortOfCan!=0){
+			datas[i]=notCompletedStoryEffortOfCan;
+			labels[i]='未完成-可以有';
+			explodeds[i]=6;
+			colors[i]='#6990c9';
+			i++;
+		}
+		
+		if(notCompletedStoryEffortOfCannot!=0){
+			datas[i]=notCompletedStoryEffortOfCannot;
+			labels[i]='未完成-可没有';
+			explodeds[i]=6;
+			colors[i]='#63b8a1';
+			i++;
+		}
+		
+		if(completedStoryEffortOfMust!=0){
+			datas[i]=completedStoryEffortOfMust;
+			labels[i]='完成-必须';
+			colors[i]='#ca5c5d';
+			i++;
+		}
+		
+		if(completedStoryEffortOfShould!=0){
+			datas[i]=completedStoryEffortOfShould;
+			labels[i]='完成-应该';
+			colors[i]='#9677b3';
+			i++;
+		}
+		
+		if(completedStoryEffortOfCan!=0){
+			datas[i]=completedStoryEffortOfCan;
+			labels[i]='完成-可以有';
+			colors[i]='#6990c9';
+			i++;
+		}
+		
+		if(completedStoryEffortOfCannot!=0){
+			datas[i]=completedStoryEffortOfCannot;
+			labels[i]='完成-可没有';
+			colors[i]='#63b8a1';
+		}
+		
+		
+	}
 	
 	function customizeDialog(){
 		$(".ui-dialog-titlebar button").remove();
@@ -341,98 +434,9 @@
 			       <tr class="even_row members_tr">
 			          <td class="empty"></td>
 					  <td class="story_summary">
-					      <table  class="story">
-					         <caption>需求</caption>
-					         <tr>
-					           <th>
-					            
-					           </th>
-					           <th>
-					                                             未完成
-					           </th>
-					           <th>
-					                                             完成
-					           </th>
-					           <th>
-					                                             合计
-					           </th>
-					         </tr>
-					         <tr>
-					           <td>
-					                                            必须有 
-					           </td>
-					           <td>
-					            <s:property value="storySummray.notCompletedStoryEffortOfMust"/>
-					           </td>
-					           <td>
-					            <s:property value="storySummray.completedStoryEffortOfMust"/>
-					           </td>
-					           <td>
-					           <s:property value="%{storySummray.notCompletedStoryEffortOfMust + storySummray.completedStoryEffortOfMust}"/>
-					           </td>
-					         </tr>
-					         <tr>
-					           <td>
-					                                            应该有 
-					           </td>
-					           <td>
-					             <s:property value="storySummray.notCompletedStoryEffortOfShould"/>
-					           </td>
-					           <td>
-					             <s:property value="storySummray.completedStoryEffortOfShould"/>
-					           </td>
-					           <td>
-					           <s:property value="%{storySummray.notCompletedStoryEffortOfShould + storySummray.completedStoryEffortOfShould}"/>
-					           </td>
-					         </tr>
-					         <tr>
-					           <td>
-					                                           可以有 
-					           </td>
-					           <td>
-					            <s:property value="storySummray.notCompletedStoryEffortOfCan"/>
-					           </td>
-					           <td>
-					            <s:property value="storySummray.completedStoryEffortOfCan"/>
-					           </td>
-					           <td>
-					            <s:property value="%{storySummray.notCompletedStoryEffortOfCan + storySummray.completedStoryEffortOfCan}"/>
-					           </td>
-					         </tr>
-					         <tr>
-					           <td>
-					                                            可以没有 
-					           </td>
-					           <td>
-					            <s:property value="storySummray.notCompletedStoryEffortOfCannot"/>
-					           </td>
-					           <td>
-					            <s:property value="storySummray.completedStoryEffortOfCannot"/>
-					           </td>
-					           <td>
-					            <s:property value="%{storySummray.notCompletedStoryEffortOfCannot + storySummray.completedStoryEffortOfCannot}"/>
-					           </td>
-					         </tr>
-					         <tr>
-					           <td>
-					                                            总计 
-					           </td>
-					           <td>
-					            <s:property value="%{storySummray.notCompletedStoryEffortOfMust + storySummray.notCompletedStoryEffortOfShould + storySummray.notCompletedStoryEffortOfCan + storySummray.notCompletedStoryEffortOfCannot}"/>
-					           </td>
-					           <td>
-					            <s:property value="%{storySummray.completedStoryEffortOfMust + storySummray.completedStoryEffortOfShould + storySummray.completedStoryEffortOfCan + storySummray.completedStoryEffortOfCannot}"/>
-					           </td>
-					           <td>
-					            <s:property value="%{storySummray.notCompletedStoryEffortOfMust + storySummray.notCompletedStoryEffortOfShould + storySummray.notCompletedStoryEffortOfCan + storySummray.notCompletedStoryEffortOfCannot + 
-					                                storySummray.completedStoryEffortOfMust + storySummray.completedStoryEffortOfShould + storySummray.completedStoryEffortOfCan + storySummray.completedStoryEffortOfCannot}"/>
-					           </td>
-					         </tr>
-					      </table>                    
+						   <h1>项目燃尽图</h1>
+				           <canvas id="stories_summary_cvs" width="450" height="300">[No canvas support]</canvas>
 					  </td>
-			       </tr>
-			    </table>
-			
 		</div>
 		
 	</div>
