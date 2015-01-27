@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.createidea.scrumfriend.service.attachment.AttachmentService;
+import com.createidea.scrumfriend.service.impediment.ImpedimentService;
 import com.createidea.scrumfriend.service.project.ProjectService;
 import com.createidea.scrumfriend.service.sprint.SprintService;
 import com.createidea.scrumfriend.service.story.StoryService;
@@ -28,7 +29,6 @@ public class ProjectAction extends BaseAction {
 	private UserService userService;
 	private String projectId;
 	private String userId;
-    private String string;
     private String attachmentId;
 	private File image;
 	private String imageContentType;
@@ -42,15 +42,9 @@ public class ProjectAction extends BaseAction {
 	private SprintService sprintService;
 	private Map<String,Float> storySummray =new HashMap<String,Float>();
 	private StoryService storyService;
+	private int[][] impedimentsSummary= new int[4][4];
+	private ImpedimentService impedimentService;
 	
-
-	public String getString() {
-		return string;
-	}
-
-	public void setString(String string) {
-		this.string = string;
-	}
 
 	public List<ProjectTo> getProjects() {
 		return projects;
@@ -106,6 +100,7 @@ public class ProjectAction extends BaseAction {
     	project = projectService.getProjectById(projectId);
     	sprintsOfProject=sprintService.getSprintsForProject(projectId);
     	setupSummaryOfStory();
+    	impedimentsSummary=impedimentService.setupSummaryOfImpediment(projectId);
     	return SUCCESS;
     }
     
@@ -300,6 +295,22 @@ public class ProjectAction extends BaseAction {
 
 	public void setStoryService(StoryService storyService) {
 		this.storyService = storyService;
+	}
+
+	public int[][] getImpedimentsSummary() {
+		return impedimentsSummary;
+	}
+
+	public void setImpedimentsSummary(int[][] impedimentsSummary) {
+		this.impedimentsSummary = impedimentsSummary;
+	}
+
+	public ImpedimentService getImpedimentService() {
+		return impedimentService;
+	}
+
+	public void setImpedimentService(ImpedimentService impedimentService) {
+		this.impedimentService = impedimentService;
 	}
 	
 	

@@ -20,4 +20,6 @@ public interface ImpedimentService {
 
 	public List<ImpedimentTo> filterImpediments(String filterConditions,String projectId);
 
+	public int[][] setupSummaryOfImpediment(String projectId);
+
 }

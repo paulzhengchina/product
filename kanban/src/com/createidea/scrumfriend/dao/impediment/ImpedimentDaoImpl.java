@@ -1,11 +1,17 @@
 package com.createidea.scrumfriend.dao.impediment;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.hibernate.Hibernate;
+import org.hibernate.HibernateException;
+import org.hibernate.SQLQuery;
+import org.hibernate.Session;
 import org.hibernate.criterion.DetachedCriteria;
 import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
+import org.springframework.orm.hibernate3.HibernateCallback;
 
 import com.createidea.scrumfriend.dao.BaseDaoImpl;
 import com.createidea.scrumfriend.to.ImpedimentTo;
@@ -70,6 +76,18 @@ public class ImpedimentDaoImpl extends BaseDaoImpl implements ImpedimentDao {
 		detachedCriteria.addOrder(Order.asc("severity"));		
 		return this.getHibernateTemplate().findByCriteria(detachedCriteria);
 	}
+
+	@Override
+	public int getImpedimentsCountByStatusAndSevrity(String projectId,int status, int severity) {
+		// TODO Auto-generated method stub
+		DetachedCriteria detachedCriteria = DetachedCriteria.forClass(ImpedimentTo.class);
+		detachedCriteria.add(Restrictions.eq("project.id", projectId));
+		detachedCriteria.add(Restrictions.eq("status", status));
+		detachedCriteria.add(Restrictions.eq("severity", severity));
+		return this.getHibernateTemplate().findByCriteria(detachedCriteria).size();
+	}
+	
+	
 
 	
 }

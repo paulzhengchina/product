@@ -29,19 +29,9 @@
 	src="${pageContext.request.contextPath}/js/rgraph/RGraph.common.key.js"></script>
 <script type="text/javascript"
 	src="${pageContext.request.contextPath}/js/rgraph/RGraph.pie.js"></script>
+<script type="text/javascript"
+	src="${pageContext.request.contextPath}/js/rgraph/RGraph.bar.js"></script>
 
-<style>
-  
-  .ui-tooltip {
-    padding: 8px;
-    color: white;
-    border-radius: 10px;
-    font: 14px;
-    text-transform: uppercase;
-    box-shadow: 0 0 2px black;
-    background: black;
-  }
-  </style>
 <script>
 	$(document).ready(function() {
 		
@@ -86,6 +76,8 @@
 		createTeamVelocity();
 		
 		storiesSummaryPie();
+		
+		impedimentsSummary();
 		
 		$(".add_member").click(function(){
 			DIALOG = $(".addMemeberDialog");
@@ -232,15 +224,20 @@
 		var labels=new Array();
 		var colors=new Array();
 		var explodeds=new Array();
+		
 		prepareDatasForStoriesSummaryPie(datas,labels,colors,explodeds);
 		
 		 var pie = new RGraph.Pie('stories_summary_cvs', datas);
 	     pie.Set('chart.labels', labels);
 	     pie.Set('chart.colors',colors);
 	     pie.Set('chart.exploded', explodeds);
-	     pie.Set('chart.tooltips', datas);
 	     pie.Set('chart.radius', 100);
 	     pie.Draw();		
+	}
+	
+
+	Number.prototype.toPercent = function(){
+	  return (Math.round(this * 10000)/100).toFixed(2) + '%';
 	}
 	
 	function prepareDatasForStoriesSummaryPie(datas,labels,colors,explodeds){
@@ -253,68 +250,82 @@
 		var completedStoryEffortOfCan = parseInt('<s:property value="storySummray.completedStoryEffortOfCan"/>');
 		var completedStoryEffortOfCannot = parseInt('<s:property value="storySummray.completedStoryEffortOfCannot"/>');
 		
+		var total=notCompletedStoryEffortOfMust+notCompletedStoryEffortOfShould+notCompletedStoryEffortOfCan+notCompletedStoryEffortOfCannot
+		           +completedStoryEffortOfMust+completedStoryEffortOfShould+completedStoryEffortOfCan+completedStoryEffortOfCannot;
+		
 		
         var i=0;
 		if(notCompletedStoryEffortOfMust!=0){
 			datas[i]=notCompletedStoryEffortOfMust;
-			labels[i]='未完成-必须';
-			explodeds[i]=6;
+			labels[i]=notCompletedStoryEffortOfMust+'/'+(notCompletedStoryEffortOfMust/total).toPercent();
+			explodeds[i]=5;
 			colors[i]='#ca5c5d';
 			i++;
 		}
 		
 		if(notCompletedStoryEffortOfShould!=0){
 			datas[i]=notCompletedStoryEffortOfShould;
-			labels[i]='未完成-应该';
-			explodeds[i]=6;
+			labels[i]=notCompletedStoryEffortOfShould+'/'+(notCompletedStoryEffortOfShould/total).toPercent();
+			explodeds[i]=5;
 			colors[i]='#9677b3';
 			i++;
 		}
 		
 		if(notCompletedStoryEffortOfCan!=0){
 			datas[i]=notCompletedStoryEffortOfCan;
-			labels[i]='未完成-可以有';
-			explodeds[i]=6;
+			labels[i]=notCompletedStoryEffortOfCan+'/'+(notCompletedStoryEffortOfCan/total).toPercent();
+			explodeds[i]=5;
 			colors[i]='#6990c9';
 			i++;
 		}
 		
 		if(notCompletedStoryEffortOfCannot!=0){
 			datas[i]=notCompletedStoryEffortOfCannot;
-			labels[i]='未完成-可没有';
-			explodeds[i]=6;
+			labels[i]=notCompletedStoryEffortOfMust+'/'+(notCompletedStoryEffortOfMust/total).toPercent();
+			explodeds[i]=5;
 			colors[i]='#63b8a1';
 			i++;
 		}
 		
 		if(completedStoryEffortOfMust!=0){
 			datas[i]=completedStoryEffortOfMust;
-			labels[i]='完成-必须';
+			labels[i]=completedStoryEffortOfMust+'/'+(completedStoryEffortOfMust/total).toPercent();
 			colors[i]='#ca5c5d';
 			i++;
 		}
 		
 		if(completedStoryEffortOfShould!=0){
 			datas[i]=completedStoryEffortOfShould;
-			labels[i]='完成-应该';
+			labels[i]=completedStoryEffortOfShould+'/'+(completedStoryEffortOfShould/total).toPercent();
 			colors[i]='#9677b3';
 			i++;
 		}
 		
 		if(completedStoryEffortOfCan!=0){
 			datas[i]=completedStoryEffortOfCan;
-			labels[i]='完成-可以有';
+			labels[i]=completedStoryEffortOfCan+'/'+(completedStoryEffortOfCan/total).toPercent();
 			colors[i]='#6990c9';
 			i++;
 		}
 		
 		if(completedStoryEffortOfCannot!=0){
 			datas[i]=completedStoryEffortOfCannot;
-			labels[i]='完成-可没有';
+			labels[i]=completedStoryEffortOfCannot+'/'+(completedStoryEffortOfCannot/total).toPercent();
 			colors[i]='#63b8a1';
 		}
 		
 		
+	}
+	
+	function impedimentsSummary(){
+		 var datas = '<s:property value="impedimentsSummary"/>';
+		 alert (datas);
+		 var bar = new RGraph.Bar('impediments_summary_cvs', datas);
+         bar.Set('colors', ['#CC1111', '#11CCCC', '#1111CC']); 
+         bar.Set('labels', ['Bob', 'Jamie', 'Cynthia', 'Peter']);
+         bar.Set('strokestyle', 'transparent');
+         bar.Set('ymax', 150);
+         bar.Draw();
 	}
 	
 	function customizeDialog(){
@@ -434,9 +445,15 @@
 			       <tr class="even_row members_tr">
 			          <td class="empty"></td>
 					  <td class="story_summary">
-						   <h1>项目燃尽图</h1>
-				           <canvas id="stories_summary_cvs" width="450" height="300">[No canvas support]</canvas>
+						   <h1>需求统计</h1>
+				           <canvas id="stories_summary_cvs" width="350" height="300">[No canvas support]</canvas>
 					  </td>
+					 </tr>
+				</table>
+				<div class="impediments_summary">
+				    <h1>障碍统计</h1>
+				    <canvas id="impediments_summary_cvs" width="350" height="300">[No canvas support]</canvas>
+				</div>		
 		</div>
 		
 	</div>

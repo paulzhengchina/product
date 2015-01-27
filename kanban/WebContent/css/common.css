@@ -648,8 +648,10 @@ table.story td{
 	margin-left:10px;
 }
 
-.project_overview .project_burndown h1{
+.project_overview  h1{
 	margin:10px 0;
+	font-size:18px;
+	text-align:center;
 }
 
 #upload_image{
@@ -662,6 +664,16 @@ table.story td{
 	border:1px solid #CAE1DA;
 	height:418px;
 }
+
+.summary table{
+    float:left;	
+}
+
+.impediments_summary{
+	float:left;
+	margin-top:46px;
+}
+
 
 .summary .table_name{
 	height:52px;

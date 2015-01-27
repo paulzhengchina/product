@@ -14,4 +14,6 @@ public interface ImpedimentDao {
 
 	public List<ImpedimentTo> searchImpedimentsByConditions(Integer[] filteredSatuses, Integer[] filteredseverities, String projectId);
 
+	public int getImpedimentsCountByStatusAndSevrity(String projectId,int status, int severity);
+
 }

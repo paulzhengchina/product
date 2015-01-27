@@ -111,8 +111,26 @@ public class ImpedimentServiceImpl implements ImpedimentService {
 		this.impedimentDao = impedimentDao;
 	}
 
+	@Override
+	public int[][] setupSummaryOfImpediment(String projectId) {
+		// TODO Auto-generated method stub
+		int[][] summary= new int[4][4];
+		summary[0]=setupSummaryByStatus(projectId,ImpedimentTo.STATUS_WAITING);
+		summary[1]=setupSummaryByStatus(projectId,ImpedimentTo.STATUS_ONGOING);
+		summary[2]=setupSummaryByStatus(projectId,ImpedimentTo.STATUS_COMPLETED);
+		summary[3]=setupSummaryByStatus(projectId,ImpedimentTo.STATUS_FAILED);
+		return summary;
+	}
+
 	
-	
+	private int[] setupSummaryByStatus(String projectId,int status){
+		int[] summaryOfStatus= new int[4];
+		summaryOfStatus[0]=impedimentDao.getImpedimentsCountByStatusAndSevrity(projectId,status,ImpedimentTo.SEVERITY_EMERGENT);
+		summaryOfStatus[1]=impedimentDao.getImpedimentsCountByStatusAndSevrity(projectId,status,ImpedimentTo.SEVERITY_HIGH);
+		summaryOfStatus[2]=impedimentDao.getImpedimentsCountByStatusAndSevrity(projectId,status,ImpedimentTo.SEVERITY_NORMAL);
+		summaryOfStatus[3]=impedimentDao.getImpedimentsCountByStatusAndSevrity(projectId,status,ImpedimentTo.SEVERITY_LOW);
+		return summaryOfStatus;
+	}
 
 	
 

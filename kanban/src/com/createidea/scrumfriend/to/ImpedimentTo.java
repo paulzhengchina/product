@@ -18,6 +18,16 @@ public class ImpedimentTo {
 	private Integer status; //0:waiting;1:on process;2:fixed;3:failed;4:deleted
 	private ProjectTo project;
 	
+	public static final int SEVERITY_EMERGENT=3;
+	public static final int SEVERITY_HIGH=2;
+	public static final int SEVERITY_NORMAL=1;
+	public static final int SEVERITY_LOW=0;
+	
+	public static final int STATUS_WAITING=0;
+	public static final int STATUS_ONGOING=1;
+	public static final int STATUS_COMPLETED=2;
+	public static final int STATUS_FAILED=3;
+	public static final int STATUS_DELETED=4;
 	
 	public String getId() {
 		return id;
