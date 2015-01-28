@@ -318,14 +318,23 @@
 	}
 	
 	function impedimentsSummary(){
-		 var datas = '<s:property value="impedimentsSummary"/>';
-		 alert (datas);
-		 var bar = new RGraph.Bar('impediments_summary_cvs', datas);
-         bar.Set('colors', ['#CC1111', '#11CCCC', '#1111CC']); 
-         bar.Set('labels', ['Bob', 'Jamie', 'Cynthia', 'Peter']);
-         bar.Set('strokestyle', 'transparent');
-         bar.Set('ymax', 150);
-         bar.Draw();
+		$.ajax({
+			  "url":"${pageContext.request.contextPath }/impediment/getSummaryData.action",
+			  "type":"post",
+			  "data":{projectId:$("#projectId").val()},
+			  "success":function(data,status){
+				    var bar = new RGraph.Bar('impediments_summary_cvs', data.impedimentsSummary);
+		            bar.Set('colors', ['#CC1111', '#11CCCC', '#1111CC']); 
+		            bar.Set('labels.above', true);
+		            bar.Set('labels', ['等待', '解决中', '完成', '失败']);
+		            bar.Set('strokestyle', 'transparent');
+		            bar.Set('ymax', 50);
+		            bar.Draw();
+			},
+			"error":function(xhr,s1,s2){
+				alert('系统出错');
+			}
+		});
 	}
 	
 	function customizeDialog(){
@@ -390,7 +399,7 @@
 			</div>
 			<div class="project_burndown">
 			   <h1>项目燃尽图</h1>
-			   <canvas id="cvs" width="600px" height="250px">[No canvas support]</canvas>
+			   <canvas id="cvs" width="600px" height="300px">[No canvas support]</canvas>
 			</div>
 			<div class="clear"/>
 		</div>
@@ -431,7 +440,7 @@
 			</div>
 			<div class="velocity">
 			   <h1>团队生产力</h1>
-			   <canvas id="velocity_cvs" width="600" height="250">[No canvas support]</canvas>
+			   <canvas id="velocity_cvs" width="600" height="300">[No canvas support]</canvas>
 			</div>
 		    <div class="addMemeberDialog dialog"/>
 		</div>
@@ -447,12 +456,14 @@
 					  <td class="story_summary">
 						   <h1>需求统计</h1>
 				           <canvas id="stories_summary_cvs" width="350" height="300">[No canvas support]</canvas>
+				           <div class="legend"></div>
 					  </td>
 					 </tr>
 				</table>
 				<div class="impediments_summary">
 				    <h1>障碍统计</h1>
-				    <canvas id="impediments_summary_cvs" width="350" height="300">[No canvas support]</canvas>
+				    <canvas id="impediments_summary_cvs" width="600" height="300">[No canvas support]</canvas>
+				    <div class="legend"></div>
 				</div>		
 		</div>
 		

@@ -42,8 +42,7 @@ public class ProjectAction extends BaseAction {
 	private SprintService sprintService;
 	private Map<String,Float> storySummray =new HashMap<String,Float>();
 	private StoryService storyService;
-	private int[][] impedimentsSummary= new int[4][4];
-	private ImpedimentService impedimentService;
+	
 	
 
 	public List<ProjectTo> getProjects() {
@@ -100,7 +99,6 @@ public class ProjectAction extends BaseAction {
     	project = projectService.getProjectById(projectId);
     	sprintsOfProject=sprintService.getSprintsForProject(projectId);
     	setupSummaryOfStory();
-    	impedimentsSummary=impedimentService.setupSummaryOfImpediment(projectId);
     	return SUCCESS;
     }
     
@@ -297,22 +295,6 @@ public class ProjectAction extends BaseAction {
 		this.storyService = storyService;
 	}
 
-	public int[][] getImpedimentsSummary() {
-		return impedimentsSummary;
-	}
-
-	public void setImpedimentsSummary(int[][] impedimentsSummary) {
-		this.impedimentsSummary = impedimentsSummary;
-	}
-
-	public ImpedimentService getImpedimentService() {
-		return impedimentService;
-	}
-
-	public void setImpedimentService(ImpedimentService impedimentService) {
-		this.impedimentService = impedimentService;
-	}
-	
 	
 	
 }

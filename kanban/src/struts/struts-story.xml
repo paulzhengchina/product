@@ -39,7 +39,7 @@
 		<action name="updateStoryStatus" class="storyAction" method="updateStoryStatus">
 			<result  type="json">
 			   <param name="includeProperties">
-			        storyStatus		                                               
+			        storyStatus	                                               
 	           </param>
 			</result>		
 		</action>

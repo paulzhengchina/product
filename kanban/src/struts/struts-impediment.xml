@@ -75,6 +75,13 @@
 		   <result name="input">/index.jsp</result>
 		</action>
 		
+		<action name="getSummaryData" class="impedimentAction" method="getSummaryData">
+			<result  type="json">
+			   <param name="includeProperties">
+			        impedimentsSummary.*		                                               
+	           </param>
+			</result>		
+		</action>
 		
 	</package>
 </struts>	

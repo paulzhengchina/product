@@ -18,6 +18,7 @@ public class ImpedimentAction extends BaseAction {
 	private ProjectService projectService;
 	private ProjectTo project;
 	private String fileterConditions;
+	private int[][] impedimentsSummary= new int[4][4];
     
     public String showImpediments(){
     	impediments=impedimentService.getAllImpediments(projectId);
@@ -98,6 +99,11 @@ public class ImpedimentAction extends BaseAction {
     	projectId=impediment.getProject().getId();
     	return SUCCESS;
     }
+    
+    public String getSummaryData(){
+    	impedimentsSummary=impedimentService.setupSummaryOfImpediment(projectId);
+    	return SUCCESS;
+    }
    /*
     * get and set methods area
     */
@@ -163,6 +169,14 @@ public class ImpedimentAction extends BaseAction {
 
 	public void setFileterConditions(String fileterConditions) {
 		this.fileterConditions = fileterConditions;
+	}
+
+	public int[][] getImpedimentsSummary() {
+		return impedimentsSummary;
+	}
+
+	public void setImpedimentsSummary(int[][] impedimentsSummary) {
+		this.impedimentsSummary = impedimentsSummary;
 	}
     
     

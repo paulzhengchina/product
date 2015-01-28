@@ -21,7 +21,6 @@
 	      <property name="attachmentService" ref="attachmentService" />
 	      <property name="sprintService" ref="sprintService" /> 
 	      <property name="storyService" ref="storyService" /> 
-	      <property name="impedimentService" ref="impedimentService" />    
 	</bean>
 	<bean id="sprintAction" class="com.createidea.scrumfriend.struts.action.SprintAction" scope="prototype" parent="baseAction">
 	      <property name="sprintService" ref="sprintService" />

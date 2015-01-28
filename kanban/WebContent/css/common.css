@@ -643,9 +643,10 @@ table.story td{
 }
 
 .project_overview .project_burndown{
-    height:418px;
+    height:388px;
 	float:left;
 	margin-left:10px;
+	margin-top:30px;
 }
 
 .project_overview  h1{
@@ -669,9 +670,15 @@ table.story td{
     float:left;	
 }
 
+.summary .legend{
+   background:yellow;
+   height:20px;	
+}
+
 .impediments_summary{
 	float:left;
 	margin-top:46px;
+	margin-left:10px;
 }
 
 
@@ -731,8 +738,9 @@ table.story td{
 
 .member_overview .velocity{
     float:left;
-    height:418px;
+    height:388px;
     margin-left:10px;
+    margin-top:30px;
 }
 
 .member_overview .velocity h1{
