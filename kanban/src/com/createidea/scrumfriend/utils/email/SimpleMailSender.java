@@ -125,16 +125,20 @@ public class SimpleMailSender {
 	      return false;   
 	    }  
 	    
-	public MimeMultipart prepareMailContent(String rootpath){
-		MimeMultipart allPart = new MimeMultipart("mixed");
-		try {
-			allPart.addBodyPart(prepareLogo(rootpath));
-			allPart.addBodyPart(prepareTextContent(rootpath+"/WEB-INF/classes/com/createidea/scrumfriend/utils/email/content/template/update.html"));
-		} catch (MessagingException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return allPart;
+	private String getEmailContent(String infoContent){
+		StringBuffer content=new StringBuffer();
+		content.append("<div class='content' style='margin:0 auto;width:600px;height:auto;border:1px solid black'>")
+				    .append("<div class='slogan' style='margin-top:20px;height:150px;border:1px solid black'>")
+				    .append("</div>")
+				    
+				    .append("<div class='info' style='margin-top:20px;height:300px;border:1px solid black'>")
+				      .append(infoContent)
+				    .append("</div>")
+				    
+				    .append("<div class='foot' style='margin-top:20px;height:100px;border:1px solid black'>")
+				    .append("</div>")
+				.append("</div>");
+		return content.toString();
 	}
 	
 	public MimeBodyPart prepareImgs(String imgPath,String imgId)
@@ -151,45 +155,7 @@ public class SimpleMailSender {
 		return jpgBody;
 	}
 	
-	public MimeBodyPart prepareLogo(String rootpath)
-	{
-		return prepareImgs(rootpath+"/WEB-INF/classes/com/createidea/scrumfriend/utils/email/content/template/logo_index.jpg","logo_jpg");
-	}
-	
-	public MimeBodyPart prepareTextContent(String path)
-	{
-		MimeBodyPart textBody = new MimeBodyPart();
-		
-		try {
-			BufferedReader br = new BufferedReader(new FileReader(path)); 
-			StringBuffer buffer = new StringBuffer();
-			String data = br.readLine();//一次读入一行，直到读入null为文件结束  
-			while( data!=null){  
-			      System.out.println(data);  
-			      data = br.readLine(); //接着读下一行  
-			      buffer.append(data);
-			} 			
-			textBody.setContent(buffer.toString(), "text/html;charset=gbk");
-		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (MessagingException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return textBody;
-	}
-	
-	public MimeBodyPart createAttachment(String fileName) throws Exception {
-		MimeBodyPart attachmentPart = new MimeBodyPart();
-		FileDataSource fds = new FileDataSource(fileName);
-		attachmentPart.setDataHandler(new DataHandler(fds));
-		attachmentPart.setFileName(fds.getName());
-		return attachmentPart;
-	}
+
 
 	/**
 	 * 根据传入的邮件正文body和文件路径创建图文并茂的正文部分
