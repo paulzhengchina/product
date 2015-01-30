@@ -17,7 +17,7 @@ import com.createidea.scrumfriend.to.StatisticsProjectTo;
 import com.createidea.scrumfriend.to.StatisticsSprintTo;
 
 public class StatisticsServiceImpl implements StatisticsService {
-	private static final SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+	private static final SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
     private StatisticsDao statisticsDao;
     private StoryDao storyDao;
     private TaskDao taskDao;
@@ -131,7 +131,7 @@ public class StatisticsServiceImpl implements StatisticsService {
 	    	String[] sprints=new String[length];
 		    for(int i=0; i<statistics.size();i++){
 		    	completedPointOfSprints[i]=statistics.get(i).getCompletedStoryPoint();
-		    	sprints[i]=statistics.get(i).getSprint().getName();
+		    	sprints[i]=dateFormat.format(statistics.get(i).getSprint().getEndTime());
 		    }
 		    dataMap.put("completedPointOfSprints", completedPointOfSprints);
 		    dataMap.put("sprints", sprints);

@@ -173,7 +173,7 @@
 			        line.Set('key', ['完成工作量']);
 		            line.Set('key.position', 'gutter');
 		            line.Set('key.interactive', true);
-			        line.Set('chart.labels', substrSprintNames(data.sprintNames) );
+			        line.Set('chart.labels', data.sprintsEndDate);
 			        line.Set('chart.tooltips',changeFloatArrayToStringArray(data.completedPointOfSprint));
 			        line.Set('chart.tickmarks', 'circle');
 			        RGraph.Effects.Line.jQuery.Trace(line);
@@ -328,7 +328,7 @@
 		            bar.Set('labels.above', true);
 		            bar.Set('labels', ['等待', '解决中', '完成', '失败']);
 		            bar.Set('strokestyle', 'transparent');
-		            bar.Set('ymax', 50);
+		            bar.Set('ymax', 30);
 		            bar.Draw();
 			},
 			"error":function(xhr,s1,s2){

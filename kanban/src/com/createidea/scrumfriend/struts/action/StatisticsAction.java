@@ -31,7 +31,7 @@ public class StatisticsAction extends BaseAction {
 	public String getDataForTeamVelocity(){
 		HashMap dateHashMap=(HashMap)statisticsService.getDataForTeamVelocity(projectId);
 		completedPointOfSprint=(float[])dateHashMap.get("completedPointOfSprints");
-		sprintNames=(String[])dateHashMap.get("sprints");
+		sprintsEndDate=(String[])dateHashMap.get("sprints");
 		return SUCCESS;
 	}
 	
