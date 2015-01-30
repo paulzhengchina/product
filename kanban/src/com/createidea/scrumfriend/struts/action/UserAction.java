@@ -20,7 +20,7 @@ public class UserAction extends BaseAction {
 	private boolean ok;
 	private static final String REDIRECT_DEFAULT_PROJECT="redirect_default_project";
 	private static final String REDIRECT_PROJECT_PAGE="redirect_project_page";
-	private String register_result;
+	private String result;
 	private File photo;
 	private String photoFileName;
 	private AttachmentService attachmentService;
@@ -57,13 +57,13 @@ public class UserAction extends BaseAction {
 	}
 	
 	public String registerUser(){
-		register_result=userService.registerUser(email);
+		result=userService.registerUser(email);
 		return SUCCESS;
 		
 	}
 	
 	public String findPassword(){
-		register_result= userService.findPassword(email);
+		result= userService.findPassword(email);
 		return SUCCESS;
 	}
 	public String getDefaultProject(){
@@ -173,12 +173,13 @@ public class UserAction extends BaseAction {
 		this.email = email;
 	}
 
-	public String getRegister_result() {
-		return register_result;
+
+	public String getResult() {
+		return result;
 	}
 
-	public void setRegister_result(String register_result) {
-		this.register_result = register_result;
+	public void setResult(String result) {
+		this.result = result;
 	}
 
 	public File getPhoto() {

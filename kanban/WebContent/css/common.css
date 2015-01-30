@@ -1882,10 +1882,10 @@ table.story td{
 }
 
 .register_dialog .success_message
-{
+{	
 	color: #888888;
     font-size: 18px;
-    margin-top: 70px;
+    margin-top: 80px;
 }
 .register_dialog form input{
 	width:354px;

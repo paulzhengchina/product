@@ -53,9 +53,9 @@ $(function() {
 	    			}, 
 
 	    			success : function(data){
-	    				if(data.register_result=="SUCCESS")
+	    				if(data.result=="SUCCESS")
 	    					{
-	    					$(".register_dialog").html("密码已经发送到您的邮箱。");
+	    					$(".register_dialog").html('<p class="success_message">密码已发送到邮箱</p>');
 	    				}
 	    				else{
 	    					

@@ -26,7 +26,7 @@
 		<action name="registerUser" class="userAction" method="registerUser">
 			<result  type="json">
 			   <param name="includeProperties">
-			        register_result     
+			        result     
 	           </param>
 			</result>	
 		</action>
@@ -71,7 +71,7 @@
 		<action name="findPassword" class="userAction" method="findPassword">
 			<result  type="json">
 			   <param name="includeProperties">
-			        register_result     
+			        result     
 	           </param>
 			</result>	
 		</action>

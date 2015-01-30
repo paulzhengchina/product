@@ -53,9 +53,9 @@ $(function() {
 	    			}, 
 
 	    			success : function(data){
-	    				if(data.register_result=="success")
+	    				if(data.result=="success")
 	    					{
-	    					$(".register_dialog").html('<p class="success_message">注册成功，初始登录密码以发送到您的邮箱。</p>');
+	    					$(".register_dialog").html('<p class="success_message">注册成功，初始密码已发送到您的邮箱</p>');
 	    				}
 	    				else{
 	    					
