@@ -110,6 +110,11 @@ public class ProjectServiceImpl implements ProjectService {
 		// TODO Auto-generated method stub
 		ProjectTo project=projectDao.getProjectById(projectId);
 		UserTo user=userDao.getUserById(userId);
+		if(project.getUser().getId().equals(userId))
+		{
+			projectDao.deleteProject(project);
+			return;
+		}
 		Set users=project.getUsers();
 		users.remove(user);
 		project.setUsers(users);
