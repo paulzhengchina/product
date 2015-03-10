@@ -62,7 +62,7 @@ public class ProjectAction extends BaseAction {
     	    if("".equals(project.getLogo().getId()))
     	    	project.setLogo(null);
 			project.setUser(new UserTo((String)this.getSession().getAttribute(this.USER)));
-            project.setStatus(0);
+            project.setStatus(ProjectTo.NORMAL_STATUS);
 	    	projectService.createProject(project);
 			return "success";
 		} catch (Exception e) {
@@ -81,7 +81,7 @@ public class ProjectAction extends BaseAction {
     }
     
     public String deleteProject(){
-    	projectService.deleteProject(projectId);
+    	projectService.deleteProject((String)this.getSession().getAttribute(this.USER),projectId);
     	return SUCCESS;
     }
     

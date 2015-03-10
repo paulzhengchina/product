@@ -85,7 +85,7 @@
 				                    title: "添加项目成员",
 					                modal: true,
 					                width :360,
-					                height:220,
+					                height:240,
 	                                close: function() {}
 	                                });
 			DIALOG.load("${pageContext.request.contextPath}/project/loadAddMemeberForProject.action?projectId="+$("#projectId").val()).dialog('open'); 

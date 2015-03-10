@@ -18,6 +18,9 @@ public class ProjectTo {
      private Set users= new HashSet();
      private StatisticsProjectTo statistics;
      private AttachmentTo logo;
+     public static final int NORMAL_STATUS=0;
+     public static final int DELETED_STATUS=1;
+     
 	
 	public ProjectTo() {
 		super();

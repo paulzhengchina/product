@@ -41,7 +41,7 @@ public class ProjectServiceImpl implements ProjectService {
 		if (user != null) {
 			Set<ProjectTo> projects = userDao.getUserById(userId).getProjects();
 			for(ProjectTo projectTo : projects){
-				if(projectTo.getStatus()==0)
+				if(projectTo.getStatus()==ProjectTo.NORMAL_STATUS)
 					projectList.add(projectTo);
 			}
 		}
@@ -49,7 +49,7 @@ public class ProjectServiceImpl implements ProjectService {
 	}
 
 	@Override
-	public void deleteProject(String projectId) {
+	public void deleteProject(String userId,String projectId) {
 		ProjectTo project=getProjectById(projectId);
 		project.setStatus(1);
 		projectDao.updateProject(project);
@@ -118,9 +118,11 @@ public class ProjectServiceImpl implements ProjectService {
 		Set users=project.getUsers();
 		users.remove(user);
 		project.setUsers(users);
-		if(user.getDefaultProject().getId().equals(project.getId()))
+		if(user.getDefaultProject()!=null && user.getDefaultProject().getId().equals(project.getId()))
+		{
 			user.setDefaultProject(null);
-		userDao.saveOrUpdateUser(user);
+		    userDao.saveOrUpdateUser(user);
+		}
 		projectDao.updateProject(project);
 		
 	}

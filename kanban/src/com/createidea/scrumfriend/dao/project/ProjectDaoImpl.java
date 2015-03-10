@@ -29,8 +29,8 @@ public class ProjectDaoImpl extends BaseDaoImpl implements  ProjectDao {
 
 	@Override
 	public void deleteProject(ProjectTo project) {
-		
-		this.getHibernateTemplate().delete(project);
+		project.setStatus(ProjectTo.DELETED_STATUS);
+		updateProject(project);
 	}
 
 	@Override
