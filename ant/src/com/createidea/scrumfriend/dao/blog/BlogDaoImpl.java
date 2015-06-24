@@ -22,7 +22,7 @@ public class BlogDaoImpl extends BaseDaoImpl implements BlogDao {
 		// TODO Auto-generated method stub
 		DetachedCriteria detachedCriteria = DetachedCriteria.forClass(BlogTo.class);
 		detachedCriteria.addOrder(Order.desc("createdTime"));
-		return this.getHibernateTemplate().findByCriteria(detachedCriteria);
+		return (List<BlogTo>) this.getHibernateTemplate().findByCriteria(detachedCriteria);
 	}
 
 	@Override
@@ -30,7 +30,7 @@ public class BlogDaoImpl extends BaseDaoImpl implements BlogDao {
 		// TODO Auto-generated method stub
 		DetachedCriteria detachedCriteria = DetachedCriteria.forClass(BlogTo.class);
 		detachedCriteria.add(Restrictions.eq("id", blogId));
-        List<BlogTo> blogs=this.getHibernateTemplate().findByCriteria(detachedCriteria);
+        List<BlogTo> blogs=(List<BlogTo>) this.getHibernateTemplate().findByCriteria(detachedCriteria);
         if(blogs!=null&&blogs.size()>0)
         	return blogs.get(0);
         else {
@@ -44,7 +44,7 @@ public class BlogDaoImpl extends BaseDaoImpl implements BlogDao {
 		DetachedCriteria detachedCriteria = DetachedCriteria.forClass(BlogTo.class);
 		detachedCriteria.add(Restrictions.eq("recommend", 1));
 		detachedCriteria.addOrder(Order.desc("createdTime"));
-		return this.getHibernateTemplate().findByCriteria(detachedCriteria);
+		return (List<BlogTo>) this.getHibernateTemplate().findByCriteria(detachedCriteria);
 	}
 
 	

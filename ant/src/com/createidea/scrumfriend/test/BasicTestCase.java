@@ -16,9 +16,9 @@ public class BasicTestCase extends StrutsSpringTestCase {
     protected UserTo currentUser;
     protected final static String USER="CRNTUSER";
 	@Override
-	protected String getContextLocations() {
+	protected String[] getContextLocations() {
 		// TODO Auto-generated method stub
-	   return "/applicationContext-*.xml";
+	   return null;
 	}
 	@Override
 	protected void setupBeforeInitDispatcher() throws Exception {

@@ -18,7 +18,7 @@ public class UserDaoImpl extends BaseDaoImpl implements UserDao {
 		// TODO Auto-generated method stub
 		DetachedCriteria detachedCriteria = DetachedCriteria.forClass(UserTo.class);
 		detachedCriteria.add(Restrictions.eq("name", name ));		
-	    List<UserTo> userList=this.getHibernateTemplate().findByCriteria(detachedCriteria);
+	    List<UserTo> userList=(List<UserTo>) this.getHibernateTemplate().findByCriteria(detachedCriteria);
 	     if(userList!=null && userList.size()>0)
 	    	 return userList.get(0);
 	     else
@@ -49,7 +49,7 @@ public class UserDaoImpl extends BaseDaoImpl implements UserDao {
 	public UserTo getRandomUser() {
 		// TODO Auto-generated method stub
 		DetachedCriteria detachedCriteria = DetachedCriteria.forClass(UserTo.class);
-	    List<UserTo> userList=this.getHibernateTemplate().findByCriteria(detachedCriteria);
+	    List<UserTo> userList=(List<UserTo>) this.getHibernateTemplate().findByCriteria(detachedCriteria);
 	    return userList.get(0);
 	}
 
@@ -64,7 +64,7 @@ public class UserDaoImpl extends BaseDaoImpl implements UserDao {
 		// TODO Auto-generated method stub
 		DetachedCriteria detachedCriteria = DetachedCriteria.forClass(UserTo.class);
 		detachedCriteria.add(Restrictions.eq("id", userId ));	
-		List<UserTo> userList=this.getHibernateTemplate().findByCriteria(detachedCriteria);
+		List<UserTo> userList=(List<UserTo>) this.getHibernateTemplate().findByCriteria(detachedCriteria);
 		if(userList!=null&&userList.size()>0)
 		    return userList.get(0);
 		else
@@ -86,7 +86,7 @@ public class UserDaoImpl extends BaseDaoImpl implements UserDao {
 		// TODO Auto-generated method stub
 		DetachedCriteria detachedCriteria = DetachedCriteria.forClass(UserTo.class);
 		detachedCriteria.add(Restrictions.eq("email", userEmail ));	
-		List<UserTo> userList=this.getHibernateTemplate().findByCriteria(detachedCriteria);
+		List<UserTo> userList=(List<UserTo>) this.getHibernateTemplate().findByCriteria(detachedCriteria);
 		if(userList!=null&&userList.size()>0)
 		    return userList.get(0);
 		else

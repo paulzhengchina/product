@@ -39,7 +39,7 @@ public class SprintDaoImpl extends BaseDaoImpl implements  SprintDao {
 		DetachedCriteria detachedCriteria = DetachedCriteria.forClass(SprintTo.class);
 		detachedCriteria.add(Restrictions.eq("project.id", projectId));
 		detachedCriteria.addOrder(Order.asc("startTime"));
-		return this.getHibernateTemplate().findByCriteria(detachedCriteria);
+		return (List<SprintTo>) this.getHibernateTemplate().findByCriteria(detachedCriteria);
 	}
 
 	@Override
@@ -71,7 +71,7 @@ public class SprintDaoImpl extends BaseDaoImpl implements  SprintDao {
 		detachedCriteria.add(Restrictions.eq("project.id", projectId));
 		detachedCriteria.add(Restrictions.le("startTime", getPureDateOfToday()));
 		detachedCriteria.add(Restrictions.ge("endTime", getLatestDateOfToday()));
-		List<SprintTo> sprints=this.getHibernateTemplate().findByCriteria(detachedCriteria);
+		List<SprintTo> sprints=(List<SprintTo>) this.getHibernateTemplate().findByCriteria(detachedCriteria);
 		List<SprintTo> sprintsWithChild=new ArrayList<SprintTo>();
 		if(sprints!=null&&sprints.size()>0){
 			for(SprintTo sprint :sprints ){
@@ -120,7 +120,7 @@ public class SprintDaoImpl extends BaseDaoImpl implements  SprintDao {
 		DetachedCriteria detachedCriteria = DetachedCriteria.forClass(SprintTo.class);
 		detachedCriteria.add(Restrictions.gt("endTime", twoDaysAgo));
 		detachedCriteria.add(Restrictions.lt("endTime", today));
-		return this.getHibernateTemplate().findByCriteria(detachedCriteria);
+		return (List<SprintTo>) this.getHibernateTemplate().findByCriteria(detachedCriteria);
 	}
 
 	@Override
@@ -130,7 +130,7 @@ public class SprintDaoImpl extends BaseDaoImpl implements  SprintDao {
 		detachedCriteria.add(Restrictions.eq("project.id", projectId));
 		detachedCriteria.add(Restrictions.isNull("parentSprint"));
 		detachedCriteria.addOrder(Order.asc("startTime"));
-		return this.getHibernateTemplate().findByCriteria(detachedCriteria);
+		return (List<SprintTo>) this.getHibernateTemplate().findByCriteria(detachedCriteria);
 	}
 	
 }

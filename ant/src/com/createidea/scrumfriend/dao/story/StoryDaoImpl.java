@@ -13,6 +13,7 @@ import org.hibernate.criterion.DetachedCriteria;
 import org.hibernate.criterion.MatchMode;
 import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
+import org.hibernate.type.FloatType;
 import org.springframework.orm.hibernate3.HibernateCallback;
 
 import com.createidea.scrumfriend.dao.BaseDaoImpl;
@@ -30,7 +31,7 @@ public class StoryDaoImpl extends BaseDaoImpl implements  StoryDao {
 		DetachedCriteria detachedCriteria = DetachedCriteria.forClass(StoryTo.class);
 		detachedCriteria.add(Restrictions.eq("status", status));
 		detachedCriteria.addOrder(Order.asc("priority"));
-		return this.getHibernateTemplate().findByCriteria(detachedCriteria);
+		return (List<StoryTo>) this.getHibernateTemplate().findByCriteria(detachedCriteria);
 	}
 	
 	@Override
@@ -64,7 +65,7 @@ public class StoryDaoImpl extends BaseDaoImpl implements  StoryDao {
 		detachedCriteria.addOrder(Order.asc("priorityNum"));
 		detachedCriteria.addOrder(Order.asc("priority"));
 		detachedCriteria.addOrder(Order.desc("businessValue"));
-		return this.getHibernateTemplate().findByCriteria(detachedCriteria);
+		return (List<StoryTo>) this.getHibernateTemplate().findByCriteria(detachedCriteria);
 	}
 
 	@Override
@@ -80,7 +81,7 @@ public class StoryDaoImpl extends BaseDaoImpl implements  StoryDao {
 		detachedCriteria.add(Restrictions.eq("project.id", projectId));
 		detachedCriteria.add(Restrictions.eq("status", status));
 		detachedCriteria.addOrder(Order.desc("priority"));
-		return this.getHibernateTemplate().findByCriteria(detachedCriteria);
+		return (List<StoryTo>) this.getHibernateTemplate().findByCriteria(detachedCriteria);
 		
 	}
 
@@ -124,7 +125,7 @@ public class StoryDaoImpl extends BaseDaoImpl implements  StoryDao {
 		return (Float) this.getHibernateTemplate().execute(
 				new HibernateCallback() {
 					public Float doInHibernate(Session session) throws HibernateException, SQLException {
-						SQLQuery query = session.createSQLQuery(sql).addScalar("point", Hibernate.FLOAT);
+						SQLQuery query = session.createSQLQuery(sql).addScalar("point", FloatType.INSTANCE);
 						Object count = query.uniqueResult();
 						if(count==null)
 							return Float.valueOf(0);
@@ -141,7 +142,7 @@ public class StoryDaoImpl extends BaseDaoImpl implements  StoryDao {
 		detachedCriteria.add(Restrictions.eq("sprint.id", sprintId));
 		detachedCriteria.add(Restrictions.eq("status", status));
 		detachedCriteria.addOrder(Order.desc("priority"));
-		return this.getHibernateTemplate().findByCriteria(detachedCriteria);
+		return (List<StoryTo>) this.getHibernateTemplate().findByCriteria(detachedCriteria);
 	}
 
 	@Override
@@ -151,7 +152,7 @@ public class StoryDaoImpl extends BaseDaoImpl implements  StoryDao {
 		DetachedCriteria detachedCriteria = DetachedCriteria.forClass(StoryTo.class);
 		detachedCriteria.addOrder(Order.desc("priority"));
 		detachedCriteria.add(Restrictions.eq("project.id", projectId));
-		return this.getHibernateTemplate().findByCriteria(detachedCriteria, (page-1)*rp, rp);
+		return (List<StoryTo>) this.getHibernateTemplate().findByCriteria(detachedCriteria, (page-1)*rp, rp);
 	}
 
 	@Override
@@ -161,7 +162,7 @@ public class StoryDaoImpl extends BaseDaoImpl implements  StoryDao {
 		DetachedCriteria detachedCriteria = DetachedCriteria.forClass(StoryTo.class);
 		detachedCriteria.add(Restrictions.eq("project.id", projectId));
 		detachedCriteria.add(Restrictions.ilike("name", nameKeyWord, MatchMode.ANYWHERE));
-		return this.getHibernateTemplate().findByCriteria(detachedCriteria, (page-1)*rp, rp);
+		return (List<StoryTo>) this.getHibernateTemplate().findByCriteria(detachedCriteria, (page-1)*rp, rp);
 	}
 
 	@Override
@@ -176,7 +177,7 @@ public class StoryDaoImpl extends BaseDaoImpl implements  StoryDao {
 		else {
 			detachedCriteria.addOrder(Order.asc(sortname));
 		}
-		return this.getHibernateTemplate().findByCriteria(detachedCriteria, (page-1)*rp, rp);
+		return (List<StoryTo>) this.getHibernateTemplate().findByCriteria(detachedCriteria, (page-1)*rp, rp);
 	}
 
 	@Override
@@ -198,7 +199,7 @@ public class StoryDaoImpl extends BaseDaoImpl implements  StoryDao {
 		detachedCriteria.add(Restrictions.eq("sprint.id", sprintId));
 		detachedCriteria.add(Restrictions.in("status", new Integer[]{0,1} ));
 		detachedCriteria.addOrder(Order.desc("priority"));
-		return this.getHibernateTemplate().findByCriteria(detachedCriteria);
+		return (List<StoryTo>) this.getHibernateTemplate().findByCriteria(detachedCriteria);
 	}
 
 	

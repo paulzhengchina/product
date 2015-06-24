@@ -23,7 +23,7 @@ public class ProjectDaoImpl extends BaseDaoImpl implements  ProjectDao {
 	@Override
 	public List<ProjectTo> getProject(String userId){
 		// TODO Auto-generated method stub
-		List<ProjectTo> projects=this.getHibernateTemplate().find("from ProjectTo where user.id=?",userId+"and status=1");
+		List<ProjectTo> projects=(List<ProjectTo>) this.getHibernateTemplate().find("from ProjectTo where user.id=?",userId+"and status=1");
 		return projects;
 	}
 

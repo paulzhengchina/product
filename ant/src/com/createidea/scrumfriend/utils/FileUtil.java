@@ -11,7 +11,6 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import org.apache.struts.upload.FormFile;
 
 
 public class FileUtil
@@ -55,31 +54,7 @@ public class FileUtil
         }
         inPut.close();
 	}
-    /**
-     * This method is to upload files
-     * @param FormFile srcFile, only the source file name.
-     * @param String destPath, only the destination file path.
-     * @throws Exception
-     */
-    public static void uploadFile(FormFile srcFile, String destPath) throws Exception {
-        try {
-            String fileName = srcFile.getFileName();
-            String destFile = destPath + File.separator + fileName;
-            File destDirectory = new File(destPath);
-            if(!destDirectory.isDirectory()){
-                destDirectory.mkdir();
-            }
-            InputStream inPut = srcFile.getInputStream();
-            FileOutputStream outPut = new FileOutputStream(destFile);
-            outPut.write(srcFile.getFileData());
-            outPut.flush();
-            inPut.close();
-            outPut.close();
-        } catch (Exception e) {
-            e.printStackTrace();
-            throw e;
-        }
-    }
+   
     /**
      * This method is to copy file
      * @param String srcPath, must including the source file path and name.

@@ -26,7 +26,7 @@ public class ImpedimentDaoImpl extends BaseDaoImpl implements ImpedimentDao {
 		detachedCriteria.add(Restrictions.in("status", statusList));
 		detachedCriteria.addOrder(Order.asc("status"));
 		detachedCriteria.addOrder(Order.asc("severity"));		
-		return this.getHibernateTemplate().findByCriteria(detachedCriteria);
+		return (List<ImpedimentTo>) this.getHibernateTemplate().findByCriteria(detachedCriteria);
 	}
 
 	@Override
@@ -48,7 +48,7 @@ public class ImpedimentDaoImpl extends BaseDaoImpl implements ImpedimentDao {
 		// TODO Auto-generated method stubc
 		DetachedCriteria detachedCriteria = DetachedCriteria.forClass(ImpedimentTo.class);
 		detachedCriteria.add(Restrictions.eq("id", id));
-		List<ImpedimentTo> impediments=this.getHibernateTemplate().findByCriteria(detachedCriteria);
+		List<ImpedimentTo> impediments=(List<ImpedimentTo>) this.getHibernateTemplate().findByCriteria(detachedCriteria);
 		if(impediments!=null&&impediments.size()>0)
 			return impediments.get(0);
 		else

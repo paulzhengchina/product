@@ -26,7 +26,7 @@ public class StatisticsDaoImpl extends BaseDaoImpl implements StatisticsDao {
 		DetachedCriteria detachedCriteria = DetachedCriteria.forClass(StatisticsProjectTo.class);
 		detachedCriteria.add(Restrictions.eq("project.id", projectId));
 		detachedCriteria.addOrder(Order.asc("date"));
-		return this.getHibernateTemplate().findByCriteria(detachedCriteria);
+		return (List<StatisticsProjectTo>) this.getHibernateTemplate().findByCriteria(detachedCriteria);
 	}
 
 	@Override
@@ -40,7 +40,7 @@ public class StatisticsDaoImpl extends BaseDaoImpl implements StatisticsDao {
 		// TODO Auto-generated method stub
 		DetachedCriteria detachedCriteria = DetachedCriteria.forClass(StatisticsSprintTo.class);
 		detachedCriteria.createCriteria("sprint").add(Restrictions.eq("project.id", projectId));
-		return this.getHibernateTemplate().findByCriteria(detachedCriteria);
+		return (List<StatisticsSprintTo>) this.getHibernateTemplate().findByCriteria(detachedCriteria);
 	}
 
 	@Override
@@ -48,7 +48,7 @@ public class StatisticsDaoImpl extends BaseDaoImpl implements StatisticsDao {
 		// TODO Auto-generated method stub
 		DetachedCriteria detachedCriteria = DetachedCriteria.forClass(StatisticsDateTo.class);
 		detachedCriteria.add(Restrictions.eq("date", date));
-		List<StatisticsDateTo> statistics=this.getHibernateTemplate().findByCriteria(detachedCriteria);
+		List<StatisticsDateTo> statistics=(List<StatisticsDateTo>) this.getHibernateTemplate().findByCriteria(detachedCriteria);
 		if(statistics!=null&&statistics.size()>0)
 			return statistics.get(0);
 		else
@@ -65,7 +65,7 @@ public class StatisticsDaoImpl extends BaseDaoImpl implements StatisticsDao {
 	public List<StatisticsDateTo> getStatisticsDateForSprint(String sprintId) {
 		DetachedCriteria detachedCriteria = DetachedCriteria.forClass(StatisticsDateTo.class);
 		detachedCriteria.add(Restrictions.eq("sprint.id", sprintId));
-		return this.getHibernateTemplate().findByCriteria(detachedCriteria);
+		return (List<StatisticsDateTo>) this.getHibernateTemplate().findByCriteria(detachedCriteria);
 	}
 
 
