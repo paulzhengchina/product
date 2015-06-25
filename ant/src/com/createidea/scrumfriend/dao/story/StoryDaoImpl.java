@@ -14,7 +14,7 @@ import org.hibernate.criterion.MatchMode;
 import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
 import org.hibernate.type.FloatType;
-import org.springframework.orm.hibernate3.HibernateCallback;
+import org.springframework.orm.hibernate4.HibernateCallback;
 
 import com.createidea.scrumfriend.dao.BaseDaoImpl;
 import com.createidea.scrumfriend.to.ProjectTo;
@@ -121,10 +121,11 @@ public class StoryDaoImpl extends BaseDaoImpl implements  StoryDao {
 		return calculateStoryPoint(sql);
 	}
 	
+	
 	public float calculateStoryPoint(final String sql) {
 		return (Float) this.getHibernateTemplate().execute(
 				new HibernateCallback() {
-					public Float doInHibernate(Session session) throws HibernateException, SQLException {
+					public Float doInHibernate(Session session) throws HibernateException{
 						SQLQuery query = session.createSQLQuery(sql).addScalar("point", FloatType.INSTANCE);
 						Object count = query.uniqueResult();
 						if(count==null)

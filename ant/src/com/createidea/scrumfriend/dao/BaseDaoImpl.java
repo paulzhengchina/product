@@ -2,9 +2,15 @@ package com.createidea.scrumfriend.dao;
 
 import java.util.List;
 
+import org.apache.tomcat.dbcp.pool.impl.GenericKeyedObjectPool.Config;
 import org.hibernate.Query;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.cfg.Configuration;
 import org.hibernate.criterion.DetachedCriteria;
-import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
+import org.hibernate.service.ServiceRegistry;
+import org.hibernate.service.ServiceRegistryBuilder;
+import org.springframework.orm.hibernate4.support.HibernateDaoSupport;
 
 import com.createidea.scrumfriend.utils.Pager;
 
@@ -13,8 +19,11 @@ public class BaseDaoImpl extends HibernateDaoSupport implements BaseDao{
 	
     
 	public List findResultForPager(String hql,int start,int num){
-		
-    Query query=this.getSession().createQuery(hql);
+	Configuration config = new Configuration().configure();
+	ServiceRegistry resgistry = new ServiceRegistryBuilder().applySettings(config.getProperties()).buildServiceRegistry();
+	SessionFactory  factory = config.buildSessionFactory(resgistry);
+	Session session = factory.openSession();
+    Query query=session.createQuery(hql);
     query.setFirstResult(start);
     query.setMaxResults(num);
 	return query.list();
@@ -45,8 +54,11 @@ public class BaseDaoImpl extends HibernateDaoSupport implements BaseDao{
 	}
 	
 	public List findResultForPager(String hql,Pager pager){
-		
-	    Query query=this.getSession().createQuery(hql);
+		Configuration config = new Configuration().configure();
+		ServiceRegistry resgistry = new ServiceRegistryBuilder().applySettings(config.getProperties()).buildServiceRegistry();
+		SessionFactory  factory = config.buildSessionFactory(resgistry);
+		Session session = factory.openSession();
+	    Query query=session.createQuery(hql);
 	    query.setFirstResult(pager.getCurrentPage()*pager.getNumForEachPage());
 	    query.setMaxResults(pager.getNumForEachPage());
 		return query.list();
