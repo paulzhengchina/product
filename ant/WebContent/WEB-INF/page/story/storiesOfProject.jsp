@@ -8,8 +8,10 @@
 <link rel="stylesheet" type="text/css" href="${ pageContext.request.contextPath }/css/common.css">
 <link rel="stylesheet" href="${ pageContext.request.contextPath }/css/jquery-ui.css" />
 <link rel="stylesheet" href="${ pageContext.request.contextPath }/css/multi-select/jquery.multiselect.css" />
-<script type="text/javascript" src="${ pageContext.request.contextPath }/js/jquery-1.6.2.js"></script>
+<link rel="stylesheet" href="${ pageContext.request.contextPath }/css/jquery.gridly.css" />
+<script type="text/javascript" src="${ pageContext.request.contextPath }/js/jquery-2.1.4.min.js"></script>
 <script type="text/javascript" src="${ pageContext.request.contextPath }/js/jquery-ui.min.js"></script>
+<script type="text/javascript" src="${ pageContext.request.contextPath }/js/jquery.gridly.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/freewall.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/scrum-shrink.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery.multiselect.js"></script>
@@ -33,44 +35,35 @@
 	}
 	
 </script>
+
+<style type="text/css">
+  .storieslist {
+    position: relative;
+  }
+  .brick.small {
+    width: 140px;
+    height: 140px;
+    background:red;
+  }
+  .brick.large {
+    width: 300px;
+    height: 300px;
+    background:green;
+  }
+</style>
 </head>
 <body>
 
 <div class="content">
-    <div class="header">
-       <p class="project_name"><s:property value="%{project.name}"/></p>
-       <p class="page_info">需求列表</p>
-       <select name="filter" multiple="multiple" style="width:300px">
-		<optgroup label="优先级">
-			<option value="priority0" selected="selected">必须有</option>
-			<option value="priority1" selected="selected">应该有</option>
-			<option value="priority2" selected="selected">可以有</option>
-			<option value="priority3" selected="selected">不会有（但想）</option>
-	    </optgroup>
-		<optgroup label="状态">
-			<option value="status0" selected="selected">等待</option>
-			<option value="status1">完成</option>
-			<option value="status2">移除</option>
-		</optgroup>
-	 </select>
-                 
-    </div>
 
 	<div class="project_stories" id='project_stories' style="position: relative;">
 			<s:hidden name="projectId" value="%{projectId}" />
-			<div id="storieslist">
-			  <div class="addStory">
-			    
-			  </div>
+			<s:hidden name="draggingCardId" value="" />
+			<div class="storieslist">
+			  
 			  <s:iterator value="%{stories}" var="story">
-			    <script>
-			     var cardSize = calculateStoryCardSize('<s:property value="%{#story.point}"/>');
-			     var priority='<s:property value="%{#story.priority}"/>';
-			     var status='<s:property value="%{#story.status}"/>';
-			     var className='story_card size'+cardSize+' priority'+priority+' status'+status;
-			     var rel='<s:property value="%{#story.id}"/>';
-			     document.write("<div class='"+className+"'rel='"+rel+ "'>");
-				 </script>
+			   
+			   <div class="story_card brick large" id='<s:property value="%{#story.id}"/>'>
 				  <h2><s:property value="%{#story.name}"/></h2>
 				  <p class="value" title="商业价值"><s:property value="%{#story.businessValue}"/></p>
 				  <p class="accepetance_criteria"><s:property value="%{#story.dod}" escape="false"/></p>
@@ -81,6 +74,7 @@
 					 <a href="#" title="删除"><img width="20" height="20" src="${ pageContext.request.contextPath }/images/icon/project_delete.png" id="<s:property value='%{#story.id}'/>" class="deleteStory"></img></a>
 				  </div>
 				</div>
+				  
 			 </s:iterator>		
 	</div>
 
@@ -130,25 +124,36 @@
 </body>
 <script>
 	$(document).ready(function() {
-		var allStoryCards=$(".story_card");
-		removeDeletedStoryCards();
-		var wall = new freewall("#storieslist");
-		wall.reset({
-			//selector: '.addStory .brick',
-			animate: false,
-			cellW: 200,
-			cellH: 50,
-			gutterY: 16,
-			gutterX: 16,
-			delay: 30,
-			onResize: function() {
-				wall.refresh($(window).width() -100, $(window).height() - 30);
-			}
-		});
-		wall.fitWidth();
-		// caculator width and height for IE7;
-		//wall.fitZone($(window).width() - 30 , $(window).height() - 30);
 		
+		   var reordering = function($elements) {
+			  // Called before the drag and drop starts with the elements in their starting position.
+			 var draggingCardId=$(".dragging").attr("id");
+			 $("#draggingCardId").val(draggingCardId);
+			};
+
+			var reordered = function($elements) {
+			  // Called after the drag and drop ends with the elements in their ending position.
+			  var draggedCardId=$("#draggingCardId").val();
+			  var draggedCardIndex;
+			 for(var i=0;i<$elements.length; i++)
+				 {
+				 if($elements[i].id==draggedCardId)
+					 draggedCardIndex=i;
+				 }
+			 alert($("#"+$elements[draggedCardIndex+1].id).children("h2").text());
+			 alert($("#"+$elements[draggedCardIndex-1].id).children("h2").text());
+			  
+			};
+
+
+		$(".storieslist").gridly({
+		    base: 60, // px 
+		    gutter: 20, // px
+		    columns: 12,
+		    callbacks: { reordering: reordering , reordered: reordered }
+
+		  });
+
 		$(".addStory").click(function(){
 			DIALOG = $(".story_dialog");
 			DIALOG.dialog({
